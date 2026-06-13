@@ -1,0 +1,63 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebAPI",
+  "@id": "https://pubapi.bigtincan.com/",
+  "name": "Bigtincan Hub API",
+  "description": "The Bigtincan Hub Public API provides programmatic access to the Bigtincan sales enablement platform, enabling management of sales content, training programs, coaching insights, buyer engagement analytics, and CRM content synchronization.",
+  "url": "https://help.bigtincan.com/help/bigtincan-public-api-documentation",
+  "documentation": "https://help.bigtincan.com/help/bigtincan-public-api-documentation",
+  "termsOfService": "https://www.bigtincan.com/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Bigtincan",
+    "url": "https://www.bigtincan.com/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.bigtincan.com/pricing/"
+  },
+  "potentialAction": [
+    {
+      "@type": "Action",
+      "name": "Manage Sales Content",
+      "description": "Create, update, and retrieve sales content including stories, files, and categories."
+    },
+    {
+      "@type": "Action",
+      "name": "Training Programs",
+      "description": "Access and manage training and coaching programs for revenue teams."
+    },
+    {
+      "@type": "Action",
+      "name": "Buyer Engagement Analytics",
+      "description": "Retrieve buyer engagement metrics, digital sales room analytics, and content performance data."
+    },
+    {
+      "@type": "Action",
+      "name": "CRM Content Sync",
+      "description": "Synchronize Bigtincan content with CRM systems for seamless revenue team workflows."
+    }
+  ],
+  "applicationCategory": "Sales Enablement",
+  "featureList": [
+    "Sales Content Management",
+    "Training and Coaching Programs",
+    "Buyer Engagement Analytics",
+    "Digital Sales Rooms",
+    "CRM Integration",
+    "OAuth2 Authentication"
+  ],
+  "inLanguage": "en",
+  "isAccessibleForFree": false,
+  "keywords": [
+    "sales enablement",
+    "content management",
+    "training",
+    "coaching",
+    "buyer engagement",
+    "analytics",
+    "CRM integration",
+    "digital sales rooms",
+    "REST API"
+  ]
+}
