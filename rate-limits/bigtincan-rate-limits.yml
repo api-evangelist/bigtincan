@@ -1,0 +1,34 @@
+name: Bigtincan API Rate Limits
+description: Bigtincan does not publicly document specific API rate limits.
+  Rate limits are enforced at the API gateway level and are subject to the
+  terms of the customer's enterprise subscription agreement. Contact Bigtincan
+  sales or support for specific rate limit information applicable to your account.
+url: https://help.bigtincan.com/help/bigtincan-public-api-documentation
+limits:
+  - name: API Rate Limits
+    description: Specific rate limit values are not publicly disclosed by Bigtincan.
+      Rate limits are enforced per tenant and governed by enterprise subscription
+      agreements.
+    type: Undisclosed
+    notes:
+      - Rate limits are enforced per tenant/organization.
+      - Enterprise customers should contact Bigtincan support for their
+        specific rate limit configuration.
+      - The API uses OAuth2 token-based authentication; token refresh
+        functionality is supported.
+authentication:
+  - type: OAuth2
+    description: The Bigtincan Hub API uses OAuth2 authentication requiring
+      a Client ID and Client Secret to generate an Access Token. The As-User
+      header allows applications to perform actions on behalf of users within
+      a tenant by passing As-User USER_ID format.
+    tokenEndpoint: https://pubapi.bigtincan.com
+    notes:
+      - Client ID and Client Secret are required to generate an access token.
+      - Token refresh functionality is supported.
+      - The As-User header enables impersonation of users within a tenant.
+      - Admin APIs do not support the As-User header functionality.
+contact:
+  - description: Contact Bigtincan support for rate limit details specific
+      to your subscription.
+    url: https://www.bigtincan.com/contact/

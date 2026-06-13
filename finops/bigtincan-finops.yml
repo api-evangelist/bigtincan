@@ -1,0 +1,53 @@
+name: Bigtincan FinOps
+description: Financial operations guidance for Bigtincan API and platform
+  consumption. Bigtincan uses a custom enterprise pricing model with no
+  publicly listed per-API-call costs. Costs are governed by the enterprise
+  subscription contract which covers platform access including API usage.
+url: https://www.bigtincan.com/pricing/
+model: Enterprise Subscription
+notes:
+  - Bigtincan does not charge per API call; API access is bundled within
+    the enterprise platform subscription.
+  - All pricing requires a custom quote from the Bigtincan sales team.
+  - Median contract value is approximately $219K annually.
+  - Implementation costs typically range from $15K to $75K+ depending on
+    integration complexity.
+  - Time to go live is approximately 3 months.
+costDrivers:
+  - name: User Seats
+    description: Per-user licensing drives primary cost; pricing is per user
+      per month under a negotiated enterprise contract.
+    type: Per User Per Month
+    visibility: Opaque (requires custom quote)
+  - name: Platform Edition
+    description: Essential vs Elite tiers drive cost differences; Elite
+      includes expanded AI and analytics capabilities at higher price point.
+    type: Tier Differential
+    visibility: Opaque (requires custom quote)
+  - name: Modular Add-ons
+    description: Readiness, Content, and Engagement modules can be licensed
+      separately for organizations preferring a phased rollout.
+    type: Modular
+    visibility: Opaque (requires custom quote)
+  - name: Support Package
+    description: Bronze, Silver, Gold, and Platinum support tiers are priced
+      separately from the platform license.
+    type: Support Tier
+    visibility: Opaque (requires custom quote)
+  - name: Implementation Services
+    description: Professional services for implementation and integration
+      typically cost $15K to $75K+ depending on complexity.
+    type: One-time Professional Services
+    visibility: Opaque (requires custom quote)
+optimization:
+  - description: Negotiate multi-year contracts for volume discounts.
+  - description: Evaluate modular licensing (Readiness, Content, Engagement)
+      to adopt only needed capabilities and reduce initial costs.
+  - description: Use the As-User API header to consolidate API calls through
+      service accounts where appropriate, optimizing authentication overhead.
+  - description: Monitor API usage patterns to ensure integration efficiency
+      and avoid unnecessary calls within tenant rate limits.
+contact:
+  - description: Contact Bigtincan sales for custom pricing and contract
+      negotiation.
+    url: https://www.bigtincan.com/pricing/

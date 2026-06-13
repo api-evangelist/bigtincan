@@ -1,0 +1,77 @@
+aid: bigtincan
+name: Bigtincan
+description: Bigtincan is an industry-leading sales enablement automation platform
+  providing a REST API for managing sales content, training and coaching programs,
+  buyer engagement analytics, digital sales rooms, and CRM content sync. The platform
+  combines AI-powered content management, sales readiness tools, and buyer engagement
+  capabilities to help revenue teams close deals faster.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/bigtincan/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+type: Index
+tags:
+  - Sales Enablement
+  - Content Management
+  - Training
+  - Coaching
+  - Buyer Engagement
+  - Analytics
+  - CRM Integration
+  - Digital Sales Rooms
+apis:
+  - aid: bigtincan:bigtincan-hub-api
+    name: Bigtincan Hub API
+    description: The Bigtincan Hub Public API provides programmatic access to the
+      Bigtincan sales enablement platform, enabling management of sales content,
+      training programs, coaching insights, buyer engagement analytics, and CRM
+      content synchronization. Supports OAuth2 authentication with Client ID and
+      Client Secret for generating access tokens.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://help.bigtincan.com/help/bigtincan-public-api-documentation
+    baseURL: https://pubapi.bigtincan.com
+    tags:
+      - Sales Enablement
+      - Content Management
+      - Training
+      - Coaching
+      - Buyer Engagement
+    properties:
+      - type: Documentation
+        url: https://help.bigtincan.com/help/bigtincan-public-api-documentation
+      - type: OpenAPI
+        url: https://pubapi.bigtincan.com/doc/interactive/
+      - type: Plans
+        url: plans/bigtincan-plans-pricing.yml
+      - type: RateLimits
+        url: rate-limits/bigtincan-rate-limits.yml
+      - type: FinOps
+        url: finops/bigtincan-finops.yml
+    contact:
+      - FN: Bigtincan Support
+        url: https://www.bigtincan.com/contact/
+common:
+  - type: Website
+    url: https://www.bigtincan.com/
+  - type: Documentation
+    url: https://help.bigtincan.com/help/bigtincan-public-api-documentation
+  - type: Blog
+    url: https://www.bigtincan.com/blog/
+  - type: Pricing
+    url: https://www.bigtincan.com/pricing/
+  - type: StatusPage
+    url: https://status.bigtincan.com/
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/bigtincan
+  - type: X
+    url: https://x.com/bigtincan
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/bigtincan-rate-limits.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

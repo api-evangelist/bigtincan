@@ -1,0 +1,89 @@
+name: Bigtincan Plans and Pricing
+description: Bigtincan offers sales enablement platform plans with Essential and
+  Elite tiers, plus modular solutions for Readiness, Content, and Engagement.
+  Pricing is custom and requires contacting sales. API access is available as
+  part of the platform subscription with Client ID and Client Secret credentials.
+url: https://www.bigtincan.com/pricing/
+plans:
+  - name: Essential
+    description: Foundational sales enablement package including training, coaching,
+      and content management capabilities with AI-powered features.
+    url: https://www.bigtincan.com/pricing/
+    price: Contact Sales
+    pricingModel: Per User / Custom Quote
+    features:
+      - CoachingAI
+      - Content Management
+      - SearchAI
+      - Digital Sales Rooms
+      - MeetingsAI
+      - Analytics and Scorecards
+      - RolePlayAI
+      - Genie Assistant
+      - API Access
+  - name: Elite
+    description: Premium sales enablement tier with expanded capabilities beyond
+      the Essential edition, including enhanced AI features and advanced analytics.
+    url: https://www.bigtincan.com/pricing/
+    price: Contact Sales
+    pricingModel: Per User / Custom Quote
+    features:
+      - All Essential features
+      - Enhanced AI capabilities
+      - Advanced analytics
+      - Priority support
+      - API Access
+  - name: Readiness Module
+    description: Standalone interactive training and roleplay practice solution
+      for organizations preferring a modular approach.
+    url: https://www.bigtincan.com/pricing/
+    price: Contact Sales
+    pricingModel: Modular / Custom Quote
+    features:
+      - Interactive training
+      - RolePlayAI
+      - CoachingAI
+      - Performance scorecards
+  - name: Content Module
+    description: Standalone personalized content hub with AI assistance for
+      content management and delivery.
+    url: https://www.bigtincan.com/pricing/
+    price: Contact Sales
+    pricingModel: Modular / Custom Quote
+    features:
+      - AI-powered content management
+      - SearchAI
+      - Content personalization
+      - Analytics
+  - name: Engagement Module
+    description: Standalone buyer experience tools with digital sales rooms for
+      collaborative selling.
+    url: https://www.bigtincan.com/pricing/
+    price: Contact Sales
+    pricingModel: Modular / Custom Quote
+    features:
+      - Digital Sales Rooms
+      - Buyer engagement analytics
+      - MeetingsAI
+      - Shared workspaces
+support:
+  - name: Bronze Support
+    description: Entry-level support package for the Bigtincan platform.
+    url: https://www.bigtincan.com/pricing/
+  - name: Silver Support
+    description: Mid-tier support package for the Bigtincan platform.
+    url: https://www.bigtincan.com/pricing/
+  - name: Gold Support
+    description: Premium support package for the Bigtincan platform.
+    url: https://www.bigtincan.com/pricing/
+  - name: Platinum Support
+    description: Highest-tier support package for the Bigtincan platform with
+      dedicated support resources.
+    url: https://www.bigtincan.com/pricing/
+notes:
+  - Bigtincan does not publicly disclose per-user pricing; all plans require
+    a custom quote from their sales team.
+  - Median contract value is approximately $219K with implementation costs
+    ranging from $15K to $75K+ depending on complexity.
+  - API access is included with platform subscriptions and uses OAuth2
+    authentication with Client ID and Client Secret.
