@@ -27,11 +27,20 @@
       "description": "Annual voice of customer report summarizing insights from Bigtincan's customer base for 2025."
     },
     {
-      "title": "2025 Gartner® Magic Quadrant™ for Revenue Enablement Platforms",
+      "title": "2025 Gartner\u00ae Magic Quadrant\u2122 for Revenue Enablement Platforms",
       "url": "https://www.bigtincan.com/resources/2025-gartner-magic-quadrant-revenue-enablement-platforms/",
       "type": "Analyst Report",
       "category": "Market Analysis",
       "description": "Bigtincan's placement in the 2025 Gartner Magic Quadrant for Revenue Enablement Platforms."
     }
-  ]
+  ],
+  "repo": "bigtincan",
+  "feeds": [
+    {
+      "source": "https://help.bigtincan.com/help/bigtincan-public-api-documentation",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
 }
