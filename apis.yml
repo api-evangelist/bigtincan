@@ -5,7 +5,7 @@ description: Bigtincan is an industry-leading sales enablement automation platfo
   buyer engagement analytics, digital sales rooms, and CRM content sync. The platform
   combines AI-powered content management, sales readiness tools, and buyer engagement
   capabilities to help revenue teams close deals faster.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/bigtincan/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -28,7 +28,7 @@ apis:
       training programs, coaching insights, buyer engagement analytics, and CRM
       content synchronization. Supports OAuth2 authentication with Client ID and
       Client Secret for generating access tokens.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://help.bigtincan.com/help/bigtincan-public-api-documentation
     baseURL: https://pubapi.bigtincan.com
     tags:

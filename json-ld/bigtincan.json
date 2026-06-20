@@ -5,7 +5,7 @@
   "name": "Bigtincan",
   "description": "Bigtincan is an industry-leading sales enablement automation platform providing a REST API for managing sales content, training and coaching programs, buyer engagement analytics, digital sales rooms, and CRM content sync.",
   "url": "https://www.bigtincan.com/",
-  "logo": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+  "logo": "https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg",
   "sameAs": [
     "https://www.linkedin.com/company/bigtincan",
     "https://x.com/bigtincan"
