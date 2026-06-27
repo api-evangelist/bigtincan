@@ -1,46 +1,14 @@
 {
-  "aid": "bigtincan",
-  "name": "Bigtincan Blog",
-  "url": "https://www.bigtincan.com/blog/",
-  "description": "Blog and resources from Bigtincan covering sales enablement, AI, content management, and revenue team insights.",
-  "dateRetrieved": "2026-06-13",
-  "posts": [
-    {
-      "title": "Genie Assistant Deep Research: How AI deep research agents deliver strategic intelligence to lean revenue teams",
-      "url": "https://www.bigtincan.com/resources/genieai-ai-deep-research-agents-strategic-intelligence-revenue-teams/",
-      "type": "Blog",
-      "category": "AI",
-      "description": "Explores how AI-powered deep research assistants can provide strategic insights to smaller revenue teams."
-    },
-    {
-      "title": "Introducing RolePlayAI: The AI sales simulator that ensures sellers are ready for anything",
-      "url": "https://www.bigtincan.com/resources/introducing-roleplayai-the-ai-sales-simulator-that-ensures-sellers-are-ready-for-anything/",
-      "type": "Blog",
-      "category": "AI/Readiness",
-      "description": "Presents a new AI-driven sales simulation tool designed to prepare salespeople for various customer interactions."
-    },
-    {
-      "title": "Voice of Customer Report 2025",
-      "url": "https://www.bigtincan.com/resources/voice-of-customer-report-2025/",
-      "type": "Analyst Report",
-      "category": "Customer Insights",
-      "description": "Annual voice of customer report summarizing insights from Bigtincan's customer base for 2025."
-    },
-    {
-      "title": "2025 Gartner\u00ae Magic Quadrant\u2122 for Revenue Enablement Platforms",
-      "url": "https://www.bigtincan.com/resources/2025-gartner-magic-quadrant-revenue-enablement-platforms/",
-      "type": "Analyst Report",
-      "category": "Market Analysis",
-      "description": "Bigtincan's placement in the 2025 Gartner Magic Quadrant for Revenue Enablement Platforms."
-    }
-  ],
   "repo": "bigtincan",
   "feeds": [
     {
-      "source": "https://help.bigtincan.com/help/bigtincan-public-api-documentation",
-      "error": "HTTPError"
+      "source": "https://www.bigtincan.com/blog/",
+      "feed_url": "",
+      "saved": 0,
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:27:52Z",
+  "post_count": 2,
+  "agent_pulled": "2026-06-27"
 }
