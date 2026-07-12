@@ -52,6 +52,10 @@ apis:
       - FN: Bigtincan Support
         url: https://www.bigtincan.com/contact/
 common:
+  - type: TrustCenter
+    url: security/bigtincan-trust-center.yml
+  - type: DomainSecurity
+    url: security/bigtincan-domain-security.yml
   - type: Website
     url: https://www.bigtincan.com/
   - type: Documentation

@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://trust.bigtincan.com/
+url: https://trust.bigtincan.com/
+certifications:
+- SOC 2
+- ISO 27001
+evidence:
+- source: https://trust.bigtincan.com/
+  keywords:
+  - soc 2
+  - iso 27001
+  - trust center
