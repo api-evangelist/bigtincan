@@ -2,13 +2,11 @@
   "repo": "bigtincan",
   "feeds": [
     {
-      "source": "https://www.bigtincan.com/blog/",
-      "feed_url": "",
-      "saved": 0,
-      "method": "agent-scrape"
+      "source": "https://help.bigtincan.com/help/bigtincan-public-api-documentation",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-06-27T12:27:52Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 2,
   "agent_pulled": "2026-06-27"
 }
