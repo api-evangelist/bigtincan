@@ -20,7 +20,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bigtincan.png
 url: https://raw.githubusercontent.com/api-evangelist/bigtincan/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-08-14'
 specificationVersion: '0.19'
 type: Index
 tags:
@@ -41,7 +41,7 @@ apis:
       content synchronization. Supports OAuth2 authentication with Client ID and
       Client Secret for generating access tokens.
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://help.bigtincan.com/help/bigtincan-public-api-documentation
+    humanURL: https://pubapi.bigtincan.com/doc/interactive/
     baseURL: https://pubapi.bigtincan.com
     tags:
       - Sales Enablement
@@ -51,9 +51,29 @@ apis:
       - Buyer Engagement
     properties:
       - type: Documentation
-        url: https://help.bigtincan.com/help/bigtincan-public-api-documentation
-      - type: OpenAPI
         url: https://pubapi.bigtincan.com/doc/interactive/
+      - type: APIReference
+        url: https://pubapi.bigtincan.com/doc/interactive/
+      - type: OpenAPI
+        url: openapi/bigtincan-hub-api-openapi.json
+      - type: Overlay
+        url: overlays/bigtincan-hub-api-overlay.yaml
+      - type: Authentication
+        url: authentication/bigtincan-authentication.yml
+      - type: OAuthScopes
+        url: scopes/bigtincan-scopes.yml
+      - type: Conventions
+        url: conventions/bigtincan-conventions.yml
+      - type: ErrorCatalog
+        url: errors/bigtincan-problem-types.yml
+      - type: DataModel
+        url: data-model/bigtincan-data-model.yml
+      - type: Lifecycle
+        url: lifecycle/bigtincan-lifecycle.yml
+      - type: MCPServer
+        url: mcp/bigtincan-mcp.yml
+      - type: AgentSkill
+        url: skills/_index.yml
       - type: Plans
         url: plans/bigtincan-plans-pricing.yml
       - type: RateLimits
@@ -64,6 +84,12 @@ apis:
       - FN: Bigtincan Support
         url: https://www.bigtincan.com/contact/
 common:
+  - type: AgenticAccess
+    url: agentic-access/bigtincan-agentic-access.yml
+  - type: OAuthScopes
+    url: scopes/bigtincan-scopes.yml
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
   - type: TrustCenter
     url: security/bigtincan-trust-center.yml
   - type: DomainSecurity
@@ -71,13 +97,55 @@ common:
   - type: Website
     url: https://www.bigtincan.com/
   - type: Documentation
-    url: https://help.bigtincan.com/help/bigtincan-public-api-documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: OpenAPI
+    url: openapi/bigtincan-hub-api-openapi.json
+  - type: Overlay
+    url: overlays/bigtincan-hub-api-overlay.yaml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/bigtincan-changelog.yml
+  - type: Conformance
+    url: conformance/bigtincan-conformance.yml
+  - type: Compliance
+    url: conformance/bigtincan-conformance.yml
+  - type: Packages
+    url: packages/bigtincan-packages.yml
+  - type: SDKs
+    url: packages/bigtincan-packages.yml
+  - type: MCPServer
+    url: mcp/bigtincan-mcp.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/bigtincan-llms.txt
   - type: Blog
     url: https://www.bigtincan.com/blog/
   - type: Pricing
     url: https://www.bigtincan.com/pricing/
   - type: StatusPage
     url: https://status.bigtincan.com/
+  - type: SignUp
+    url: https://identity.bigtincan.com
+  - type: Login
+    url: https://identity.bigtincan.com
+  - type: TermsOfService
+    url: https://www.bigtincan.com/eula/
+  - type: PrivacyPolicy
+    url: https://www.bigtincan.com/privacy-policy/
+  - type: Support
+    url: https://www.bigtincan.com/contact/
+  - type: HelpCenter
+    url: https://help.bigtincan.com/
   - type: LinkedIn
     url: https://www.linkedin.com/company/bigtincan
   - type: X
@@ -91,3 +159,8 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-14'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1
