@@ -1,0 +1,21 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/bigtincan-hub-api-openapi.json
+schemes:
+- name: oauth2_password
+  source: openapi/bigtincan-hub-api-openapi.json
+  flows:
+  - flow: password
+    tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+  description: 'Client ID + Client Secret + API Key exchanged at /services/oauth2/token with
+    grant_type=password. Returns access_token + refresh_token. The As-User header is available
+    only with this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
+- name: oauth2_authorization_code
+  source: openapi/bigtincan-hub-api-openapi.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+    tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+  description: 'Interactive Bigtincan Hub user login. The As-User header is disabled for this
+    flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
+scopes: []

@@ -1,0 +1,182 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/bigtincan-hub-api-openapi.json
+status: candidate
+name: Bigtincan Hub MCP Server (candidate)
+description: >-
+  Bigtincan ships NO Model Context Protocol server. A search of the provider's
+  site, the MCP ecosystem and the public registries found no hosted endpoint and
+  no stdio package, and no /.well-known/ai-plugin.json exists on any Bigtincan
+  host (all 404 on 2026-08-14). The tool list below is a CANDIDATE derived from
+  the 69 operations of the published Swagger 2.0 document — it describes what a
+  Bigtincan MCP server could expose, not anything that exists today.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: derived
+search_evidence:
+  - what: hosted MCP endpoint
+    result: none found
+    note: >-
+      No mcp.bigtincan.com or documented /mcp path. No endpoint URL is guessed
+      here — an invented endpoint that happened to answer would read as a
+      verified agent surface.
+  - what: stdio package (npm/PyPI)
+    result: none found
+    note: >-
+      The only first-party npm packages are the JavaScript Bridge libraries
+      (see packages/bigtincan-packages.yml); none is an MCP server.
+  - what: /.well-known/ai-plugin.json
+    result: 404 on www.bigtincan.com, help.bigtincan.com and pubapi.bigtincan.com
+    date: '2026-08-14'
+backing_api:
+  name: Bigtincan Hub API
+  base_url: https://pubapi.bigtincan.com
+  spec: openapi/bigtincan-hub-api-openapi.json
+  auth: OAuth 2.0 bearer (password or authorization code grant)
+  operations: 69
+candidate_tools:
+  - name: search_stories
+    description: Search sales enablement stories across the tenant.
+    rest:
+      - get-v1-3-search-stories
+      - get-v1-story-search
+    consequence: read
+  - name: search_files
+    description: Search files across the tenant.
+    rest:
+      - get-v1-3-search-files
+    consequence: read
+  - name: list_stories
+    description: Retrieve stories, paginated.
+    rest:
+      - get-v1-2-story-all
+    consequence: read
+  - name: get_story
+    description: Retrieve a single story by its permanent id.
+    rest:
+      - get-v1-1-story-get-by-story-perm-id
+    consequence: read
+  - name: publish_story
+    description: Publish a new story into one or more channels.
+    rest:
+      - post-v1-2-story-add
+    consequence: write
+  - name: update_story
+    description: Update a story by revision id.
+    rest:
+      - put-v1-2-story-edit-by-revision-id
+    consequence: write
+  - name: archive_story
+    description: Archive a story by revision id.
+    rest:
+      - delete-v1-story-archive-by-revision-id
+    consequence: destructive
+  - name: share_story
+    description: Share a story with external email recipients.
+    rest:
+      - post-v1-story-share-by-revision-id
+    consequence: external-effect
+    note: >-
+      Sends email to third parties. Any real implementation must gate this behind
+      explicit human confirmation.
+  - name: comment_on_story
+    description: Add a comment to a story revision.
+    rest:
+      - post-v1-story-comment-by-revision-id
+    consequence: write
+  - name: tag_story
+    description: Apply tags to a story.
+    rest:
+      - post-v1-story-add-tag-by-story-perm-id
+    consequence: write
+  - name: list_files
+    description: Retrieve files, paginated.
+    rest:
+      - get-v1-files
+    consequence: read
+  - name: get_file
+    description: Retrieve details for one file.
+    rest:
+      - get-v1-files-by-file-perm-id
+    consequence: read
+  - name: upload_story_file
+    description: Upload a file to attach to a new or existing story.
+    rest:
+      - post-v1-story-upload-file
+    consequence: write
+  - name: list_channels
+    description: Retrieve channels available to the principal.
+    rest:
+      - get-v1-channel-all
+      - post-v1-channels
+    consequence: read
+  - name: create_channel
+    description: Create a channel (public or personal).
+    rest:
+      - post-v1-1-channel
+      - post-v1-channel-personal-add
+    consequence: write
+  - name: list_tabs
+    description: Retrieve tabs.
+    rest:
+      - get-v1-tab-all
+    consequence: read
+  - name: list_groups
+    description: Retrieve groups.
+    rest:
+      - get-v1-group-all
+    consequence: read
+  - name: get_current_user
+    description: Get the authenticated user.
+    rest:
+      - get-v1-user-me
+    consequence: read
+  - name: list_users
+    description: Retrieve users in the tenant (admin).
+    rest:
+      - get-v1-3-admin-user-all
+    consequence: read
+  - name: create_share
+    description: Create a public file share with an expiry.
+    rest:
+      - post-v1-shares
+    consequence: external-effect
+    note: Publishes content to an unauthenticated public URL.
+  - name: list_bookmarks
+    description: Retrieve the user's bookmarked stories and files.
+    rest:
+      - get-v1-bookmarks
+    consequence: read
+  - name: get_crm_recommendations
+    description: Retrieve story recommendations for a CRM record.
+    rest:
+      - get-v1-story-crm-recommendation
+    consequence: read
+  - name: track_interaction
+    description: Record a user interaction event.
+    rest:
+      - post-v1-track-interactions
+    consequence: write
+  - name: list_tags
+    description: Retrieve the tenant tag vocabulary.
+    rest:
+      - get-v1-tags
+    consequence: read
+implementation_notes:
+  - >-
+    Every tool would inherit its input schema from the backing operation's
+    parameters and request body — those ARE declared in the Swagger document.
+    Output schemas cannot be inherited: not one operation declares a response
+    schema, so a server implementation would have to pass responses through
+    untyped.
+  - >-
+    Authorization is by Hub role, not by OAuth scope, so a least-privilege token
+    cannot be minted. An implementation should gate the destructive and
+    external-effect tools above rather than rely on the token.
+  - >-
+    There is no idempotency mechanism, so every write tool must be treated as
+    at-most-once and retried only after a read-back.

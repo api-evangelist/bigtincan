@@ -1,0 +1,58 @@
+generated: '2026-08-14'
+method: generated
+source: openapi/bigtincan-hub-api-openapi.json + https://pubapi.bigtincan.com/doc/interactive/
+name: Bigtincan Agent Skills
+description: >-
+  Packaged operating instructions for the marquee flows of the Bigtincan Hub
+  Public API. Bigtincan publishes no skills, no AGENTS.md and no llms.txt, so
+  these are generated from the provider's own Swagger 2.0 document and
+  interactive console. Every operationId referenced below exists in
+  openapi/bigtincan-hub-api-openapi.json — none is invented. The operationIds
+  themselves were added by API Evangelist because the served contract declares
+  none; see overlays/bigtincan-hub-api-overlay.yaml.
+api: Bigtincan Hub API
+base_url: https://pubapi.bigtincan.com
+skills:
+  - name: bigtincan-publish-story
+    file: skills/bigtincan-publish-story.md
+    description: >-
+      Publish a new sales enablement story into a channel, attach files and tags,
+      and verify it landed.
+    operations: 6
+    consequence: write
+  - name: bigtincan-share-content-externally
+    file: skills/bigtincan-share-content-externally.md
+    description: >-
+      Email a story to buyers or create an expiring public file share, with the
+      confirmation gates these irreversible actions require.
+    operations: 9
+    consequence: external-effect
+  - name: bigtincan-provision-users-and-access
+    file: skills/bigtincan-provision-users-and-access.md
+    description: >-
+      Onboard a user and grant content access through groups, channels and tabs,
+      using the correct version prefix for each admin operation.
+    operations: 11
+    consequence: write
+shared_rules:
+  - >-
+    Authenticate with OAuth 2.0 at
+    https://pubapi.bigtincan.com/services/oauth2/token. Bearer token on every
+    call. See authentication/bigtincan-authentication.yml.
+  - >-
+    NO IDEMPOTENCY. No POST create in this API accepts an idempotency key. Read
+    back before retrying any create.
+  - >-
+    The version prefix (/v1, /v1.1, /v1.2, /v1.3) is chosen per operation, not
+    per API. Never assume /v1.
+  - >-
+    Errors are {"error":{"scope","code","message"},"trace_id"} as
+    application/json — not RFC 9457. See errors/bigtincan-problem-types.yml.
+  - >-
+    There are no OAuth scopes. A 403 is a Hub role decision and cannot be
+    pre-empted from the token.
+  - >-
+    No response schemas are declared anywhere in the contract. Parse defensively.
+  - >-
+    As-User delegation works only with the password grant and is ignored by
+    Admin-tagged operations.

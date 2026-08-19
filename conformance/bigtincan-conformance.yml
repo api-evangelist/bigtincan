@@ -1,0 +1,141 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/bigtincan-hub-api-openapi.json + https://pubapi.bigtincan.com/doc/interactive/ + https://trust.bigtincan.com/ + live probes
+name: Bigtincan Conformance Assertions
+description: >-
+  Standards and cross-cutting conventions asserted against the Bigtincan Hub
+  Public API. Every entry carries evidence; a `conforms: false` here means the
+  probe or the spec showed the standard is not implemented, not that it was not
+  checked.
+standards:
+  - id: openapi
+    conforms: false
+    version: null
+    evidence: >-
+      The contract is Swagger 2.0, not OpenAPI 3.x. Fetched from
+      https://pubapi.bigtincan.com/api/sandbox/swagger/public-api on 2026-08-14;
+      declares "swagger": "2.0" with 62 paths and 69 operations.
+  - id: swagger2
+    conforms: true
+    version: '2.0'
+    evidence: >-
+      Parses as a valid Swagger 2.0 document. Saved verbatim at
+      openapi/_original/bigtincan-hub-api-swagger.json.
+  - id: oauth2
+    conforms: true
+    version: RFC 6749
+    evidence: >-
+      Resource Owner Password Credentials and Authorization Code grants at
+      https://pubapi.bigtincan.com/services/oauth2/token and
+      /services/oauth2/authorize, with refresh_token grant. Confirmed by the
+      provider's interactive console and by a live 405/allow:POST probe of the
+      token endpoint on 2026-08-14.
+  - id: oauth2-revocation
+    conforms: true
+    version: RFC 7009
+    evidence: >-
+      POST /services/oauth2/revoke accepts `token` and `token_type_hint` of
+      access_token or refresh_token — the RFC 7009 parameter names — per
+      https://pubapi.bigtincan.com/doc/interactive/.
+  - id: oauth2-authorization-server-metadata
+    conforms: false
+    version: RFC 8414
+    evidence: >-
+      /.well-known/oauth-authorization-server returns 404 on www, help and
+      pubapi hosts (probed 2026-08-14). The OAuth endpoints are real but not
+      discoverable.
+  - id: oidc
+    conforms: false
+    evidence: >-
+      /.well-known/openid-configuration returns 404 on every Bigtincan host
+      probed 2026-08-14. Bigtincan supports SSO for the product (per
+      https://trust.bigtincan.com/) but publishes no OIDC discovery document for
+      the API.
+  - id: oauth2-scopes
+    conforms: false
+    evidence: >-
+      No scope vocabulary is published. The Swagger document declares no
+      securityDefinitions and the console sends no scope parameter. See
+      scopes/bigtincan-scopes.yml.
+  - id: rfc9457
+    conforms: false
+    evidence: >-
+      Errors use a proprietary {"error":{"scope","code","message"},"trace_id"}
+      envelope with Content-Type application/json, not
+      application/problem+json. Observed live on a 401 from
+      https://pubapi.bigtincan.com/v1/user/me on 2026-08-14.
+  - id: rfc8594-deprecation
+    conforms: false
+    evidence: >-
+      No Sunset or Deprecation response headers observed; no operation is marked
+      deprecated in the spec; no deprecation policy is published.
+  - id: pagination
+    conforms: true
+    style: page-number
+    evidence: >-
+      `page` and `limit` (default 10, max 100) query parameters declared on the
+      collection operations in the Swagger document.
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No Idempotency-Key or equivalent header in any of the 69 operations, in the
+      docs, or in the API's CORS access-control-allow-headers list.
+  - id: rate-limit-headers
+    conforms: false
+    evidence: >-
+      No RateLimit-*, X-RateLimit-* or Retry-After header on any live response
+      observed 2026-08-14; no 429 declared on any operation.
+  - id: json-api
+    conforms: false
+    evidence: Responses are plain application/json with no JSON:API document structure.
+  - id: hsts
+    conforms: true
+    evidence: >-
+      strict-transport-security max-age=63072000; includeSubdomains observed on
+      https://pubapi.bigtincan.com responses (2026-08-14). See
+      security/bigtincan-domain-security.yml.
+  - id: cors
+    conforms: true
+    evidence: >-
+      access-control-allow-origin "*" with an explicit allow-headers list
+      including Authorization and as-user, observed live 2026-08-14.
+  - id: scim
+    conforms: false
+    evidence: >-
+      User and group provisioning is served by proprietary /v1.1/user,
+      /v1.3/admin/user/all and /v1/group endpoints, not by a SCIM 2.0 surface.
+      No /scim path exists in the contract.
+  - id: asyncapi
+    conforms: false
+    evidence: >-
+      No event, streaming or webhook surface is published, so there is nothing
+      for an AsyncAPI document to describe. Not a penalty — this is a
+      request/response-only API.
+compliance:
+  published: true
+  source: https://trust.bigtincan.com/
+  note: >-
+    The trust center is operated jointly as "Showpad + Bigtincan" and states the
+    certifications are held by Showpad.
+  certifications:
+    - name: SOC 2 Type II
+      status: maintained
+      evidence: '"Showpad currently maintains ISO27001 and ISO27701 certificates as well as SOC 2 Type II reports"'
+    - name: ISO/IEC 27001
+      status: certified
+      evidence: '"Showpad currently maintains ISO27001 and ISO27701 certificates"'
+    - name: ISO/IEC 27701
+      status: certified
+      evidence: '"Showpad currently maintains ISO27001 and ISO27701 certificates"'
+  controls:
+    - Data at rest encrypted to AES-256
+    - Data in transit encrypted to TLS 1.2 or higher
+    - Single Sign-On supported
+    - Least-privilege access granting
+    - Annual information security program review
+  policies_named:
+    - Change Management Policy
+    - Business Continuity and Disaster Recovery Policy
+    - Acceptable Use Policy
+    - Data Classification Policy
+    - Access Control and Termination Policy

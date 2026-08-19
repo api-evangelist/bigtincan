@@ -1,0 +1,131 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Bigtincan Hub Public API
+  version: 1.0.0
+x-provenance:
+  generated: '2026-08-14'
+  method: generated
+  source: openapi/_original/bigtincan-hub-api-swagger.json
+  extends: openapi/_original/bigtincan-hub-api-swagger.json
+  applied_result: openapi/bigtincan-hub-api-openapi.json
+  description: >-
+    Records exactly what API Evangelist added to the Swagger 2.0 document
+    Bigtincan serves at https://pubapi.bigtincan.com/api/sandbox/swagger/public-api.
+    The provider's document is untouched in openapi/_original/. Every value below
+    was read from Bigtincan's own interactive console at
+    https://pubapi.bigtincan.com/doc/interactive/ or confirmed by live probes of
+    https://pubapi.bigtincan.com on 2026-08-14 — nothing here is invented.
+  gaps_addressed:
+    - No host / basePath / schemes — the served document names no server at all.
+    - No securityDefinitions and no security requirement, despite the API being OAuth 2.0 only.
+    - No operationId on any of the 69 operations.
+    - No top-level tags[] declaration, despite 18 tags being used.
+    - No info.description, info.contact or info.termsOfService.
+  gaps_not_addressed:
+    - >-
+      No response schemas. All 69 operations describe their responses in prose
+      only; an overlay cannot invent the shape of what the API returns.
+    - >-
+      No error code registry. `error.code` is a free string and the vocabulary is
+      not published.
+actions:
+  - target: $.info
+    description: >-
+      Add a substantive description, the support contact and the terms of
+      service. Sourced from https://www.bigtincan.com/contact/ and
+      https://www.bigtincan.com/eula/.
+    update:
+      description: >-
+        The Bigtincan Hub Public API provides programmatic access to the
+        Bigtincan sales enablement platform: stories, files, channels, tabs,
+        groups, users, tags, bookmarks, forms, public file shares, search, CRM
+        story recommendations, interaction tracking and admin management.
+      contact:
+        name: Bigtincan Support
+        url: https://www.bigtincan.com/contact/
+      termsOfService: https://www.bigtincan.com/eula/
+  - target: $
+    description: >-
+      Add the server coordinates. The document names no host; the base URL is
+      published as https://pubapi.bigtincan.com and confirmed by a live probe —
+      GET https://pubapi.bigtincan.com/v1/user/me returned 401 INVALID_TOKEN on
+      2026-08-14, proving the routes are served at this host with no path prefix.
+    update:
+      host: pubapi.bigtincan.com
+      basePath: /
+      schemes:
+        - https
+  - target: $
+    description: >-
+      Add the OAuth 2.0 security definitions and apply them API-wide. The token,
+      authorize and revoke endpoints and both grant types are defined inline in
+      the provider's interactive console at
+      https://pubapi.bigtincan.com/doc/interactive/. A GET of the token endpoint
+      returned 405 with `allow: POST`, confirming it exists. Scopes are empty
+      because Bigtincan publishes no scope vocabulary.
+    update:
+      securityDefinitions:
+        oauth2_password:
+          type: oauth2
+          flow: password
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+          description: >-
+            Client ID + Client Secret + API Key exchanged at
+            /services/oauth2/token with grant_type=password. Returns access_token
+            + refresh_token. The As-User header is available only with this flow.
+          scopes: {}
+        oauth2_authorization_code:
+          type: oauth2
+          flow: accessCode
+          authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+          description: >-
+            Interactive Bigtincan Hub user login. The As-User header is disabled
+            for this flow.
+          scopes: {}
+      security:
+        - oauth2_password: []
+        - oauth2_authorization_code: []
+  - target: $
+    description: >-
+      Declare the 18 tags the operations already use, so the contract carries its
+      own resource taxonomy.
+    update:
+      tags:
+        - name: Admin
+        - name: Bookmark
+        - name: CRM
+        - name: Channel
+        - name: Event
+        - name: File
+        - name: Form
+        - name: Group
+        - name: History
+        - name: Links
+        - name: Public File Share
+        - name: Search
+        - name: Settings
+        - name: Story
+        - name: Tab
+        - name: Tag
+        - name: User
+        - name: User Metadata
+  - target: $.paths.*.*
+    description: >-
+      Add a deterministic operationId to every operation. Not one of the 69
+      operations carried one, which makes the contract uncodegenable and leaves
+      every downstream artifact (skills, crosswalks, agent tooling) with nothing
+      stable to reference. The generated form is
+      <method>-<path segments, with {param} rendered as by-param>, lowercased and
+      dash-separated — for example GET /v1/user/me becomes `get-v1-user-me` and
+      GET /v1.1/admin/user/get/{user_id} becomes
+      `get-v1-1-admin-user-get-by-user-id`. Applied values are in
+      openapi/bigtincan-hub-api-openapi.json.
+    update:
+      x-operation-id-policy: derived-from-method-and-path
+x-notes:
+  - >-
+    The `x-` and prose-only actions above document intent; the concrete applied
+    document is openapi/bigtincan-hub-api-openapi.json. The scorer parses the
+    provider's original, so this overlay improves our derived artifacts rather
+    than Bigtincan's own contract-content score.

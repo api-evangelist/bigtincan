@@ -1,0 +1,121 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/bigtincan-hub-api-openapi.json + live probe of https://pubapi.bigtincan.com/v1/user/me
+name: Bigtincan Hub Public API Error Catalog
+description: >-
+  Derived from the reusable `responses` block and the per-operation 4xx/5xx
+  responses in the published Swagger 2.0 document, plus the error body observed
+  live on an unauthenticated request. Bigtincan does NOT use RFC 9457
+  application/problem+json; it uses a proprietary JSON envelope with a
+  scope/code/message triple and a trace_id.
+format: proprietary
+rfc9457: false
+content_type: application/json
+envelope:
+  shape: '{"error":{"scope":"<string>","code":"<string>","message":"<string>"},"trace_id":"<string>"}'
+  schema_ref: '#/definitions/Error'
+  fields:
+    - name: error.scope
+      required: true
+      type: string
+      description: Error scope. Observed value "api".
+    - name: error.code
+      required: true
+      type: string
+      description: Machine-readable error code. Observed value "INVALID_TOKEN".
+    - name: error.message
+      required: true
+      type: string
+      description: Human-readable error message.
+    - name: trace_id
+      required: false
+      type: string
+      description: >-
+        Correlation identifier for support. Present at the top level of the
+        response body (not as a header). Observed empty on unauthenticated 401s.
+problem_types:
+  - status: 400
+    title: Bad request
+    reusable_ref: '#/responses/400'
+    operations: 47
+    description: >-
+      Malformed request. Declared on 47 of the 69 operations. The spec gives no
+      per-code breakdown, so the specific `error.code` values returned for a 400
+      are not published.
+  - status: 401
+    title: Unauthorized
+    reusable_ref: '#/responses/401'
+    operations: 65
+    observed:
+      probe: 'GET https://pubapi.bigtincan.com/v1/user/me (no Authorization header), 2026-08-14'
+      status: 401
+      body: '{"error":{"scope":"api","code":"INVALID_TOKEN","message":"Access token is invalid"},"trace_id":""}'
+      codes:
+        - code: INVALID_TOKEN
+          scope: api
+          message: Access token is invalid
+          remediation: >-
+            Obtain a fresh access token from
+            POST https://pubapi.bigtincan.com/services/oauth2/token, or refresh
+            with grant_type=refresh_token. Tokens are also revoked server-side
+            after idle timeout.
+    description: >-
+      Missing, invalid, expired or revoked bearer token. Declared on 65 of the 69
+      operations — the most widely declared response in the contract.
+  - status: 403
+    title: Forbidden
+    reusable_ref: '#/responses/403'
+    operations: 54
+    description: >-
+      The authenticated principal (or the As-User target) lacks the Hub
+      role/permission for this resource. Because Bigtincan publishes no OAuth
+      scope vocabulary, a 403 cannot be pre-empted by inspecting the token — it
+      is decided entirely by the Hub permission model.
+  - status: 404
+    title: Not found
+    reusable_ref: '#/responses/404'
+    operations: 15
+    description: >-
+      Resource does not exist or is not visible to this principal. Declared on
+      the operations addressing a specific story, file, group, share, tab, form
+      or user by identifier.
+  - status: 422
+    title: Validation error
+    reusable_ref: '#/responses/422'
+    operations: 19
+    description: >-
+      Request body failed validation. Declared on the create/update operations.
+      The spec does not declare a per-field validation error schema, so the
+      structure of the field-level detail is not machine-readable.
+  - status: 503
+    title: Service unavailable
+    reusable_ref: '#/responses/503'
+    operations: 0
+    description: >-
+      Defined in the reusable `responses` block but referenced by ZERO
+      operations. A client should still handle it — it is the documented
+      unavailability signal — but the contract never tells you where it applies.
+success_codes:
+  - status: 200
+    operations: 52
+  - status: 201
+    operations: 7
+  - status: 204
+    operations: 10
+gaps:
+  - >-
+    NO ERROR CODE REGISTRY IS PUBLISHED. `error.code` is declared as a free
+    string and the only value observable without credentials is INVALID_TOKEN.
+    An agent cannot branch on Bigtincan error codes because the vocabulary is
+    not published anywhere.
+  - >-
+    Not one of the 69 operations declares a response SCHEMA — every response,
+    success and failure alike, carries a prose description only. The Error
+    definition exists in `definitions` but is never referenced by a response.
+  - >-
+    No 429 is declared on any operation and no rate-limit headers are returned,
+    so the exhaustion signal is unspecified (see
+    rate-limits/bigtincan-rate-limits.yml).
+  - >-
+    trace_id is returned in the body rather than as a response header, so it
+    cannot be captured by generic HTTP middleware.

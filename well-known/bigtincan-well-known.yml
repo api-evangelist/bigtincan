@@ -1,0 +1,135 @@
+generated: '2026-08-14'
+method: probed
+source: live HTTPS probes of every Bigtincan host named in apis.yml and the OpenAPI
+name: Bigtincan Well-Known Probe
+description: >-
+  Every RFC 8615 well-known path probed against the marketing host, the help
+  host and the API host. NOTHING WAS FOUND — every path returned 404. The
+  responses on www.bigtincan.com and help.bigtincan.com are HTML 404 pages from
+  the site frameworks, not documents. No WellKnown or SecurityTxt pointer is
+  emitted in apis.yml as a result: this file records a verified absence, not a
+  presence.
+hosts_probed:
+  - www.bigtincan.com
+  - help.bigtincan.com
+  - pubapi.bigtincan.com
+hosts_unresolved:
+  - developer.bigtincan.com
+  - api.bigtincan.com
+probes:
+  - host: www.bigtincan.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: www.bigtincan.com
+    path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - host: www.bigtincan.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - host: www.bigtincan.com
+    path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - host: www.bigtincan.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - host: www.bigtincan.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: www.bigtincan.com
+    path: /.well-known/agent.json
+    status: 404
+    file: null
+  - host: www.bigtincan.com
+    path: /llms.txt
+    status: 404
+    file: null
+  - host: help.bigtincan.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: help.bigtincan.com
+    path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - host: help.bigtincan.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - host: help.bigtincan.com
+    path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - host: help.bigtincan.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - host: help.bigtincan.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: help.bigtincan.com
+    path: /.well-known/agent.json
+    status: 404
+    file: null
+  - host: help.bigtincan.com
+    path: /llms.txt
+    status: 404
+    file: null
+  - host: pubapi.bigtincan.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: pubapi.bigtincan.com
+    path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - host: pubapi.bigtincan.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - host: pubapi.bigtincan.com
+    path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - host: pubapi.bigtincan.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - host: pubapi.bigtincan.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: pubapi.bigtincan.com
+    path: /.well-known/agent.json
+    status: 404
+    file: null
+  - host: pubapi.bigtincan.com
+    path: /llms.txt
+    status: 404
+    file: null
+findings:
+  hits: 0
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: false
+  api_catalog: false
+  ai_plugin: false
+  agent_card: false
+  llms_txt: false
+notes:
+  - >-
+    pubapi.bigtincan.com runs the OAuth 2.0 endpoints /services/oauth2/authorize,
+    /services/oauth2/token and /services/oauth2/revoke (see
+    authentication/bigtincan-authentication.yml) but publishes NO
+    /.well-known/oauth-authorization-server metadata document (RFC 8414), so an
+    agent cannot discover them programmatically.
+  - >-
+    The bigtincan.com CAA record carries `0 iodef "mailto:security@bigtincan.com"`,
+    which is the only machine-discoverable security contact — there is no
+    /.well-known/security.txt.

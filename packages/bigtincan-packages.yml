@@ -1,0 +1,97 @@
+generated: '2026-08-14'
+method: searched
+source: https://registry.npmjs.org/-/v1/search?text=maintainer:bigtincan and maintainer:bigtincan_gs
+name: Bigtincan Packages and SDKs
+description: >-
+  Bigtincan publishes no first-party client library for the Bigtincan Hub Public
+  REST API (https://pubapi.bigtincan.com). The only first-party packages found on
+  any public registry are npm libraries for the Bigtincan Hub JavaScript Bridge —
+  the in-app embedding surface for HTML5 content apps running inside the Hub
+  client — published under the npm accounts `bigtincan` and `bigtincan_gs`, both
+  of which declare homepage http://www.bigtincan.com and author "Bigtincan".
+  Nothing was found on PyPI, RubyGems, Packagist, crates.io, Maven Central,
+  NuGet or pkg.go.dev.
+registries_searched:
+  - registry: npm
+    query: 'text=bigtincan; maintainer:bigtincan; maintainer:bigtincan_gs'
+    hits: 4
+  - registry: pypi
+    query: pypi.org/pypi/bigtincan/json
+    hits: 0
+    status: 404
+  - registry: rubygems
+    query: rubygems.org/api/v1/search.json?query=bigtincan
+    hits: 0
+  - registry: packagist
+    query: packagist.org/search.json?q=bigtincan
+    hits: 0
+  - registry: crates.io
+    query: crates.io/api/v1/crates?q=bigtincan
+    hits: 0
+packages:
+  - name: btca-client
+    language: javascript
+    registry: npm
+    url: https://www.npmjs.com/package/btca-client
+    version: 2.0.4
+    published: '2019-10-30'
+    official: true
+    covers: JavaScript Bridge
+    license: SEE LICENSE IN LICENSE
+    description: >-
+      Client for interacting with Bigtincan Hub JavaScript Bridge 3.0. Published
+      by the npm account `bigtincan` with author "bigtincan" and homepage
+      http://www.bigtincan.com.
+    note: >-
+      DECAY SIGNAL — last published 2019-10-30, more than six years before this
+      pass. It targets JS Bridge 3.0 and does not wrap the Hub Public REST API.
+      No source repository is declared in the package metadata.
+  - name: '@gs-libs/bridge'
+    language: javascript
+    registry: npm
+    url: https://www.npmjs.com/package/@gs-libs/bridge
+    version: 1.17.0
+    published: '2025-08-14'
+    official: true
+    covers: JavaScript Bridge
+    license: SEE LICENSE IN LICENSE
+    description: >-
+      An encapsulation of the Bigtincan JSBridge API providing bridge service
+      methods and React hooks. Published by the npm account `bigtincan_gs` with
+      author "Bigtincan" and homepage http://www.bigtincan.com.
+    note: >-
+      The current first-party bridge library, superseding btca-client. It is a
+      client-side embedding SDK for content apps hosted inside the Hub, not a
+      REST client. No source repository is declared in the package metadata.
+  - name: '@gs-libs/hooks'
+    language: javascript
+    registry: npm
+    url: https://www.npmjs.com/package/@gs-libs/hooks
+    version: 1.4.0
+    published: '2025-07-01'
+    official: true
+    covers: Utility hooks (non-JSBridge)
+    license: SEE LICENSE IN LICENSE
+    description: >-
+      Commonly used React utility hooks used alongside @gs-libs/bridge. Published
+      by the npm account `bigtincan_gs`, author "Bigtincan".
+  - name: '@gs-libs/utils'
+    language: javascript
+    registry: npm
+    url: https://www.npmjs.com/package/@gs-libs/utils
+    version: 1.3.0
+    published: '2025-08-05'
+    official: true
+    covers: Utility functions
+    license: SEE LICENSE IN LICENSE
+    description: >-
+      Commonly used utility functions used alongside @gs-libs/bridge. Published
+      by the npm account `bigtincan_gs`, author "Bigtincan".
+gaps:
+  - >-
+    There is NO first-party SDK for the Bigtincan Hub Public REST API in any
+    language. The 69 documented REST operations at https://pubapi.bigtincan.com
+    must be called directly over HTTP.
+  - >-
+    None of the four first-party npm packages declares a public source
+    repository, so their code cannot be reviewed before installation.

@@ -1,0 +1,175 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/bigtincan-hub-api-openapi.json + https://pubapi.bigtincan.com/doc/interactive/ + live probes of https://pubapi.bigtincan.com
+name: Bigtincan Hub Public API Conventions
+description: >-
+  Cross-cutting runtime semantics for the Bigtincan Hub Public API, derived from
+  the 69 operations in the published Swagger 2.0 document, from the provider's
+  interactive console, and from live unauthenticated responses observed on
+  2026-08-14. Where a convention is absent it is recorded as absent — that is a
+  finding, not a gap in this file.
+base_url: https://pubapi.bigtincan.com
+authentication:
+  style: oauth2-bearer
+  header: 'Authorization: Bearer <access_token>'
+  flows:
+    - password
+    - authorizationCode
+  delegation_header: As-User
+  detail: authentication/bigtincan-authentication.yml
+versioning:
+  style: path-prefix
+  description: >-
+    The version is the first path segment and it is PER-OPERATION, not per-API.
+    Four different version prefixes are live simultaneously and a caller must
+    know which one each resource sits behind.
+  versions_in_use:
+    - prefix: /v1
+      operations: 57
+    - prefix: /v1.1
+      operations: 6
+    - prefix: /v1.2
+      operations: 3
+    - prefix: /v1.3
+      operations: 3
+  examples:
+    - 'GET /v1/user/me'
+    - 'GET /v1.1/admin/user/get/{user_id}'
+    - 'GET /v1.2/story/all'
+    - 'GET /v1.3/admin/user/all'
+  note: >-
+    Several resources exist at more than one version with different shapes — for
+    example stories are retrieved at /v1.2/story/all but a single story at
+    /v1.1/story/get/{story_perm_id}, and users are listed at /v1.3/admin/user/all
+    while a single user is fetched at /v1.1/admin/user/get/{user_id}. No policy
+    document explains which prefix supersedes which.
+  policy_published: false
+pagination:
+  style: page-number
+  parameters:
+    - name: page
+      in: query
+      type: integer
+      description: 'Pagination: current page'
+    - name: limit
+      in: query
+      type: integer
+      default: 10
+      max: 100
+      description: 'Pagination: results per page. Max 100'
+  response_envelope: undocumented
+  note: >-
+    page/limit appear on the collection operations (bookmarks, channels, files,
+    stories, users, groups, tabs, search). The Swagger document describes the
+    2xx responses only in prose — no response schema is declared anywhere in the
+    spec — so the shape of the pagination envelope (total count, next page) is
+    not machine-readable.
+sorting_and_filtering:
+  style: query-parameters
+  parameters:
+    - name: sort_by
+      description: Enumerated per-operation, e.g. name | created_at
+    - name: type
+      description: Enumerated per-operation, e.g. story | files | all on /v1/bookmarks
+  note: Enumerations are declared in-spec per operation; there is no shared filter grammar.
+idempotency:
+  supported: false
+  header: null
+  description: >-
+    Bigtincan publishes NO idempotency mechanism. No Idempotency-Key (or any
+    equivalent) header appears in any of the 69 operations, in the interactive
+    console, or in the CORS `access-control-allow-headers` list the API returns.
+    Retrying a failed POST — /v1/channel, /v1.2/story/add, /v1/shares,
+    /v1/story/upload/file, /v1/group, /v1/tab, /v1.1/user — risks creating a
+    duplicate. Mutating operations use POST/PUT/PATCH/DELETE conventionally, so
+    PUT/PATCH/DELETE are naturally idempotent, but the create operations are not.
+  agent_guidance: >-
+    An agent must treat every POST create as at-most-once. Read back with the
+    matching collection GET before retrying rather than re-issuing the POST.
+tracing:
+  request_id: trace_id
+  location: response body
+  description: >-
+    Error responses carry a top-level `trace_id` alongside the `error` object.
+    Observed empty on unauthenticated 401s. No X-Request-Id response header is
+    returned.
+  probed: 'GET https://pubapi.bigtincan.com/v1/user/me -> 401, body includes "trace_id":""'
+errors:
+  envelope: proprietary
+  rfc9457: false
+  shape: '{"error":{"scope":"<string>","code":"<string>","message":"<string>"},"trace_id":"<string>"}'
+  content_type: application/json
+  status_codes:
+    - 400
+    - 401
+    - 403
+    - 404
+    - 422
+    - 503
+  detail: errors/bigtincan-problem-types.yml
+rate_limits:
+  documented: false
+  response_headers_observed: []
+  description: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header was present on any live
+    response observed on 2026-08-14, and no limit is published in the docs. An
+    agent has no runtime backpressure signal from this API.
+  detail: rate-limits/bigtincan-rate-limits.yml
+content_negotiation:
+  request: application/json
+  response: application/json
+  file_upload: 'multipart/form-data (POST /v1/story/upload/file, formData file parameter)'
+cors:
+  allow_origin: '*'
+  allow_credentials: true
+  allow_headers:
+    - accept
+    - origin
+    - x-http-method-override
+    - content-type
+    - X-Requested-With
+    - X-HTTP-Accept
+    - Cache-Control
+    - Authorization
+    - If-None-Match
+    - Range
+    - X-Kloudless-As-User
+    - X-Kloudless-Raw-Data
+    - X-Kloudless-Raw-URI
+    - X-Kloudless-Raw-Method
+    - X-Kloudless-Raw-Headers
+    - rhr
+    - as-user
+  expose_headers:
+    - Accept-Ranges
+    - Content-Encoding
+    - Content-Length
+    - Content-Range
+  method_override: 'X-HTTP-Method-Override is accepted'
+  note: >-
+    The X-Kloudless-* headers in the allow list are a Kloudless artefact still
+    advertised by the edge; they are not documented anywhere in the Bigtincan
+    API reference.
+  probed: '2026-08-14, observed on 401 responses from https://pubapi.bigtincan.com'
+transport:
+  https_only: true
+  http_version: HTTP/2
+  hsts: 'max-age=63072000; includeSubdomains'
+  server: Apache
+  x_frame_options: SAMEORIGIN
+identifiers:
+  note: >-
+    Bigtincan uses permanent vs revision identifiers for content. Stories are
+    addressed by `story_perm_id` for reads and by `revision_id` for mutations
+    (archive, comment, share, edit); files by `file_perm_id`. Links are resolved
+    from a URN via POST /v1/links.
+  detail: data-model/bigtincan-data-model.yml
+expansion:
+  supported: false
+  note: No field-expansion, sparse-fieldset or include parameter is declared anywhere in the spec.
+metadata:
+  supported: true
+  note: >-
+    User metadata is a first-class surface — GET /v1/user-metadata,
+    GET/PATCH /v1/user/{user_id}/metadata — rather than a generic metadata bag
+    on every object.

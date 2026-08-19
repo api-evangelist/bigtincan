@@ -1,0 +1,338 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/bigtincan-hub-api-openapi.json
+name: Bigtincan Hub Data Model
+description: >-
+  Entity graph derived from the 62 paths, 69 operations and 33 request
+  definitions of the published Swagger 2.0 document. Because not one operation
+  declares a RESPONSE schema, this graph is built from path structure, path
+  parameters and REQUEST body definitions only — the shape of what Bigtincan
+  returns is not machine-readable anywhere in the contract, so no response
+  fields are asserted here.
+derived_from:
+  paths: 62
+  operations: 69
+  definitions: 33
+  response_schemas: 0
+identifiers:
+  scheme: >-
+    Content carries a permanent identifier for reads and a revision identifier
+    for mutations. Everything else uses a plain numeric/string id.
+  kinds:
+    - name: story_perm_id
+      entity: Story
+      use: Permanent story identifier, used for reads and tagging.
+    - name: revision_id
+      entity: Story
+      use: Revision identifier, used for edit, archive, comment and share.
+    - name: file_perm_id
+      entity: File
+      use: Permanent file identifier.
+    - name: urn
+      entity: any
+      format: 'urnScheme:namespace:systemInstance:entityType:identifier'
+      example: 'urn:btc0:push.bigtincan.com:Story:1111'
+      use: >-
+        Cross-system addressing. POST /v1/links resolves a URN to its links —
+        the one generic resolver in the API.
+    - name: channel_id
+      entity: Channel
+    - name: tab_id
+      entity: Tab
+    - name: group_id
+      entity: Group
+    - name: user_id
+      entity: User
+    - name: share_id
+      entity: Share
+    - name: file_id
+      entity: File
+      use: Membership identifier within a Share.
+    - name: form_id
+      entity: Form
+entities:
+  - name: Story
+    description: >-
+      The unit of publishable sales content. Carries files, events, tags and a
+      channel assignment; addressed by story_perm_id for reads and revision_id
+      for mutations.
+    operations:
+      - post-v1-2-story-add
+      - get-v1-2-story-all
+      - put-v1-2-story-edit-by-revision-id
+      - get-v1-1-story-get-by-story-perm-id
+      - get-v1-story-search
+      - post-v1-story-add-tag-by-story-perm-id
+      - delete-v1-story-archive-by-revision-id
+      - post-v1-story-comment-by-revision-id
+      - post-v1-story-share-by-revision-id
+      - post-v1-story-upload-file
+      - get-v1-story-by-story-perm-id-widgets
+      - get-v1-story-crm-recommendation
+      - get-v1-3-search-stories
+    definitions:
+      - Add Story Request
+      - Update Story Request
+      - Story File Request Object
+      - Story File Edit Request Object
+      - Story Event Request Object
+      - Story Tag Request Object
+      - Share Story Request
+      - Add Comment Request
+  - name: File
+    description: Binary asset. Belongs to a Story; carries tags; shareable through a Share.
+    operations:
+      - get-v1-files
+      - get-v1-files-by-file-perm-id
+      - post-v1-files-by-file-perm-id-tags
+      - get-v1-file-allowed-extensions
+      - get-v1-3-search-files
+    definitions:
+      - Retrieve files
+      - Retrieve file details
+      - Add tags to file
+  - name: Channel
+    description: >-
+      Content container. Personal, public or admin-managed; assigned to a Tab and
+      granted to Groups with an integer permission mask.
+    operations:
+      - post-v1-1-channel
+      - get-v1-channel-all
+      - post-v1-channels
+      - post-v1-channel-personal-add
+      - patch-v1-channel-by-channel-id
+      - delete-v1-channel-by-channel-id
+      - get-v1-admin-channels
+      - patch-v1-admin-channels-by-channel-id
+    definitions:
+      - Get Channels Request
+      - Update channel Request
+      - Add Personal Channel Request
+      - Modify channel request
+      - Add Public Channel Request
+  - name: Tab
+    description: Top-level navigation container holding Channels and granted to Groups.
+    operations:
+      - post-v1-tab
+      - get-v1-tab-all
+      - delete-v1-tab-by-tab-id
+      - get-v1-admin-tabs
+      - patch-v1-admin-tabs-by-tab-id
+      - put-v1-tabs-by-tab-id-channels-by-channel-id-groups
+      - delete-v1-tabs-by-tab-id-channels-by-channel-id-groups-by-group-id
+    definitions:
+      - Add Tab Request
+      - Modify tab request
+      - Add Group To Tab Request
+  - name: Group
+    description: >-
+      Permission-bearing collection of Users. Granted against Channels and Tabs
+      with an integer permission mask (1 read, 2 write, 3 read+write).
+    operations:
+      - post-v1-group
+      - get-v1-group-all
+      - put-v1-group-by-group-id-users
+      - get-v1-1-admin-group-all
+      - get-v1-admin-group-get-by-group-id
+      - patch-v1-admin-groups-by-group-id
+      - delete-v1-admin-groups-by-group-id
+      - delete-v1-admin-groups-by-group-id-users-by-user-id
+    definitions:
+      - Add Group Request
+      - Modify Group Request
+      - Add User to Group Request
+  - name: User
+    description: >-
+      Tenant member. Access level is an integer enum (0 User, 2 Structure Admin,
+      4 Administrator). Carries a configuration_bundle and a digest_email
+      cadence.
+    operations:
+      - post-v1-1-user
+      - patch-v1-1-user
+      - get-v1-user-me
+      - delete-v1-user-by-user-id
+      - get-v1-3-admin-user-all
+      - get-v1-1-admin-user-get-by-user-id
+      - patch-v1-user-change-password
+      - patch-v1-user-forgot-password
+    definitions:
+      - Add User Request
+      - Update User Request
+      - Change Password Request
+      - Reset Password Request
+  - name: UserMetadata
+    description: Key/value metadata attached to a User, addressed by metadata value ID.
+    operations:
+      - get-v1-user-metadata
+      - get-v1-user-by-user-id-metadata
+      - patch-v1-user-by-user-id-metadata
+    definitions:
+      - Update User Metadata Request
+  - name: Share
+    description: >-
+      Public file share. Carries allow_downloads and an RFC 3339 expires_at, and
+      holds Files added and removed by file_id.
+    operations:
+      - get-v1-shares
+      - post-v1-shares
+      - get-v1-shares-by-share-id
+      - delete-v1-shares-by-share-id
+      - put-v1-shares-by-share-id-files-by-file-id
+      - delete-v1-shares-by-share-id-files-by-file-id
+    definitions:
+      - Create Share Request
+  - name: Tag
+    description: Label applied to Stories and Files.
+    operations:
+      - get-v1-tags
+      - post-v1-story-add-tag-by-story-perm-id
+      - post-v1-files-by-file-perm-id-tags
+    definitions:
+      - Story Tag Request Object
+      - Add tags to file
+  - name: Bookmark
+    description: A user's saved Stories and Files, filterable by type.
+    operations:
+      - get-v1-bookmarks
+  - name: Event
+    description: Calendar/activity event surfaced to a user and attachable to a Story.
+    operations:
+      - get-v1-events
+    definitions:
+      - Story Event Request Object
+  - name: Form
+    description: Data-capture form with categories, submitted data and uploaded files.
+    operations:
+      - get-v1-form-all
+      - get-v1-form-get-by-form-id
+      - get-v1-form-data-by-form-id
+      - get-v1-form-get-file-by-form-id-by-submission-key-by-filename
+      - get-v1-form-category-all
+  - name: Interaction
+    description: Recorded user interaction, written to the History surface.
+    operations:
+      - post-v1-track-interactions
+    definitions:
+      - Record Interaction Request
+  - name: Link
+    description: Resolved links for a URN-addressed entity.
+    operations:
+      - post-v1-links
+    definitions:
+      - Get links from URN
+  - name: Settings
+    description: Tenant settings for the authenticated principal.
+    operations:
+      - get-v1-settings
+relationships:
+  - from: Story
+    to: Channel
+    type: belongs_to
+    via: channels[].id
+    evidence: 'Add Story Request requires `channels`, an array of {id, is_alias}.'
+  - from: Story
+    to: File
+    type: has_many
+    via: new_files[]
+    evidence: 'Add Story Request `new_files` is an array of Story File Request Object.'
+  - from: Story
+    to: Event
+    type: has_many
+    via: events[]
+    evidence: 'Add Story Request `events` is an array of Story Event Request Object.'
+  - from: Story
+    to: Tag
+    type: has_many
+    via: tags[]
+    evidence: 'Add Story Request `tags`; POST /v1/story/add/tag/{story_perm_id}.'
+  - from: File
+    to: Tag
+    type: has_many
+    via: tags[]
+    evidence: 'Story File Request Object `tags`; POST /v1/files/{file_perm_id}/tags.'
+  - from: Channel
+    to: Tab
+    type: belongs_to
+    via: tab_id
+    evidence: 'Add Public Channel Request requires `tab_id`.'
+  - from: Channel
+    to: Group
+    type: has_many
+    via: 'groups[].id (+ permissions mask)'
+    evidence: 'Add Public Channel Request requires `groups`, an array of {id, permissions}.'
+  - from: Tab
+    to: Group
+    type: has_many
+    via: 'groups[].id (+ permissions mask)'
+    evidence: >-
+      Add Group To Tab Request is an array of {id, permissions};
+      PUT /v1/tabs/{tab_id}/channels/{channel_id}/groups.
+  - from: Group
+    to: User
+    type: has_many
+    via: user ids
+    evidence: >-
+      Add User to Group Request; PUT /v1/group/{group_id}/users;
+      DELETE /v1/admin/groups/{group_id}/users/{user_id}.
+  - from: User
+    to: UserMetadata
+    type: has_many
+    via: user_id
+    evidence: 'GET/PATCH /v1/user/{user_id}/metadata.'
+  - from: Share
+    to: File
+    type: has_many
+    via: file_id
+    evidence: >-
+      PUT/DELETE /v1/shares/{share_id}/files/{file_id}; Share Story Request
+      carries a `file_id` array.
+  - from: Story
+    to: Share
+    type: has_many
+    via: revision_id
+    evidence: 'POST /v1/story/share/{revision_id} with Share Story Request.'
+  - from: Story
+    to: Comment
+    type: has_many
+    via: revision_id
+    evidence: 'POST /v1/story/comment/{revision_id} with Add Comment Request.'
+  - from: Story
+    to: Link
+    type: has_many
+    via: urn
+    evidence: 'POST /v1/links resolves urn:btc0:<host>:Story:<id> to its links.'
+enums:
+  - name: user access level
+    values:
+      0: User
+      2: Structure Admin
+      4: Administrator
+    source: Add User Request.access
+  - name: group/channel permissions mask
+    values:
+      1: Read
+      2: Write
+      3: Read and Write
+    source: Add Public Channel Request.groups[].permissions
+  - name: digest_email
+    values:
+      0: Never
+      1: Daily
+      2: Weekly
+      3: Monthly
+    source: Add User Request.digest_email
+  - name: file share_status
+    values:
+      - mandatory
+      - optional
+      - blocked
+    source: Story File Request Object.share_status
+gaps:
+  - >-
+    ZERO response schemas. Every one of the 69 operations documents its 2xx with
+    a prose description only, so no consumer can generate a typed model of what
+    Bigtincan returns. The entities above are inferred from request bodies and
+    path structure.
+  - >-
+    The `Error` definition is declared but never referenced by a response, so
+    even the failure shape is not bound to a status code in the contract.

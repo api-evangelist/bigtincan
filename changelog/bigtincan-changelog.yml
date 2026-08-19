@@ -1,0 +1,51 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.bigtincan.com/seasonal-releases/
+url: https://www.bigtincan.com/seasonal-releases/
+name: Bigtincan Seasonal Releases
+description: >-
+  Bigtincan publishes a seasonal product release page rather than an API
+  changelog. It carries the current season only — no dates, no version numbers,
+  no per-release archive, and no statement of API contract changes. This artifact
+  records what is actually published so the gap is legible; it is not an API
+  changelog and should not be read as one.
+scheme: seasonal
+dated: false
+versioned: false
+archive_published: false
+api_scoped: false
+current: Fall 2025 Release
+probed:
+  url: https://www.bigtincan.com/seasonal-releases/
+  status: 200
+  date: '2026-08-14'
+entries:
+  - version: Fall 2025 Release
+    date: null
+    url: https://www.bigtincan.com/resources/put-your-future-in-focus-bigtincans-fall-release/
+    breaking: []
+    additions:
+      - RolePlayAI real-time conversational realism, removing the push-to-talk wait
+      - Deep Research with Genie Assistant Pro for report generation over large content volumes
+      - Query analytics with Genie Assistant
+      - Tailored suggested prompts for Genie Assistant
+      - External AI knowledge sources for answers from approved content outside Bigtincan
+      - Modern question slides for assessments
+      - Streamlined authoring for bulk PowerPoint slide updates
+      - Contextual commenting and threaded discussions in Digital Sales Rooms
+      - Outreach add-in for in-platform content sharing
+    api_changes: none stated
+    note: >-
+      The only release shown on the page as of 2026-08-14. Every item is a
+      product feature; none names an endpoint, a version prefix or a contract
+      change to the Hub Public API.
+gaps:
+  - >-
+    STALENESS SIGNAL — the page still carried "Fall 2025 Release" when probed on
+    2026-08-14, roughly three seasons later. Either the seasonal cadence lapsed
+    or the page is not being maintained.
+  - >-
+    There is NO changelog for the Bigtincan Hub Public API. Nothing records when
+    /v1.1, /v1.2 or /v1.3 operations were added, what changed in them, or whether
+    a /v1 equivalent was superseded.
+  - No RSS/Atom feed and no dated archive of prior seasonal releases.

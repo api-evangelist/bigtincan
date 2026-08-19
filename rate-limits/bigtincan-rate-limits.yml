@@ -1,34 +1,61 @@
+generated: '2026-08-14'
+method: probed
+source: https://pubapi.bigtincan.com/doc/interactive/ + live unauthenticated responses from https://pubapi.bigtincan.com
 name: Bigtincan API Rate Limits
-description: Bigtincan does not publicly document specific API rate limits.
-  Rate limits are enforced at the API gateway level and are subject to the
-  terms of the customer's enterprise subscription agreement. Contact Bigtincan
-  sales or support for specific rate limit information applicable to your account.
-url: https://help.bigtincan.com/help/bigtincan-public-api-documentation
-limits:
-  - name: API Rate Limits
-    description: Specific rate limit values are not publicly disclosed by Bigtincan.
-      Rate limits are enforced per tenant and governed by enterprise subscription
-      agreements.
-    type: Undisclosed
-    notes:
-      - Rate limits are enforced per tenant/organization.
-      - Enterprise customers should contact Bigtincan support for their
-        specific rate limit configuration.
-      - The API uses OAuth2 token-based authentication; token refresh
-        functionality is supported.
-authentication:
-  - type: OAuth2
-    description: The Bigtincan Hub API uses OAuth2 authentication requiring
-      a Client ID and Client Secret to generate an Access Token. The As-User
-      header allows applications to perform actions on behalf of users within
-      a tenant by passing As-User USER_ID format.
-    tokenEndpoint: https://pubapi.bigtincan.com
-    notes:
-      - Client ID and Client Secret are required to generate an access token.
-      - Token refresh functionality is supported.
-      - The As-User header enables impersonation of users within a tenant.
-      - Admin APIs do not support the As-User header functionality.
+description: >-
+  Bigtincan publishes NO rate limits for the Bigtincan Hub Public API, and the
+  API returns no rate-limit headers. Neither the Swagger 2.0 document at
+  https://pubapi.bigtincan.com/api/sandbox/swagger/public-api nor the interactive
+  console at https://pubapi.bigtincan.com/doc/interactive/ states a limit, a
+  window or an exhaustion status code, and no RateLimit-*, X-RateLimit-* or
+  Retry-After header appeared on any live response observed on 2026-08-14. An
+  agent integrating this API therefore has no runtime backpressure signal at all
+  and must implement its own client-side pacing.
+url: https://pubapi.bigtincan.com/doc/interactive/
+limit_count: 0
+limits: []
+response_headers:
+  documented: []
+  observed: []
+  note: >-
+    Observed set on live 401 responses from https://pubapi.bigtincan.com/v1/user/me
+    and /v1/settings: date, content-type, server, strict-transport-security,
+    access-control-allow-origin, access-control-allow-credentials,
+    access-control-allow-headers, access-control-expose-headers,
+    x-frame-options, cache-control. No rate-limit header of any family is present.
+exhaustion:
+  status_code: undocumented
+  note: >-
+    No 429 is declared on any of the 69 operations, and the reusable `responses`
+    block declares 400, 401, 403, 404, 422 and 503 only. If throttling exists it
+    is presumably surfaced as a 503 (Service unavailable), but that response is
+    referenced by zero operations, so this cannot be confirmed without
+    credentials.
+probes:
+  - url: https://pubapi.bigtincan.com/v1/user/me
+    method: GET
+    status: 401
+    date: '2026-08-14'
+    rate_limit_headers: none
+  - url: https://pubapi.bigtincan.com/v1/settings
+    method: GET
+    status: 401
+    date: '2026-08-14'
+    rate_limit_headers: none
+  - url: https://pubapi.bigtincan.com/services/oauth2/token
+    method: GET
+    status: 405
+    date: '2026-08-14'
+    rate_limit_headers: none
+pagination_caps:
+  note: >-
+    The one published throughput constraint in the contract is a pagination cap,
+    not a rate limit — `limit` on the collection operations is documented as
+    "Pagination: results per page. Max 100" with a default of 10.
+  max_page_size: 100
+  default_page_size: 10
 contact:
-  - description: Contact Bigtincan support for rate limit details specific
-      to your subscription.
-    url: https://www.bigtincan.com/contact/
+  description: >-
+    Rate limits, if enforced, are governed by the enterprise subscription
+    agreement. Contact Bigtincan for the configuration applicable to a tenant.
+  url: https://www.bigtincan.com/contact/

@@ -1,0 +1,123 @@
+generated: '2026-08-14'
+method: searched
+source: https://pubapi.bigtincan.com/doc/interactive/
+docs: https://pubapi.bigtincan.com/doc/interactive/
+spec: openapi/bigtincan-hub-api-openapi.json
+name: Bigtincan Hub Public API Authentication
+description: >-
+  The Bigtincan Hub Public API is OAuth 2.0 only. The published Swagger 2.0
+  document at https://pubapi.bigtincan.com/api/sandbox/swagger/public-api declares
+  NO securityDefinitions at all; the authentication model below was read from the
+  provider's own interactive console at
+  https://pubapi.bigtincan.com/doc/interactive/ (the token/authorize/revoke
+  endpoints and grant types are defined inline in that page's JavaScript) and
+  confirmed against live unauthenticated probes of the API host.
+summary:
+  types:
+    - oauth2
+  oauth2_flows:
+    - password
+    - authorizationCode
+  bearer_header: 'Authorization: Bearer <access_token>'
+  refresh_supported: true
+  revocation_supported: true
+  impersonation_header: As-User
+base_url: https://pubapi.bigtincan.com
+endpoints:
+  - name: authorize
+    method: GET
+    url: https://pubapi.bigtincan.com/services/oauth2/authorize
+    description: >-
+      Interactive Bigtincan Hub user login (authorization code flow). Opened in a
+      popup by the "User Login" control on the interactive console.
+  - name: token
+    method: POST
+    url: https://pubapi.bigtincan.com/services/oauth2/token
+    description: >-
+      Issues access_token + refresh_token. Accepts grant_type=password (with
+      client_id, client_secret and api_key) and grant_type=refresh_token (with
+      client_id, client_secret and refresh_token).
+    probed:
+      status: 405
+      note: >-
+        A GET returns 405 with `allow: POST` and body
+        {"message":"The requested resource does not support http method GET"},
+        confirming the endpoint exists and is POST-only.
+  - name: revoke
+    method: POST
+    url: https://pubapi.bigtincan.com/services/oauth2/revoke
+    description: >-
+      Revokes a token. Takes `token` and `token_type_hint` of `access_token` or
+      `refresh_token`. The console revokes both on page unload and on idle.
+schemes:
+  - name: oauth2_password
+    type: oauth2
+    flow: password
+    tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+    scopes: []
+    credentials:
+      - Client ID
+      - Client Secret
+      - API Key
+    description: >-
+      "API Key Authentication" in Bigtincan's own wording. POST client_id,
+      client_secret and api_key with grant_type=password to the token endpoint;
+      the response carries access_token and refresh_token. This is the flow used
+      by server-to-server integrations, and it is the ONLY flow under which the
+      As-User impersonation header is accepted.
+    source: https://pubapi.bigtincan.com/doc/interactive/
+  - name: oauth2_authorization_code
+    type: oauth2
+    flow: authorizationCode
+    authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+    tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+    scopes: []
+    credentials:
+      - Client ID
+      - Client Secret
+    description: >-
+      "User Authentication" in Bigtincan's own wording — an interactive login
+      with a Bigtincan Hub account. The As-User header is explicitly disabled for
+      this flow by the console.
+    source: https://pubapi.bigtincan.com/doc/interactive/
+delegation:
+  header: As-User
+  value: USER_ID
+  description: >-
+    "The As-User field allows applications to perform actions on behalf of users
+    within their tenant. Admin APIs do not support the As-User header. To perform
+    an action on behalf of a user you will need to pass this as a header:
+    As-User: USER_ID" — quoted verbatim from
+    https://pubapi.bigtincan.com/doc/interactive/
+  constraints:
+    - Available only with the password (API Key) flow, not the authorization code flow.
+    - Admin-tagged operations do not honour As-User.
+  in_spec: >-
+    The Swagger document models As-User as an optional header parameter
+    ($ref #/definitions/As-User) on nearly every operation.
+  cors_allowed: true
+scopes:
+  published: false
+  note: >-
+    Bigtincan publishes no OAuth scope vocabulary. Neither the Swagger document
+    nor the interactive console names a single scope, and the console sets
+    scopeSeparator "," with an empty additionalQueryStringParams. Authorization
+    is therefore governed entirely by the Hub role/permission of the
+    authenticating user (or of the As-User target), not by token scope.
+failure_mode:
+  status: 401
+  body: '{"error":{"scope":"api","code":"INVALID_TOKEN","message":"Access token is invalid"},"trace_id":""}'
+  probed: 'GET https://pubapi.bigtincan.com/v1/user/me -> 401 (2026-08-14)'
+gaps:
+  - >-
+    The published Swagger 2.0 document declares no securityDefinitions and no
+    security requirement, so a generated client will emit unauthenticated calls
+    that all fail with 401 INVALID_TOKEN. The schemes above are captured in
+    overlays/bigtincan-hub-api-overlay.yaml so the enhancement is recorded
+    separately from the provider's contract.
+  - >-
+    There is no /.well-known/oauth-authorization-server document (RFC 8414) on
+    any Bigtincan host — the OAuth endpoints are not machine-discoverable.
+  - >-
+    No scope vocabulary is published, so an agent cannot request least-privilege
+    access or reason about what a token is allowed to do.

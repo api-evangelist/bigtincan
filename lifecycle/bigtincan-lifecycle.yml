@@ -1,0 +1,90 @@
+generated: '2026-08-14'
+method: searched
+source: https://status.bigtincan.com/ + https://www.bigtincan.com/seasonal-releases/ + openapi/bigtincan-hub-api-openapi.json
+name: Bigtincan Lifecycle and Operational Posture
+description: >-
+  Versioning, deprecation, release and availability posture for the Bigtincan Hub
+  Public API, from the provider's own surfaces plus what the published Swagger
+  document does and does not declare.
+versioning:
+  scheme: path-prefix, per-operation
+  current: mixed
+  versions_live:
+    - /v1
+    - /v1.1
+    - /v1.2
+    - /v1.3
+  spec_version: '1.0'
+  policy_published: false
+  policy_url: null
+  description: >-
+    Four version prefixes are served simultaneously and the prefix is chosen per
+    operation, not per API — /v1/user/me, /v1.1/admin/user/get/{user_id},
+    /v1.2/story/all and /v1.3/admin/user/all are all current. Bigtincan publishes
+    no document explaining what a version bump means, which prefix supersedes
+    which, or how long an older prefix is supported.
+deprecation:
+  policy_published: false
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: 0
+  description: >-
+    NO deprecation policy is published, and not one of the 69 operations carries
+    `deprecated: true`. No Sunset or Deprecation response header was observed on
+    any live response. Because older path prefixes (/v1 alongside /v1.3 for the
+    same resource families) remain live with no stated status, a caller cannot
+    tell which of two versions of the same resource is the supported one.
+status_page:
+  published: true
+  url: https://status.bigtincan.com/
+  probed:
+    status: 200
+    date: '2026-08-14'
+  description: >-
+    Bigtincan operates a public status page covering the Hub platform. Verified
+    reachable and serving content on 2026-08-14.
+releases:
+  scheme: seasonal
+  url: https://www.bigtincan.com/seasonal-releases/
+  probed:
+    status: 200
+    date: '2026-08-14'
+  latest:
+    name: Fall 2025 Release
+    date: null
+    announcement: https://www.bigtincan.com/resources/put-your-future-in-focus-bigtincans-fall-release/
+  description: >-
+    Bigtincan ships on a seasonal release cadence and publishes a marketing
+    release page. It is not an API changelog — it carries no dates, no versions
+    and no API surface changes. See changelog/bigtincan-changelog.yml.
+  api_changelog_published: false
+sla:
+  published: false
+  url: null
+  description: >-
+    No public SLA or uptime commitment was found. Availability terms sit inside
+    the enterprise subscription agreement; the public EULA at
+    https://www.bigtincan.com/eula/ is the only published contract document.
+support:
+  url: https://www.bigtincan.com/contact/
+  help_center: https://help.bigtincan.com/
+  note: >-
+    help.bigtincan.com returns 403 at the root and serves individual articles at
+    /help/<slug>. The API documentation slug carried in this catalog since 2026-06
+    — https://help.bigtincan.com/help/bigtincan-public-api-documentation — now
+    returns 404 ("The page you were looking for doesn't exist – Bigtincan
+    Support"). The live API reference is the interactive console at
+    https://pubapi.bigtincan.com/doc/interactive/.
+corporate:
+  note: >-
+    Bigtincan and Showpad now operate as one company — the trust center at
+    https://trust.bigtincan.com/ is titled "Showpad + Bigtincan" and the
+    certifications are held in Showpad's name. This is recorded because it
+    affects who owns the API's roadmap, not as an API-surface finding.
+gaps:
+  - No deprecation policy, no Sunset/Deprecation headers, no deprecated operations flagged.
+  - No API changelog — the seasonal release page covers product features, not contract changes.
+  - No published SLA.
+  - The documentation URL of record 404s; the reference lives only on the API host.

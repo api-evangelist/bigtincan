@@ -1,14 +1,66 @@
-generated: '2026-07-11'
+generated: '2026-08-14'
 method: searched
 probe: true
 source: https://trust.bigtincan.com/
 url: https://trust.bigtincan.com/
+name: Showpad + Bigtincan Trust Center
+description: >-
+  Bigtincan operates a public trust center at https://trust.bigtincan.com/,
+  titled "Showpad + Bigtincan" — the two companies now run as one and the
+  certifications are held in Showpad's name. Probed 200 on 2026-08-14.
+operator: Showpad + Bigtincan
 certifications:
-- SOC 2
-- ISO 27001
+  - name: SOC 2 Type II
+    status: maintained
+    evidence: '"Showpad currently maintains ISO27001 and ISO27701 certificates as well as SOC 2 Type II reports"'
+  - name: ISO/IEC 27001
+    status: certified
+    evidence: '"Showpad currently maintains ISO27001 and ISO27701 certificates"'
+  - name: ISO/IEC 27701
+    status: certified
+    evidence: '"Showpad currently maintains ISO27001 and ISO27701 certificates"'
+controls:
+  - name: Encryption at rest
+    detail: '"all data at rest is encrypted to AES 256"'
+  - name: Encryption in transit
+    detail: '"all data in transit encryption to TLS 1.2 or higher"'
+  - name: Single Sign-On
+    detail: '"Showpad + Bigtincan supports SSO"'
+  - name: Least privilege
+    detail: '"Showpad + Bigtincan utilizes least privilege when granting access"'
+  - name: Annual security program review
+    detail: Information Security Program Review conducted annually.
+policies_named:
+  - Change Management Policy
+  - Business Continuity and Disaster Recovery Policy
+  - Acceptable Use Policy
+  - Data Classification Policy
+  - Access Control and Termination Policy
+security_contact:
+  email: security@bigtincan.com
+  source: >-
+    bigtincan.com CAA record `0 iodef "mailto:security@bigtincan.com"` — the only
+    machine-discoverable security contact for the domain. See
+    security/bigtincan-domain-security.yml.
+gaps:
+  - >-
+    No vulnerability disclosure or responsible disclosure policy is published,
+    and no bug bounty program (HackerOne, Bugcrowd, Intigriti) was found.
+  - >-
+    No /.well-known/security.txt on any Bigtincan host — all 404 on 2026-08-14.
+    See well-known/bigtincan-well-known.yml.
+  - >-
+    No security contact email is stated on the trust center page itself; the CAA
+    iodef record is the only published address.
 evidence:
-- source: https://trust.bigtincan.com/
-  keywords:
-  - soc 2
-  - iso 27001
-  - trust center
+  - source: https://trust.bigtincan.com/
+    status: 200
+    date: '2026-08-14'
+    keywords:
+      - soc 2 type ii
+      - iso 27001
+      - iso 27701
+      - aes 256
+      - tls 1.2
+      - sso
+      - least privilege
