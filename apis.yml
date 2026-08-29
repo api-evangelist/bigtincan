@@ -622,6 +622,9 @@ apis:
   - type: FinOps
     url: finops/bigtincan-finops.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/bigtincan-capability-edges.yml
+    name: Bigtincan Business Capability Map
   - type: AgenticAccess
     url: agentic-access/bigtincan-agentic-access.yml
   - type: OAuthScopes
