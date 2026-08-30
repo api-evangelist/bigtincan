@@ -1,0 +1,434 @@
+openapi: 3.2.0
+info:
+  title: Bigtincan Hub Public Channel API
+  version: '1.0'
+  description: 'The Bigtincan Hub Public API provides programmatic access to the Bigtincan sales enablement platform: stories, files, channels, tabs, groups, users, tags, bookmarks, forms, public file shares, search, CRM story recommendations, interaction tracking and admin management.'
+  contact:
+    name: Bigtincan Support
+    url: https://www.bigtincan.com/contact/
+  termsOfService: https://www.bigtincan.com/eula/
+servers:
+- url: https://pubapi.bigtincan.com/
+security:
+- oauth2_password: []
+- oauth2_authorization_code: []
+tags:
+- name: Channel
+paths:
+  /v1/channel/all:
+    get:
+      tags:
+      - Channel
+      summary: Retrieve channels.
+      description: Retrieve channels. Channel access is limited to the requester's group associations.
+      operationId: get-v1-channel-all
+      parameters:
+      - name: tab_id
+        in: query
+        description: Tab ID to filter channels
+        required: false
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: Key word for searching by channel name
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: 'Pagination: current page'
+        required: false
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: 'Pagination: results per page. Max 100'
+        required: false
+        schema:
+          type: integer
+          default: 10
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: A list of channels
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+  /v1/channels:
+    post:
+      tags:
+      - Channel
+      summary: Retrieve channels by ids.
+      description: Channel access is limited by the requester's permissions.
+      operationId: post-v1-channels
+      responses:
+        '200':
+          description: List of found channels, channels not found or not allowed are omitted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Get_Channels_Request'
+        description: Channels request object
+        required: true
+  /v1/admin/channels:
+    get:
+      tags:
+      - Channel
+      summary: Get all admin channels
+      description: Retrieve all company channels.
+      operationId: get-v1-admin-channels
+      parameters:
+      - name: tab_id
+        in: query
+        description: Tab ID to filter channels
+        required: false
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: Key word for searching by channel name
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: 'Pagination: current page'
+        required: false
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: 'Pagination: results per page. Max 100'
+        required: false
+        schema:
+          type: integer
+          default: 10
+      responses:
+        '200':
+          description: A list of channels
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+  /v1/channel/{channel_id}:
+    delete:
+      tags:
+      - Channel
+      summary: Delete a channel.
+      description: Delete a channel.
+      operationId: delete-v1-channel-by-channel-id
+      parameters:
+      - name: channel_id
+        in: path
+        description: Channel ID
+        required: true
+        schema:
+          type: string
+      - name: archive_stories
+        in: query
+        description: Whether to archive the stories in the channel
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '204':
+          description: Channel deleted.
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+    patch:
+      tags:
+      - Channel
+      summary: Update a channel.
+      description: Update a channel.
+      operationId: patch-v1-channel-by-channel-id
+      parameters:
+      - name: channel_id
+        in: path
+        description: Channel id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: Channel updated
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '422':
+          description: Validation error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Update_channel_Request'
+        description: Channel object
+        required: true
+  /v1/channel/personal/add:
+    post:
+      tags:
+      - Channel
+      summary: Create a personal channel.
+      description: Create a personal channel.
+      operationId: post-v1-channel-personal-add
+      parameters:
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: Channel object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '422':
+          description: Validation error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Add_Personal_Channel_Request'
+        required: true
+  /v1/admin/channels/{channel_id}:
+    patch:
+      tags:
+      - Channel
+      summary: Modify a channel
+      description: Modify a channel
+      operationId: patch-v1-admin-channels-by-channel-id
+      parameters:
+      - name: channel_id
+        in: path
+        description: Channel id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Channel updated
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          description: Validation error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Modify_channel_request'
+        description: Channel object
+        required: true
+  /v1.1/channel:
+    post:
+      tags:
+      - Channel
+      summary: Create a channel.
+      description: Create a channel.
+      operationId: post-v1-1-channel
+      parameters:
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '201':
+          description: Channel object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '422':
+          description: Validation error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Add_Public_Channel_Request'
+        description: Channel object
+        required: true
+components:
+  responses:
+    '404':
+      description: Not found
+    '403':
+      description: Forbidden
+    '422':
+      description: Validation error
+    '401':
+      description: Unauthorized
+    '400':
+      description: Bad request
+  schemas:
+    As-User:
+      description: Perform action on behalf of this user ID.
+      type: string
+    Add_Public_Channel_Request:
+      required:
+      - name
+      - tab_id
+      - groups
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+        is_hidden:
+          description: Use to create a hidden channel
+          type: boolean
+          default: false
+        tab_id:
+          description: Tab assigned to the new channel
+          type: string
+        cover_art_url:
+          description: Cover Art URL
+          type: string
+          default: ''
+        groups:
+          description: Groups to be assigned to the new channel
+          type: array
+          items:
+            required:
+            - id
+            - permissions
+            properties:
+              id:
+                description: Group ID
+                type: string
+              permissions:
+                description: Read Write Permission. 1 - Read, 2 - Write, 3 - Read and Write
+                type: integer
+                enum:
+                - 1
+                - 2
+                - 3
+            type: object
+      type: object
+    Update_channel_Request:
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+        cover_art_url:
+          description: Cover Art URL
+          type: string
+          default: ''
+      type: object
+    Add_Personal_Channel_Request:
+      required:
+      - name
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+      type: object
+    Modify_channel_request:
+      required:
+      - name
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+        tabs:
+          description: tab to be assigned to the new channel
+          type: array
+          items:
+            required:
+            - id
+            properties:
+              id:
+                description: Tab ID
+                type: string
+            type: object
+        cover_art_url:
+          description: Cover Art URL
+          type: string
+          default: ''
+        default_order:
+          description: Tab assigned to the new channel
+          type: string
+          default: date
+      type: object
+    Get_Channels_Request:
+      required:
+      - channel_ids
+      properties:
+        channel_ids:
+          description: Array of channel ids.
+          type: array
+          items:
+            type: integer
+            example: 1
+      type: object
+  securitySchemes:
+    oauth2_password:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Client ID + Client Secret + API Key exchanged at /services/oauth2/token with grant_type=password. Returns access_token + refresh_token. The As-User header is available only with this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
+    oauth2_authorization_code:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes: {}
+          authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Interactive Bigtincan Hub user login. The As-User header is disabled for this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'

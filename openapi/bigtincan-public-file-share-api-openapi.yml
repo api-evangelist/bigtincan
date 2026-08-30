@@ -1,0 +1,210 @@
+openapi: 3.2.0
+info:
+  title: Bigtincan Hub Public Public File Share API
+  version: '1.0'
+  description: 'The Bigtincan Hub Public API provides programmatic access to the Bigtincan sales enablement platform: stories, files, channels, tabs, groups, users, tags, bookmarks, forms, public file shares, search, CRM story recommendations, interaction tracking and admin management.'
+  contact:
+    name: Bigtincan Support
+    url: https://www.bigtincan.com/contact/
+  termsOfService: https://www.bigtincan.com/eula/
+servers:
+- url: https://pubapi.bigtincan.com/
+security:
+- oauth2_password: []
+- oauth2_authorization_code: []
+tags:
+- name: Public File Share
+paths:
+  /v1/shares:
+    get:
+      tags:
+      - Public File Share
+      summary: Retrieve a user's shares.
+      description: Retrieve a user's shares.
+      operationId: get-v1-shares
+      parameters:
+      - name: page
+        in: query
+        description: 'Pagination: current page'
+        required: false
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: 'Pagination: results per page. Max 100'
+        required: false
+        schema:
+          type: integer
+          default: 10
+      responses:
+        '200':
+          description: Share details.
+        '401':
+          $ref: '#/components/responses/401'
+    post:
+      tags:
+      - Public File Share
+      summary: Create a share.
+      description: Create a share.
+      operationId: post-v1-shares
+      responses:
+        '201':
+          description: Share successfully created.
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Create_Share_Request'
+        description: Share object
+        required: true
+  /v1/shares/{share_id}:
+    get:
+      tags:
+      - Public File Share
+      summary: Retrieve a share.
+      description: Retrieve a share.
+      operationId: get-v1-shares-by-share-id
+      parameters:
+      - name: share_id
+        in: path
+        description: Share hash id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Share details.
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+    delete:
+      tags:
+      - Public File Share
+      summary: Delete a share.
+      description: Delete a share.
+      operationId: delete-v1-shares-by-share-id
+      parameters:
+      - name: share_id
+        in: path
+        description: Share hash id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Share successfully deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+  /v1/shares/{share_id}/files/{file_id}:
+    put:
+      tags:
+      - Public File Share
+      summary: Add a file to a share.
+      description: Add a file to a share. Returns a Content-Location header that contains a landing page URL with the added file selected.
+      operationId: put-v1-shares-by-share-id-files-by-file-id
+      parameters:
+      - name: share_id
+        in: path
+        description: Share hash id
+        required: true
+        schema:
+          type: string
+      - name: file_id
+        in: path
+        description: File id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: File successfully added to share
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          description: File already exists in the share.
+    delete:
+      tags:
+      - Public File Share
+      summary: Remove a file from a share.
+      description: Remove a file from a share.
+      operationId: delete-v1-shares-by-share-id-files-by-file-id
+      parameters:
+      - name: share_id
+        in: path
+        description: Share hash id
+        required: true
+        schema:
+          type: string
+      - name: file_id
+        in: path
+        description: File id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: File successfully removed from share
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          description: File does not exist in the share.
+components:
+  responses:
+    '404':
+      description: Not found
+    '403':
+      description: Forbidden
+    '422':
+      description: Validation error
+    '401':
+      description: Unauthorized
+  schemas:
+    Create_Share_Request:
+      required:
+      - allow_downloads
+      properties:
+        allow_downloads:
+          description: Allow file downloads in share
+          type: boolean
+        expires_at:
+          description: Share expiry datetime in RFC3339 format
+          type: string
+          example: '2019-07-17T06:02:43+00:00'
+      type: object
+  securitySchemes:
+    oauth2_password:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Client ID + Client Secret + API Key exchanged at /services/oauth2/token with grant_type=password. Returns access_token + refresh_token. The As-User header is available only with this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
+    oauth2_authorization_code:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes: {}
+          authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Interactive Bigtincan Hub user login. The As-User header is disabled for this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'

@@ -1,0 +1,789 @@
+openapi: 3.2.0
+info:
+  title: Bigtincan Hub Public Story API
+  version: '1.0'
+  description: 'The Bigtincan Hub Public API provides programmatic access to the Bigtincan sales enablement platform: stories, files, channels, tabs, groups, users, tags, bookmarks, forms, public file shares, search, CRM story recommendations, interaction tracking and admin management.'
+  contact:
+    name: Bigtincan Support
+    url: https://www.bigtincan.com/contact/
+  termsOfService: https://www.bigtincan.com/eula/
+servers:
+- url: https://pubapi.bigtincan.com/
+security:
+- oauth2_password: []
+- oauth2_authorization_code: []
+tags:
+- name: Story
+paths:
+  /v1/story/add/tag/{story_perm_id}:
+    post:
+      tags:
+      - Story
+      summary: Tag a story.
+      description: Tag a story.
+      operationId: post-v1-story-add-tag-by-story-perm-id
+      parameters:
+      - name: story_perm_id
+        in: path
+        description: Story Perm ID
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: Tag object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                tag:
+                  type: string
+                  description: Tag name
+              required:
+              - tag
+  /v1/story/archive/{revision_id}:
+    delete:
+      tags:
+      - Story
+      summary: Archive a story.
+      description: Archive a story.
+      operationId: delete-v1-story-archive-by-revision-id
+      parameters:
+      - name: revision_id
+        in: path
+        description: Active story revision ID
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: Story archived
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+  /v1/story/comment/{revision_id}:
+    post:
+      tags:
+      - Story
+      summary: Comment on a story.
+      description: Comment on a story.
+      operationId: post-v1-story-comment-by-revision-id
+      parameters:
+      - name: revision_id
+        in: path
+        description: Story revision ID
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: Comment object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Add_Comment_Request'
+        description: Comment object
+        required: true
+  /v1/story/search:
+    get:
+      tags:
+      - Story
+      summary: Search for stories.
+      description: "DEPRECATED: use /search/stories instead. Search for stories.\n\n    Generic Search (For example find all documents with term 'test')\n    Send 'test' as the keyword.\n\n    Search Types\n    - Stories returns stories.\n    - Files returns files.\n    - Tags returns stories and files with the requested tag.\n\n    You can search in following sections. Fields for each search type will be as follows:\n    Stories - title, description\n    Files - filename, content, extension\n    Comments - comment, user\n    Meetings - title, description\n    People - firstname, lastname, email, jobtitle, skill\n    Tags - tagNotes - title,content\n\n    Examples:\n    Request format for searching text 'test' only in story title - fields[0]=title or you can even send fields=title if\n    there is only one field Request format for searching text 'test' in both story title and description -\n    fields[0]=title, fields[1]=description Fields depend on type selected\n\n    Filters\n    The following aggregation filters are provided:\n    tab, channel, author, range and (tag - for stories or mime - for files)\n\n    The search result contains aggregated results with id, term and count which can be used to narrow down searchresults\n\n    Example:\n    To filter search results by specific tabs:\n    Keyword: test\n    Filters would contain the JSON object:\n    {'tab_id':['dbAUxa', 'sFicvuF']}\n\n    If you want to drill down further by channel and author:\n\n    Filters would contain the JSON object:\n    {'tab_id':['dbAUxa', 'sFicvuF'], 'channel_id':['cuydsy', 'dsoivwP], 'author_id':['XMudha'], 'range':[{'unit':'months','value':1}]}\n\n    Date Filter\n    You can specify three units - days, weeks and months.\n\n    Example:\n    Last Month - date filter to be used for last month is [{'unit':'months','value':1}]\n    Last Week - [{'unit':'weeks','value':1}]\n    Last 24 Hours - [{'unit':'days','value':1}]\n    Last 6 Months - [{'unit':'months', 'value':6}]\n    "
+      operationId: get-v1-story-search
+      parameters:
+      - name: keyword
+        in: query
+        description: Keywords
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: 'Pagination: current page'
+        required: false
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: 'Pagination: results per page. Max 100'
+        required: false
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        description: JSON object of Fields within search type
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Search Type
+        required: false
+        schema:
+          type: string
+          enum:
+          - stories
+          - files
+          - tags
+      - name: filters
+        in: query
+        description: JSON object with array of IDs - List of possible filters are described above
+        required: false
+        schema:
+          type: string
+      - name: date_filter
+        in: query
+        description: JSON object of Date filter
+        required: false
+        schema:
+          type: string
+      - name: exclude_internal_files
+        in: query
+        description: Exclude internal files like btc, btcf, btca, btce
+        required: false
+        schema:
+          type: boolean
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: A list of stories
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+  /v1/story/share/{revision_id}:
+    post:
+      tags:
+      - Story
+      summary: Share a story.
+      description: Share a story.
+      operationId: post-v1-story-share-by-revision-id
+      parameters:
+      - name: revision_id
+        in: path
+        description: Story revision ID
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: Share sent
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Share_Story_Request'
+        description: Share object
+        required: true
+  /v1/story/upload/file:
+    post:
+      tags:
+      - Story
+      summary: Upload a file to attach to a new or existing story.
+      description: "Upload a file to attach to a new or existing story.\n\n    Upon success an array of objects will be returned with the following keys: filename, description, category, size\n\n    Upon failure an array of objects will be returned with the following keys: code, message, filename\n\n    The order in which files were uploaded is maintained when output is returned."
+      operationId: post-v1-story-upload-file
+      parameters:
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: File object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                upload_type:
+                  type: string
+                  enum:
+                  - file
+                  description: Upload type
+                files:
+                  type: string
+                  description: Files
+                  format: binary
+              required:
+              - upload_type
+              - files
+  /v1/story/{story_perm_id}/widgets:
+    get:
+      tags:
+      - Story
+      summary: Get widgets in the template data of a story.
+      description: Get widgets in the template data of a story.
+      operationId: get-v1-story-by-story-perm-id-widgets
+      parameters:
+      - name: story_perm_id
+        in: path
+        description: Story perm id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Recommendations
+        '401':
+          $ref: '#/components/responses/401'
+        '422':
+          $ref: '#/components/responses/422'
+  /v1.1/story/get/{story_perm_id}:
+    get:
+      tags:
+      - Story
+      summary: Retrieve a story.
+      description: Retrieve a story.
+      operationId: get-v1-1-story-get-by-story-perm-id
+      parameters:
+      - name: story_perm_id
+        in: path
+        description: Story Perm ID
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: Story object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+  /v1.2/story/all:
+    get:
+      tags:
+      - Story
+      summary: Retrieve stories.
+      description: Retrieve stories. Story access limited to the requester's group associations.
+      operationId: get-v1-2-story-all
+      parameters:
+      - name: channel_id
+        in: query
+        description: Channel ID
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: 'Pagination: current page'
+        required: false
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: 'Pagination: results per page. Max 100'
+        required: false
+        schema:
+          type: integer
+          default: 10
+      - name: sort_by
+        in: query
+        description: Sort by fields
+        required: false
+        schema:
+          type: string
+          enum:
+          - date
+          - likes
+          - most_read
+          - least_read
+          - author_first_name
+          - author_last_name
+          - priority_order
+          - content_score
+          - title
+      - name: include_comments
+        in: query
+        description: Include comments to story
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: A list of stories
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+  /v1.2/story/add:
+    post:
+      tags:
+      - Story
+      summary: Publish a story.
+      description: "Publish a story.\n\n    Sharing bitmask:\n    The field 'sharing_bitmask' is a combination of the following bits:\n    - No sharing: 0\n    - Device sharing: 1\n    - Share with Audit: 2"
+      operationId: post-v1-2-story-add
+      parameters:
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '201':
+          description: Story object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Add_Story_Request'
+        description: Story object
+        required: true
+  /v1.2/story/edit/{revision_id}:
+    put:
+      tags:
+      - Story
+      summary: Update a story.
+      description: "Update a story.\n\n    How to edit files\n    You can use either of following ways to edit files and you cannot mix both ways together:\n    1. files/new_files\n    files: the existing files you want to keep, [] means removing all existing files\n    new_files: the new files you want to add\n\n    2. append_files/remove_files\n    append_files: files you want to append/add\n    remove_files: files you want to remove from the existing files\n\n    Sharing bitmask:\n    The field 'sharing_bitmask' is a combination of the following bits:\n    - No sharing: 0\n    - Device sharing: 1\n    - Share with Audit: 2"
+      operationId: put-v1-2-story-edit-by-revision-id
+      parameters:
+      - name: revision_id
+        in: path
+        description: Story revision ID
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '201':
+          description: Story object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Update_Story_Request'
+        description: Story object
+        required: true
+components:
+  schemas:
+    Update_Story_Request:
+      required:
+      - name
+      - channels
+      properties:
+        title:
+          description: Story title
+          type: string
+        channels:
+          description: Channels
+          type: array
+          items:
+            properties:
+              id:
+                description: Channel ID
+                type: string
+              is_alias:
+                description: Channel Alias
+                type: boolean
+                default: false
+            type: object
+        description:
+          type: string
+        excerpt:
+          type: string
+        new_files:
+          description: New files
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_File_Edit_Request_Object'
+            type: object
+        files:
+          description: Existing files
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_File_Edit_Request_Object'
+            type: object
+        append_files:
+          description: Append files to the story
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_File_Edit_Request_Object'
+            type: object
+        remove_files:
+          description: Remove files from the story
+          type: array
+          items:
+            properties:
+              filename:
+                type: string
+            type: object
+        events:
+          description: Event objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Event_Request_Object'
+            type: object
+        tags:
+          description: Tag objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Tag_Request_Object'
+            type: object
+        sharing_bitmask:
+          type: integer
+        is_password_protected:
+          type: boolean
+          default: false
+        can_annotate:
+          type: boolean
+          default: true
+        is_notifications_enabled:
+          type: boolean
+          default: true
+        is_publicly_accessible:
+          type: boolean
+          default: false
+        quicklink_url:
+          type: string
+        quicklink_fallback:
+          type: string
+        quickfile:
+          type: boolean
+          default: false
+        cover_art_url:
+          type: string
+        expires_at:
+          type: integer
+          default: 0
+        expires_at_tz:
+          type: string
+          default: ''
+      type: object
+    Add_Story_Request:
+      required:
+      - name
+      - channels
+      properties:
+        title:
+          description: Story title
+          type: string
+        channels:
+          description: Channels
+          type: array
+          items:
+            properties:
+              id:
+                description: Channel ID
+                type: string
+              is_alias:
+                description: Channel Alias
+                type: boolean
+                default: false
+            type: object
+        description:
+          type: string
+        excerpt:
+          type: string
+        new_files:
+          description: Files
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_File_Request_Object'
+            type: object
+        events:
+          description: Events
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Event_Request_Object'
+            type: object
+        tags:
+          description: Tag objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Tag_Request_Object'
+            type: object
+        sharing_bitmask:
+          type: integer
+        is_password_protected:
+          type: boolean
+          default: false
+        can_annotate:
+          type: boolean
+          default: true
+        is_notifications_enabled:
+          type: boolean
+          default: true
+        is_publicly_accessible:
+          type: boolean
+          default: false
+        quicklink_url:
+          type: string
+        quicklink_fallback:
+          type: string
+        quickfile:
+          type: boolean
+          default: false
+        cover_art_url:
+          type: string
+          default: ''
+        expires_at:
+          type: integer
+          default: 0
+        expires_at_tz:
+          type: string
+          default: ''
+      type: object
+    Story_Event_Request_Object:
+      required:
+      - title
+      - tz
+      - start
+      - end
+      - all_day
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        tz:
+          type: string
+        start:
+          description: Unix timestamp
+          type: integer
+        end:
+          description: Unix timestamp
+          type: integer
+        all_day:
+          description: All day event
+          type: boolean
+      type: object
+    As-User:
+      description: Perform action on behalf of this user ID.
+      type: string
+    Story_Tag_Request_Object:
+      required:
+      - name
+      properties:
+        name:
+          type: string
+      type: object
+    Language_Code:
+      type: string
+      default: en-us
+      enum:
+      - en-us
+      - en-gb
+      - zh-cn
+      - zh-hk
+      - fr
+      - it
+      - ja
+      - ko
+      - pt-br
+      - ru
+      - es
+      - th
+      - da
+      - de
+      - 'no'
+      - sv
+      - tr
+      - vi
+    Share_Story_Request:
+      required:
+      - subject
+      - emails
+      properties:
+        subject:
+          description: Share subject
+          type: string
+        note:
+          description: Share description
+          type: string
+        lang_code:
+          $ref: '#/components/schemas/Language_Code'
+        emails:
+          description: Email addresses
+          type: array
+          items:
+            type: string
+        cc_emails:
+          description: CC email addresses
+          type: array
+          items:
+            type: string
+        file_id:
+          description: File IDs
+          type: array
+          items:
+            type: string
+      type: object
+    Story_File_Edit_Request_Object:
+      required:
+      - filename
+      - description
+      - share_status
+      properties:
+        filename:
+          type: string
+        description:
+          type: string
+        share_status:
+          type: string
+          enum:
+          - mandatory
+          - optional
+          - blocked
+        file_group:
+          type: string
+        allow_pitch_builder:
+          description: Allow file to be added to pitch builder.
+          type: boolean
+          default: true
+        prevent_editing:
+          description: Prevent editing within pitch builder. allow_pitch_builder needs to be set to true to set this value to true.
+          type: boolean
+          default: false
+        tags:
+          description: Tag objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Tag_Request_Object'
+            type: object
+      type: object
+    Story_File_Request_Object:
+      required:
+      - filename
+      - description
+      - share_status
+      properties:
+        filename:
+          type: string
+        description:
+          type: string
+        share_status:
+          type: string
+          enum:
+          - mandatory
+          - optional
+          - blocked
+        allow_pitch_builder:
+          description: Allow file to be added to pitch builder.
+          type: boolean
+          default: true
+        prevent_editing:
+          description: Prevent editing within pitch builder. allow_pitch_builder needs to be set to true to set this value to true.
+          type: boolean
+          default: false
+        tags:
+          description: Tag objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Tag_Request_Object'
+            type: object
+      type: object
+    Add_Comment_Request:
+      required:
+      - comment
+      properties:
+        comment:
+          description: Comment
+          type: string
+        reply_to_id:
+          description: Reply to comment ID
+          type: string
+      type: object
+  responses:
+    '403':
+      description: Forbidden
+    '422':
+      description: Validation error
+    '401':
+      description: Unauthorized
+    '400':
+      description: Bad request
+  securitySchemes:
+    oauth2_password:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Client ID + Client Secret + API Key exchanged at /services/oauth2/token with grant_type=password. Returns access_token + refresh_token. The As-User header is available only with this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
+    oauth2_authorization_code:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes: {}
+          authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Interactive Bigtincan Hub user login. The As-User header is disabled for this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'

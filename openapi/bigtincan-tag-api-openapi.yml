@@ -1,0 +1,74 @@
+openapi: 3.2.0
+info:
+  title: Bigtincan Hub Public Tag API
+  version: '1.0'
+  description: 'The Bigtincan Hub Public API provides programmatic access to the Bigtincan sales enablement platform: stories, files, channels, tabs, groups, users, tags, bookmarks, forms, public file shares, search, CRM story recommendations, interaction tracking and admin management.'
+  contact:
+    name: Bigtincan Support
+    url: https://www.bigtincan.com/contact/
+  termsOfService: https://www.bigtincan.com/eula/
+servers:
+- url: https://pubapi.bigtincan.com/
+security:
+- oauth2_password: []
+- oauth2_authorization_code: []
+tags:
+- name: Tag
+paths:
+  /v1/tags:
+    get:
+      tags:
+      - Tag
+      summary: Get Tags
+      description: Retrieve company tags.
+      operationId: get-v1-tags
+      parameters:
+      - name: search
+        in: query
+        description: Filters tags, returning those that contain the term
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: 'Pagination: current page'
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: limit
+        in: query
+        description: 'Pagination: results per page. Max 100'
+        required: false
+        schema:
+          type: integer
+          default: 10
+      responses:
+        '200':
+          description: A list of tags
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+components:
+  responses:
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  securitySchemes:
+    oauth2_password:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Client ID + Client Secret + API Key exchanged at /services/oauth2/token with grant_type=password. Returns access_token + refresh_token. The As-User header is available only with this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
+    oauth2_authorization_code:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes: {}
+          authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Interactive Bigtincan Hub user login. The As-User header is disabled for this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'

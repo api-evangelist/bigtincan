@@ -1,0 +1,292 @@
+openapi: 3.2.0
+info:
+  title: Bigtincan Hub Public Group API
+  version: '1.0'
+  description: 'The Bigtincan Hub Public API provides programmatic access to the Bigtincan sales enablement platform: stories, files, channels, tabs, groups, users, tags, bookmarks, forms, public file shares, search, CRM story recommendations, interaction tracking and admin management.'
+  contact:
+    name: Bigtincan Support
+    url: https://www.bigtincan.com/contact/
+  termsOfService: https://www.bigtincan.com/eula/
+servers:
+- url: https://pubapi.bigtincan.com/
+security:
+- oauth2_password: []
+- oauth2_authorization_code: []
+tags:
+- name: Group
+paths:
+  /v1/group/all:
+    get:
+      tags:
+      - Group
+      summary: Retrieve groups.
+      description: Retrieve groups.
+      operationId: get-v1-group-all
+      parameters:
+      - name: search
+        in: query
+        description: Search keywords
+        required: false
+        schema:
+          type: string
+      - name: include_personal_group
+        in: query
+        description: Include personal groups
+        required: false
+        schema:
+          type: boolean
+      - name: page
+        in: query
+        description: 'Pagination: current page'
+        required: false
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: 'Pagination: results per page. Max 100'
+        required: false
+        schema:
+          type: integer
+          default: 10
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: A list of groups
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+  /v1/group:
+    post:
+      tags:
+      - Group
+      summary: Create a group.
+      description: Create a group.
+      operationId: post-v1-group
+      parameters:
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '201':
+          description: Group object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Add_Group_Request'
+        description: Group object
+        required: true
+  /v1/admin/groups/{group_id}:
+    delete:
+      tags:
+      - Group
+      summary: Delete a group.
+      description: Delete a group.
+      operationId: delete-v1-admin-groups-by-group-id
+      parameters:
+      - name: group_id
+        in: path
+        description: Group ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Group Deleted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '422':
+          $ref: '#/components/responses/422'
+    patch:
+      tags:
+      - Group
+      summary: Modify a group.
+      description: Modify a group.
+      operationId: patch-v1-admin-groups-by-group-id
+      parameters:
+      - name: group_id
+        in: path
+        description: Group id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: Group updated
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          description: Validation error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Modify_Group_Request'
+        description: Group object
+        required: true
+  /v1/group/{group_id}/users:
+    put:
+      tags:
+      - Group
+      summary: Adds users to a group.
+      description: Adds users to a group.
+      operationId: put-v1-group-by-group-id-users
+      parameters:
+      - name: group_id
+        in: path
+        description: Group ID
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: User added to group
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Add_User_to_Group_Request'
+        description: User ID array
+        required: true
+  /v1/admin/groups/{group_id}/users/{user_id}:
+    delete:
+      tags:
+      - Group
+      summary: Remove user from a group
+      description: Remove a user from a group
+      operationId: delete-v1-admin-groups-by-group-id-users-by-user-id
+      parameters:
+      - name: group_id
+        in: path
+        description: Group Id
+        required: true
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        description: User Id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Remove user from group
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+components:
+  responses:
+    '404':
+      description: Not found
+    '403':
+      description: Forbidden
+    '422':
+      description: Validation error
+    '401':
+      description: Unauthorized
+    '400':
+      description: Bad request
+  schemas:
+    As-User:
+      description: Perform action on behalf of this user ID.
+      type: string
+    Add_Group_Request:
+      required:
+      - name
+      properties:
+        name:
+          description: Group name
+          type: string
+        external_id:
+          description: Group external id
+          type: string
+        notes:
+          description: Group notes
+          type: string
+      type: object
+    Add_User_to_Group_Request:
+      type: array
+      items:
+        properties:
+          id:
+            description: User ID
+            type: string
+          is_admin:
+            description: Make user a group admin
+            type: boolean
+            default: false
+        type: object
+    Modify_Group_Request:
+      required:
+      - name
+      properties:
+        name:
+          description: Group name
+          type: string
+        external_id:
+          description: Group external id
+          type: string
+        notes:
+          description: Group notes
+          type: string
+      type: object
+  securitySchemes:
+    oauth2_password:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Client ID + Client Secret + API Key exchanged at /services/oauth2/token with grant_type=password. Returns access_token + refresh_token. The As-User header is available only with this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
+    oauth2_authorization_code:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes: {}
+          authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Interactive Bigtincan Hub user login. The As-User header is disabled for this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'

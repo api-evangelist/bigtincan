@@ -1,0 +1,86 @@
+openapi: 3.2.0
+info:
+  title: Bigtincan Hub Public CRM API
+  version: '1.0'
+  description: 'The Bigtincan Hub Public API provides programmatic access to the Bigtincan sales enablement platform: stories, files, channels, tabs, groups, users, tags, bookmarks, forms, public file shares, search, CRM story recommendations, interaction tracking and admin management.'
+  contact:
+    name: Bigtincan Support
+    url: https://www.bigtincan.com/contact/
+  termsOfService: https://www.bigtincan.com/eula/
+servers:
+- url: https://pubapi.bigtincan.com/
+security:
+- oauth2_password: []
+- oauth2_authorization_code: []
+tags:
+- name: CRM
+paths:
+  /v1/story/crm/recommendation:
+    get:
+      tags:
+      - CRM
+      summary: Retrieve story CRM recommendations.
+      description: "\n    Story CRM recommendations are based on the provided keywords and CRM metadata set on stories.\n\n    Files will be returned based on the provided keywords.\n    Stories will be returned based on CRM metadata. If no results are found via metadata then stories will be returned based on the provided keywords."
+      operationId: get-v1-story-crm-recommendation
+      parameters:
+      - name: opportunity_id
+        in: query
+        description: CRM opportunity ID
+        required: true
+        schema:
+          type: string
+      - name: opportunity_stage
+        in: query
+        description: CRM opportunity stage
+        required: true
+        schema:
+          type: string
+      - name: opportunity_description
+        in: query
+        description: CRM opportunity description
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: Number of recommendations
+        schema:
+          type: integer
+      - name: search_keywords
+        in: query
+        description: Keywords separated by a semi-colon
+        schema:
+          type: string
+      - name: crm_products
+        in: query
+        description: JSON array of strings of CRM product names
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Recommendations
+        '401':
+          $ref: '#/components/responses/401'
+        '422':
+          $ref: '#/components/responses/422'
+components:
+  responses:
+    '422':
+      description: Validation error
+    '401':
+      description: Unauthorized
+  securitySchemes:
+    oauth2_password:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Client ID + Client Secret + API Key exchanged at /services/oauth2/token with grant_type=password. Returns access_token + refresh_token. The As-User header is available only with this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
+    oauth2_authorization_code:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes: {}
+          authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Interactive Bigtincan Hub user login. The As-User header is disabled for this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'

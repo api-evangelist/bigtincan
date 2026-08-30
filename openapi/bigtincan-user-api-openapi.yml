@@ -1,0 +1,446 @@
+openapi: 3.2.0
+info:
+  title: Bigtincan Hub Public User API
+  version: '1.0'
+  description: 'The Bigtincan Hub Public API provides programmatic access to the Bigtincan sales enablement platform: stories, files, channels, tabs, groups, users, tags, bookmarks, forms, public file shares, search, CRM story recommendations, interaction tracking and admin management.'
+  contact:
+    name: Bigtincan Support
+    url: https://www.bigtincan.com/contact/
+  termsOfService: https://www.bigtincan.com/eula/
+servers:
+- url: https://pubapi.bigtincan.com/
+security:
+- oauth2_password: []
+- oauth2_authorization_code: []
+tags:
+- name: User
+paths:
+  /v1/user/{user_id}:
+    delete:
+      tags:
+      - User
+      summary: Delete a user.
+      description: Delete a user.
+      operationId: delete-v1-user-by-user-id
+      parameters:
+      - name: user_id
+        in: path
+        description: Active user id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: User Delete
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+  /v1/user/change-password:
+    patch:
+      tags:
+      - User
+      summary: Change the current user's password.
+      description: Change the current user's password.
+      operationId: patch-v1-user-change-password
+      responses:
+        '200':
+          description: Password reset successfully
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Change_Password_Request'
+        description: Change password object
+        required: true
+  /v1/user/forgot-password:
+    patch:
+      tags:
+      - User
+      summary: Send a reset password email.
+      description: Send a reset password email to an email address when a user has forgotten their password.
+      operationId: patch-v1-user-forgot-password
+      responses:
+        '200':
+          description: Reset password email sent
+        '400':
+          $ref: '#/components/responses/400'
+        '422':
+          $ref: '#/components/responses/422'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reset_Password_Request'
+        description: Reset password object
+        required: true
+  /v1/user/me:
+    get:
+      tags:
+      - User
+      summary: Get information about the current user.
+      description: Get information about the current user.
+      operationId: get-v1-user-me
+      parameters:
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: User object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+  /v1/user/{user_id}/metadata:
+    get:
+      tags:
+      - User
+      summary: Retrieve a user's metadata.
+      description: Retrieve a user's metadata
+      operationId: get-v1-user-by-user-id-metadata
+      parameters:
+      - name: user_id
+        in: path
+        description: User ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of a user's metadata.
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+    patch:
+      tags:
+      - User
+      summary: Update user metadata.
+      description: Replaces all the existing user metadata with the ones provided in the json body. Wipes a user's assigned metadata with an empty array [ ]
+      operationId: patch-v1-user-by-user-id-metadata
+      parameters:
+      - name: user_id
+        in: path
+        description: User ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: User metadata updated successfully.
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Update_User_Metadata_Request'
+        required: true
+  /v1.1/user:
+    post:
+      tags:
+      - User
+      summary: Create a new user.
+      description: Create a new user.
+      operationId: post-v1-1-user
+      parameters:
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '201':
+          description: User object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Add_User_Request'
+        description: User object
+        required: true
+    patch:
+      tags:
+      - User
+      summary: Update an existing user.
+      description: Update an existing user. All fields other than id are optional. Setting a new password for the user would result in the also updating the status as “active” (if not already active) for the given user.
+      operationId: patch-v1-1-user
+      parameters:
+      - $ref: '#/components/schemas/As-User'
+        name: As-User
+        in: header
+        required: false
+      responses:
+        '200':
+          description: User object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Update_User_Request'
+        description: User object
+        required: true
+components:
+  schemas:
+    Update_User_Request:
+      required:
+      - id
+      properties:
+        id:
+          description: User ID
+          type: string
+        first_name:
+          description: First name
+          type: string
+        last_name:
+          description: Last name
+          type: string
+        email:
+          description: Email address
+          type: string
+        new_password:
+          description: Updated password
+          type: string
+        configuration_bundle:
+          description: Configuration bundle ID
+          type: integer
+        digest_email:
+          description: '0: Never, 1: Daily, 2: Weekly, 3: Monthly'
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+        send_invite:
+          description: Send invitation email
+          type: boolean
+        access:
+          description: 'User access level. 0: User, 2: Structure Admin, 4: Administrator'
+          type: integer
+          enum:
+          - 0
+          - 2
+          - 4
+        job_title:
+          description: Job title
+          type: string
+        can_promote:
+          description: Can promote stories
+          type: boolean
+          default: false
+        lang_code:
+          $ref: '#/components/schemas/Language_Code'
+        user_timezone:
+          description: Timezone
+          type: string
+        status:
+          description: User status
+          type: string
+          default: active
+        groups:
+          type: array
+          items:
+            properties:
+              id:
+                description: Group ID
+                type: string
+              is_group_admin:
+                description: Is group administrator
+                type: boolean
+                default: false
+            type: object
+        platforms:
+          type: array
+          items:
+            type: string
+            enum:
+            - web
+            - ios
+            - android
+            - windows
+      type: object
+    Change_Password_Request:
+      required:
+      - currentPassword
+      - newPassword
+      properties:
+        currentPassword:
+          description: Current password
+          type: string
+        newPassword:
+          description: New password
+          type: string
+      type: object
+    As-User:
+      description: Perform action on behalf of this user ID.
+      type: string
+    Reset_Password_Request:
+      required:
+      - email
+      properties:
+        email:
+          description: Email address
+          type: string
+      type: object
+    Language_Code:
+      type: string
+      default: en-us
+      enum:
+      - en-us
+      - en-gb
+      - zh-cn
+      - zh-hk
+      - fr
+      - it
+      - ja
+      - ko
+      - pt-br
+      - ru
+      - es
+      - th
+      - da
+      - de
+      - 'no'
+      - sv
+      - tr
+      - vi
+    Add_User_Request:
+      required:
+      - first_name
+      - last_name
+      - email
+      properties:
+        first_name:
+          description: First name
+          type: string
+        last_name:
+          description: Last name
+          type: string
+        email:
+          description: Email address
+          type: string
+        new_password:
+          description: Updated password
+          type: string
+        configuration_bundle:
+          description: Configuration bundle ID
+          type: integer
+        digest_email:
+          description: '0: Never, 1: Daily, 2: Weekly, 3: Monthly'
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+        send_invite:
+          description: Send invitation email
+          type: boolean
+        access:
+          description: 'User access level. 0: User, 2: Structure Admin, 4: Administrator'
+          type: integer
+          enum:
+          - 0
+          - 2
+          - 4
+        job_title:
+          description: Job title
+          type: string
+        can_promote:
+          description: Can promote stories
+          type: boolean
+          default: false
+        lang_code:
+          $ref: '#/components/schemas/Language_Code'
+        user_timezone:
+          description: Timezone
+          type: string
+        status:
+          description: User status
+          type: string
+          default: invited
+        groups:
+          type: array
+          items:
+            properties:
+              id:
+                description: Group ID
+                type: string
+              is_group_admin:
+                description: Is group administrator
+                type: boolean
+                default: false
+            type: object
+        platforms:
+          type: array
+          items:
+            type: string
+            enum:
+            - web
+            - ios
+            - android
+            - windows
+      type: object
+    Update_User_Metadata_Request:
+      type: array
+      items:
+        required:
+        - id
+        properties:
+          id:
+            description: User Metadata Value ID
+            type: string
+        type: object
+  responses:
+    '404':
+      description: Not found
+    '403':
+      description: Forbidden
+    '422':
+      description: Validation error
+    '401':
+      description: Unauthorized
+    '400':
+      description: Bad request
+  securitySchemes:
+    oauth2_password:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Client ID + Client Secret + API Key exchanged at /services/oauth2/token with grant_type=password. Returns access_token + refresh_token. The As-User header is available only with this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
+    oauth2_authorization_code:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes: {}
+          authorizationUrl: https://pubapi.bigtincan.com/services/oauth2/authorize
+          tokenUrl: https://pubapi.bigtincan.com/services/oauth2/token
+      description: 'Interactive Bigtincan Hub user login. The As-User header is disabled for this flow. Source: https://pubapi.bigtincan.com/doc/interactive/'
