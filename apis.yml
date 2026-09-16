@@ -1,10 +1,9 @@
 aid: bigtincan
 name: Bigtincan
-description: Bigtincan is an industry-leading sales enablement automation platform
-  providing a REST API for managing sales content, training and coaching programs,
-  buyer engagement analytics, digital sales rooms, and CRM content sync. The platform
-  combines AI-powered content management, sales readiness tools, and buyer engagement
-  capabilities to help revenue teams close deals faster.
+description: Bigtincan is an industry-leading sales enablement automation platform providing a REST API
+  for managing sales content, training and coaching programs, buyer engagement analytics, digital sales
+  rooms, and CRM content sync. The platform combines AI-powered content management, sales readiness tools,
+  and buyer engagement capabilities to help revenue teams close deals faster.
 deliveryModel:
   model: saas
   open_source: false
@@ -32,18 +31,18 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bigtincan.png
 url: https://raw.githubusercontent.com/api-evangelist/bigtincan/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-08-14'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 type: Index
 tags:
-  - Sales Enablement
-  - Content Management
-  - Training
-  - Coaching
-  - Buyer Engagement
-  - Analytics
-  - CRM Integration
-  - Digital Sales Rooms
+- Sales Enablement
+- Content Management
+- Training
+- Coaching
+- Buyer Engagement
+- Analytics
+- CRM Integration
+- Digital Sales Rooms
 apis:
 - aid: bigtincan:bigtincan-admin-api
   name: Bigtincan Admin API
@@ -622,85 +621,88 @@ apis:
   - type: FinOps
     url: finops/bigtincan-finops.yml
 common:
-  - type: CapabilityMap
-    url: capabilities/bigtincan-capability-edges.yml
-    name: Bigtincan Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/bigtincan-agentic-access.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: TrustCenter
-    url: security/bigtincan-trust-center.yml
-  - type: DomainSecurity
-    url: security/bigtincan-domain-security.yml
-  - type: Website
-    url: https://www.bigtincan.com/
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: OpenAPI
-    url: openapi/bigtincan-hub-api-openapi.json
-  - type: Overlay
-    url: overlays/bigtincan-hub-api-overlay.yaml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: ChangeLog
-    url: changelog/bigtincan-changelog.yml
-  - type: Conformance
-    url: conformance/bigtincan-conformance.yml
-  - type: Compliance
-    url: conformance/bigtincan-conformance.yml
-  - type: Packages
-    url: packages/bigtincan-packages.yml
-  - type: SDKs
-    url: packages/bigtincan-packages.yml
-  - type: X-MCPServerCandidate
-    url: mcp/bigtincan-mcp.yml
-    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
-  - type: AgentSkill
-    url: skills/_index.yml
-  - type: LLMsTxt
-    url: llms/bigtincan-llms.txt
-  - type: Blog
-    url: https://www.bigtincan.com/blog/
-  - type: Pricing
-    url: https://www.bigtincan.com/pricing/
-  - type: StatusPage
-    url: https://status.bigtincan.com/
-  - type: SignUp
-    url: https://identity.bigtincan.com
-  - type: Login
-    url: https://identity.bigtincan.com
-  - type: TermsOfService
-    url: https://www.bigtincan.com/eula/
-  - type: PrivacyPolicy
-    url: https://www.bigtincan.com/privacy-policy/
-  - type: Support
-    url: https://www.bigtincan.com/contact/
-  - type: HelpCenter
-    url: https://help.bigtincan.com/
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/bigtincan
-  - type: X
-    url: https://x.com/bigtincan
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
+- type: CapabilityMap
+  url: capabilities/bigtincan-capability-edges.yml
+  name: Bigtincan Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/bigtincan-agentic-access.yml
+- type: OAuthScopes
+  url: scopes/bigtincan-scopes.yml
+- type: Authentication
+  url: authentication/bigtincan-authentication.yml
+- type: TrustCenter
+  url: security/bigtincan-trust-center.yml
+- type: DomainSecurity
+  url: security/bigtincan-domain-security.yml
+- type: Website
+  url: https://www.bigtincan.com/
+- type: Documentation
+  url: https://pubapi.bigtincan.com/doc/interactive/
+- type: APIReference
+  url: https://pubapi.bigtincan.com/doc/interactive/
+- type: OpenAPI
+  url: openapi/_original/bigtincan-hub-api-openapi.json
+- type: Overlay
+  url: overlays/bigtincan-hub-api-overlay.yaml
+- type: Conventions
+  url: conventions/bigtincan-conventions.yml
+- type: ErrorCatalog
+  url: errors/bigtincan-problem-types.yml
+- type: DataModel
+  url: data-model/bigtincan-data-model.yml
+- type: Lifecycle
+  url: lifecycle/bigtincan-lifecycle.yml
+- type: ChangeLog
+  url: changelog/bigtincan-changelog.yml
+- type: Conformance
+  url: conformance/bigtincan-conformance.yml
+- type: Compliance
+  url: conformance/bigtincan-conformance.yml
+- type: Packages
+  url: packages/bigtincan-packages.yml
+- type: SDKs
+  url: packages/bigtincan-packages.yml
+- type: X-MCPServerCandidate
+  url: mcp/bigtincan-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/bigtincan-llms.txt
+- type: Blog
+  url: https://www.bigtincan.com/blog/
+- type: Pricing
+  url: https://www.bigtincan.com/pricing/
+- type: StatusPage
+  url: https://status.bigtincan.com/
+- type: SignUp
+  url: https://identity.bigtincan.com
+- type: Login
+  url: https://identity.bigtincan.com
+- type: TermsOfService
+  url: https://www.bigtincan.com/eula/
+- type: PrivacyPolicy
+  url: https://www.bigtincan.com/privacy-policy/
+- type: Support
+  url: https://www.bigtincan.com/contact/
+- type: HelpCenter
+  url: https://help.bigtincan.com/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/bigtincan
+- type: X
+  url: https://x.com/bigtincan
+- type: Plans
+  url: plans/bigtincan-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/bigtincan-rate-limits.yml
+- type: FinOps
+  url: finops/bigtincan-finops.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 x-enrichment:
   date: '2026-08-14'
   status: enriched
