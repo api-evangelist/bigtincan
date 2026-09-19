@@ -114,6 +114,8 @@ apis:
   humanURL: https://pubapi.bigtincan.com/doc/interactive/
   baseURL: https://pubapi.bigtincan.com
   tags:
+  - Channels
+  tags_raw:
   - Channel
   properties:
   - type: OpenAPI
