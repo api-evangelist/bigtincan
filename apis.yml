@@ -34,6 +34,9 @@ created: '2026-06-13'
 modified: '2026-09-16'
 specificationVersion: '0.23'
 type: Index
+x-docs-platform: swagger-ui
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-20
 tags:
 - Sales Enablement
 - Content Management
