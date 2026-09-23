@@ -19,7 +19,7 @@ paths:
     get:
       tags:
       - Search
-      summary: Search for files.
+      summary: Search for files
       description: Search for files.
       operationId: get-v1-3-search-files
       parameters:
@@ -172,7 +172,7 @@ paths:
     get:
       tags:
       - Search
-      summary: Search for stories.
+      summary: Search for stories
       description: Search for stories.
       operationId: get-v1-3-search-stories
       parameters:
@@ -317,12 +317,12 @@ paths:
           $ref: '#/components/responses/403'
 components:
   responses:
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
     '403':
       description: Forbidden
+    '401':
+      description: Unauthorized
+    '400':
+      description: Bad request
   schemas:
     As-User:
       description: Perform action on behalf of this user ID.

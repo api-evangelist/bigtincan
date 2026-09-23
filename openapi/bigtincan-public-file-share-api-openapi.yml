@@ -19,7 +19,7 @@ paths:
     get:
       tags:
       - Public File Share
-      summary: Retrieve a user's shares.
+      summary: Retrieve a user's shares
       description: Retrieve a user's shares.
       operationId: get-v1-shares
       parameters:
@@ -44,7 +44,7 @@ paths:
     post:
       tags:
       - Public File Share
-      summary: Create a share.
+      summary: Create a share
       description: Create a share.
       operationId: post-v1-shares
       responses:
@@ -67,7 +67,7 @@ paths:
     get:
       tags:
       - Public File Share
-      summary: Retrieve a share.
+      summary: Retrieve a share
       description: Retrieve a share.
       operationId: get-v1-shares-by-share-id
       parameters:
@@ -89,7 +89,7 @@ paths:
     delete:
       tags:
       - Public File Share
-      summary: Delete a share.
+      summary: Delete a share
       description: Delete a share.
       operationId: delete-v1-shares-by-share-id
       parameters:
@@ -112,7 +112,7 @@ paths:
     put:
       tags:
       - Public File Share
-      summary: Add a file to a share.
+      summary: Add a file to a share
       description: Add a file to a share. Returns a Content-Location header that contains a landing page URL with the added file selected.
       operationId: put-v1-shares-by-share-id-files-by-file-id
       parameters:
@@ -142,7 +142,7 @@ paths:
     delete:
       tags:
       - Public File Share
-      summary: Remove a file from a share.
+      summary: Remove a file from a share
       description: Remove a file from a share.
       operationId: delete-v1-shares-by-share-id-files-by-file-id
       parameters:
@@ -171,10 +171,10 @@ paths:
           description: File does not exist in the share.
 components:
   responses:
-    '404':
-      description: Not found
     '403':
       description: Forbidden
+    '404':
+      description: Not found
     '422':
       description: Validation error
     '401':

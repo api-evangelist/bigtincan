@@ -1,0 +1,56 @@
+{
+  "provider": "bigtincan",
+  "sources": [
+    "_original/bigtincan-hub-api-openapi.json"
+  ],
+  "outputs": [
+    "bigtincan-admin-api-openapi.yml",
+    "bigtincan-bookmark-api-openapi.yml",
+    "bigtincan-crm-api-openapi.yml",
+    "bigtincan-channel-api-openapi.yml",
+    "bigtincan-event-api-openapi.yml",
+    "bigtincan-file-api-openapi.yml",
+    "bigtincan-form-api-openapi.yml",
+    "bigtincan-group-api-openapi.yml",
+    "bigtincan-history-api-openapi.yml",
+    "bigtincan-links-api-openapi.yml",
+    "bigtincan-public-file-share-api-openapi.yml",
+    "bigtincan-search-api-openapi.yml",
+    "bigtincan-settings-api-openapi.yml",
+    "bigtincan-story-api-openapi.yml",
+    "bigtincan-tab-api-openapi.yml",
+    "bigtincan-tag-api-openapi.yml",
+    "bigtincan-user-api-openapi.yml",
+    "bigtincan-user-metadata-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "bigtincan-hub-api-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0; renamed 31 component key(s) illegal in 3.x (e.g. Add Comment Request)",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/bigtincan-hub-api-swagger.json: archived document superseded by a larger archived document",
+    "bigtincan-admin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-bookmark-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-channel-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-crm-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-event-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-file-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-form-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-group-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-links-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-public-file-share-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-story-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-tab-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-tag-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bigtincan-user-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

@@ -19,7 +19,7 @@ paths:
     get:
       tags:
       - Event
-      summary: Retrieve a user's events.
+      summary: Retrieve a user's events
       description: Retrieve a user's events.
       operationId: get-v1-events
       parameters:

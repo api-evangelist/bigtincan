@@ -19,8 +19,13 @@ paths:
     get:
       tags:
       - CRM
-      summary: Retrieve story CRM recommendations.
-      description: "\n    Story CRM recommendations are based on the provided keywords and CRM metadata set on stories.\n\n    Files will be returned based on the provided keywords.\n    Stories will be returned based on CRM metadata. If no results are found via metadata then stories will be returned based on the provided keywords."
+      summary: Retrieve story CRM recommendations
+      description: 'Story CRM recommendations are based on the provided keywords and CRM metadata set on stories.
+
+
+        Files will be returned based on the provided keywords.
+
+        Stories will be returned based on CRM metadata. If no results are found via metadata then stories will be returned based on the provided keywords.'
       operationId: get-v1-story-crm-recommendation
       parameters:
       - name: opportunity_id

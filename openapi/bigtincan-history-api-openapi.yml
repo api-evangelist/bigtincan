@@ -19,7 +19,7 @@ paths:
     post:
       tags:
       - History
-      summary: Record user interactions.
+      summary: Record user interactions
       description: Record user interactions.
       operationId: post-v1-track-interactions
       parameters:
@@ -44,7 +44,17 @@ paths:
         description: Interaction object
         required: true
 components:
+  responses:
+    '403':
+      description: Forbidden
+    '400':
+      description: Bad request
+    '401':
+      description: Unauthorized
   schemas:
+    As-User:
+      description: Perform action on behalf of this user ID.
+      type: string
     Record_Interaction_Request:
       required:
       - actions
@@ -89,16 +99,6 @@ components:
                 type: string
             type: object
       type: object
-    As-User:
-      description: Perform action on behalf of this user ID.
-      type: string
-  responses:
-    '403':
-      description: Forbidden
-    '401':
-      description: Unauthorized
-    '400':
-      description: Bad request
   securitySchemes:
     oauth2_password:
       type: oauth2

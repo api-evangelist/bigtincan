@@ -19,7 +19,7 @@ paths:
     get:
       tags:
       - Settings
-      summary: Retrieve settings.
+      summary: Retrieve settings
       description: 'Retrieve settings. Includes: story defaults'
       operationId: get-v1-settings
       responses:

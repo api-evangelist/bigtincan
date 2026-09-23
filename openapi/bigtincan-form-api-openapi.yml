@@ -19,7 +19,7 @@ paths:
     get:
       tags:
       - Form
-      summary: Retrieve form categories.
+      summary: Retrieve form categories
       description: Retrieve form categories.
       operationId: get-v1-form-category-all
       parameters:
@@ -59,7 +59,7 @@ paths:
     get:
       tags:
       - Form
-      summary: Retrieve forms.
+      summary: Retrieve forms
       description: Retrieve forms.
       operationId: get-v1-form-all
       parameters:
@@ -105,7 +105,7 @@ paths:
     get:
       tags:
       - Form
-      summary: Get a form.
+      summary: Get a form
       description: Get a form.
       operationId: get-v1-form-get-by-form-id
       parameters:
@@ -138,7 +138,7 @@ paths:
     get:
       tags:
       - Form
-      summary: Retrieve form data.
+      summary: Retrieve form data
       description: Retrieve form data.
       operationId: get-v1-form-data-by-form-id
       parameters:
@@ -193,7 +193,7 @@ paths:
     get:
       tags:
       - Form
-      summary: Get a form file.
+      summary: Get a form file
       description: Get a form file.
       operationId: get-v1-form-get-file-by-form-id-by-submission-key-by-filename
       parameters:
@@ -230,12 +230,12 @@ paths:
           $ref: '#/components/responses/403'
 components:
   responses:
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
     '403':
       description: Forbidden
+    '401':
+      description: Unauthorized
+    '400':
+      description: Bad request
   schemas:
     As-User:
       description: Perform action on behalf of this user ID.

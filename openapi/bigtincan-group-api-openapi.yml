@@ -19,7 +19,7 @@ paths:
     get:
       tags:
       - Group
-      summary: Retrieve groups.
+      summary: Retrieve groups
       description: Retrieve groups.
       operationId: get-v1-group-all
       parameters:
@@ -65,7 +65,7 @@ paths:
     post:
       tags:
       - Group
-      summary: Create a group.
+      summary: Create a group
       description: Create a group.
       operationId: post-v1-group
       parameters:
@@ -93,7 +93,7 @@ paths:
     delete:
       tags:
       - Group
-      summary: Delete a group.
+      summary: Delete a group
       description: Delete a group.
       operationId: delete-v1-admin-groups-by-group-id
       parameters:
@@ -117,7 +117,7 @@ paths:
     patch:
       tags:
       - Group
-      summary: Modify a group.
+      summary: Modify a group
       description: Modify a group.
       operationId: patch-v1-admin-groups-by-group-id
       parameters:
@@ -155,7 +155,7 @@ paths:
     put:
       tags:
       - Group
-      summary: Adds users to a group.
+      summary: Adds users to a group
       description: Adds users to a group.
       operationId: put-v1-group-by-group-id-users
       parameters:
@@ -222,19 +222,19 @@ components:
   responses:
     '404':
       description: Not found
-    '403':
-      description: Forbidden
     '422':
       description: Validation error
-    '401':
-      description: Unauthorized
+    '403':
+      description: Forbidden
     '400':
       description: Bad request
+    '401':
+      description: Unauthorized
   schemas:
     As-User:
       description: Perform action on behalf of this user ID.
       type: string
-    Add_Group_Request:
+    Modify_Group_Request:
       required:
       - name
       properties:
@@ -260,7 +260,7 @@ components:
             type: boolean
             default: false
         type: object
-    Modify_Group_Request:
+    Add_Group_Request:
       required:
       - name
       properties:

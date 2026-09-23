@@ -64,7 +64,6 @@ paths:
       tags:
       - Admin
       summary: Modify a channel
-      description: Modify a channel
       operationId: patch-v1-admin-channels-by-channel-id
       parameters:
       - name: channel_id
@@ -97,7 +96,7 @@ paths:
     delete:
       tags:
       - Admin
-      summary: Delete a group.
+      summary: Delete a group
       description: Delete a group.
       operationId: delete-v1-admin-groups-by-group-id
       parameters:
@@ -121,7 +120,7 @@ paths:
     patch:
       tags:
       - Admin
-      summary: Modify a group.
+      summary: Modify a group
       description: Modify a group.
       operationId: patch-v1-admin-groups-by-group-id
       parameters:
@@ -159,7 +158,7 @@ paths:
     get:
       tags:
       - Admin
-      summary: Get a group.
+      summary: Get a group
       description: Get a group.
       operationId: get-v1-admin-group-get-by-group-id
       parameters:
@@ -211,7 +210,7 @@ paths:
     get:
       tags:
       - Admin
-      summary: Retrieve admin tabs.
+      summary: Retrieve admin tabs
       description: Get all tabs as an admin.
       operationId: get-v1-admin-tabs
       parameters:
@@ -255,7 +254,6 @@ paths:
       tags:
       - Admin
       summary: Modify a tab
-      description: Modify a tab
       operationId: patch-v1-admin-tabs-by-tab-id
       parameters:
       - name: tab_id
@@ -288,7 +286,7 @@ paths:
     get:
       tags:
       - Admin
-      summary: Retrieve groups.
+      summary: Retrieve groups
       description: Retrieve groups.
       operationId: get-v1-1-admin-group-all
       parameters:
@@ -370,7 +368,7 @@ paths:
     get:
       tags:
       - Admin
-      summary: Get a user.
+      summary: Get a user
       description: Get a user.
       operationId: get-v1-1-admin-user-get-by-user-id
       parameters:
@@ -389,7 +387,7 @@ paths:
     get:
       tags:
       - Admin
-      summary: Retrieve users.
+      summary: Retrieve users
       description: Retrieve users.
       operationId: get-v1-3-admin-user-all
       parameters:
@@ -479,18 +477,32 @@ components:
   responses:
     '404':
       description: Not found
-    '403':
-      description: Forbidden
     '422':
       description: Validation error
-    '401':
-      description: Unauthorized
+    '403':
+      description: Forbidden
     '400':
       description: Bad request
+    '401':
+      description: Unauthorized
   schemas:
     As-User:
       description: Perform action on behalf of this user ID.
       type: string
+    Modify_Group_Request:
+      required:
+      - name
+      properties:
+        name:
+          description: Group name
+          type: string
+        external_id:
+          description: Group external id
+          type: string
+        notes:
+          description: Group notes
+          type: string
+      type: object
     Modify_channel_request:
       required:
       - name
@@ -520,20 +532,6 @@ components:
           description: Tab assigned to the new channel
           type: string
           default: date
-      type: object
-    Modify_Group_Request:
-      required:
-      - name
-      properties:
-        name:
-          description: Group name
-          type: string
-        external_id:
-          description: Group external id
-          type: string
-        notes:
-          description: Group notes
-          type: string
       type: object
     Modify_tab_request:
       properties:

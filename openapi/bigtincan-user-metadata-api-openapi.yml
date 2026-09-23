@@ -19,7 +19,7 @@ paths:
     get:
       tags:
       - User Metadata
-      summary: Retrieve all user metadata.
+      summary: Retrieve all user metadata
       description: Retrieve user metadata.
       operationId: get-v1-user-metadata
       parameters:
@@ -45,8 +45,7 @@ paths:
     get:
       tags:
       - User Metadata
-      summary: Retrieve a user's metadata.
-      description: Retrieve a user's metadata
+      summary: Retrieve a user's metadata
       operationId: get-v1-user-by-user-id-metadata
       parameters:
       - name: user_id
@@ -65,7 +64,7 @@ paths:
     patch:
       tags:
       - User Metadata
-      summary: Update user metadata.
+      summary: Update user metadata
       description: Replaces all the existing user metadata with the ones provided in the json body. Wipes a user's assigned metadata with an empty array [ ]
       operationId: patch-v1-user-by-user-id-metadata
       parameters:
@@ -92,12 +91,12 @@ paths:
         required: true
 components:
   responses:
+    '404':
+      description: Not found
     '422':
       description: Validation error
     '401':
       description: Unauthorized
-    '404':
-      description: Not found
   schemas:
     Update_User_Metadata_Request:
       type: array
