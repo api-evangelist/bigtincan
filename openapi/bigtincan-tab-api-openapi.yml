@@ -283,19 +283,34 @@ paths:
         description: Tab object
         required: true
 components:
-  responses:
-    '404':
-      description: Not found
-    '403':
-      description: Forbidden
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
   schemas:
     As-User:
       description: Perform action on behalf of this user ID.
       type: string
+    Modify_tab_request:
+      properties:
+        name:
+          description: Tab name
+          type: string
+        description:
+          description: Tab description
+          type: string
+        cover_art_url:
+          description: Cover Art URL
+          type: string
+          default: ''
+      type: object
+    Add_Tab_Request:
+      required:
+      - name
+      properties:
+        name:
+          description: Tab name
+          type: string
+        description:
+          description: Tab description
+          type: string
+      type: object
     Add_Group_To_Tab_Request:
       type: array
       items:
@@ -311,30 +326,15 @@ components:
             type: integer
             default: 1
         type: object
-    Add_Tab_Request:
-      required:
-      - name
-      properties:
-        name:
-          description: Tab name
-          type: string
-        description:
-          description: Tab description
-          type: string
-      type: object
-    Modify_tab_request:
-      properties:
-        name:
-          description: Tab name
-          type: string
-        description:
-          description: Tab description
-          type: string
-        cover_art_url:
-          description: Cover Art URL
-          type: string
-          default: ''
-      type: object
+  responses:
+    '401':
+      description: Unauthorized
+    '404':
+      description: Not found
+    '400':
+      description: Bad request
+    '403':
+      description: Forbidden
   securitySchemes:
     oauth2_password:
       type: oauth2

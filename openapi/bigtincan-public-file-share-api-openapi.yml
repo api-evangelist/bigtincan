@@ -171,14 +171,14 @@ paths:
           description: File does not exist in the share.
 components:
   responses:
-    '403':
-      description: Forbidden
-    '404':
-      description: Not found
-    '422':
-      description: Validation error
     '401':
       description: Unauthorized
+    '404':
+      description: Not found
+    '403':
+      description: Forbidden
+    '422':
+      description: Validation error
   schemas:
     Create_Share_Request:
       required:

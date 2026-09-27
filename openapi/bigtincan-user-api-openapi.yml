@@ -205,53 +205,18 @@ paths:
         description: User object
         required: true
 components:
-  responses:
-    '404':
-      description: Not found
-    '422':
-      description: Validation error
-    '403':
-      description: Forbidden
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
   schemas:
     As-User:
       description: Perform action on behalf of this user ID.
       type: string
-    Language_Code:
-      type: string
-      default: en-us
-      enum:
-      - en-us
-      - en-gb
-      - zh-cn
-      - zh-hk
-      - fr
-      - it
-      - ja
-      - ko
-      - pt-br
-      - ru
-      - es
-      - th
-      - da
-      - de
-      - 'no'
-      - sv
-      - tr
-      - vi
-    Update_User_Metadata_Request:
-      type: array
-      items:
-        required:
-        - id
-        properties:
-          id:
-            description: User Metadata Value ID
-            type: string
-        type: object
+    Reset_Password_Request:
+      required:
+      - email
+      properties:
+        email:
+          description: Email address
+          type: string
+      type: object
     Change_Password_Request:
       required:
       - currentPassword
@@ -264,13 +229,82 @@ components:
           description: New password
           type: string
       type: object
-    Reset_Password_Request:
+    Add_User_Request:
       required:
+      - first_name
+      - last_name
       - email
       properties:
+        first_name:
+          description: First name
+          type: string
+        last_name:
+          description: Last name
+          type: string
         email:
           description: Email address
           type: string
+        new_password:
+          description: Updated password
+          type: string
+        configuration_bundle:
+          description: Configuration bundle ID
+          type: integer
+        digest_email:
+          description: '0: Never, 1: Daily, 2: Weekly, 3: Monthly'
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+        send_invite:
+          description: Send invitation email
+          type: boolean
+        access:
+          description: 'User access level. 0: User, 2: Structure Admin, 4: Administrator'
+          type: integer
+          enum:
+          - 0
+          - 2
+          - 4
+        job_title:
+          description: Job title
+          type: string
+        can_promote:
+          description: Can promote stories
+          type: boolean
+          default: false
+        lang_code:
+          $ref: '#/components/schemas/Language_Code'
+        user_timezone:
+          description: Timezone
+          type: string
+        status:
+          description: User status
+          type: string
+          default: invited
+        groups:
+          type: array
+          items:
+            properties:
+              id:
+                description: Group ID
+                type: string
+              is_group_admin:
+                description: Is group administrator
+                type: boolean
+                default: false
+            type: object
+        platforms:
+          type: array
+          items:
+            type: string
+            enum:
+            - web
+            - ios
+            - android
+            - windows
       type: object
     Update_User_Request:
       required:
@@ -350,83 +384,49 @@ components:
             - android
             - windows
       type: object
-    Add_User_Request:
-      required:
-      - first_name
-      - last_name
-      - email
-      properties:
-        first_name:
-          description: First name
-          type: string
-        last_name:
-          description: Last name
-          type: string
-        email:
-          description: Email address
-          type: string
-        new_password:
-          description: Updated password
-          type: string
-        configuration_bundle:
-          description: Configuration bundle ID
-          type: integer
-        digest_email:
-          description: '0: Never, 1: Daily, 2: Weekly, 3: Monthly'
-          type: integer
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-        send_invite:
-          description: Send invitation email
-          type: boolean
-        access:
-          description: 'User access level. 0: User, 2: Structure Admin, 4: Administrator'
-          type: integer
-          enum:
-          - 0
-          - 2
-          - 4
-        job_title:
-          description: Job title
-          type: string
-        can_promote:
-          description: Can promote stories
-          type: boolean
-          default: false
-        lang_code:
-          $ref: '#/components/schemas/Language_Code'
-        user_timezone:
-          description: Timezone
-          type: string
-        status:
-          description: User status
-          type: string
-          default: invited
-        groups:
-          type: array
-          items:
-            properties:
-              id:
-                description: Group ID
-                type: string
-              is_group_admin:
-                description: Is group administrator
-                type: boolean
-                default: false
-            type: object
-        platforms:
-          type: array
-          items:
+    Update_User_Metadata_Request:
+      type: array
+      items:
+        required:
+        - id
+        properties:
+          id:
+            description: User Metadata Value ID
             type: string
-            enum:
-            - web
-            - ios
-            - android
-            - windows
-      type: object
+        type: object
+    Language_Code:
+      type: string
+      default: en-us
+      enum:
+      - en-us
+      - en-gb
+      - zh-cn
+      - zh-hk
+      - fr
+      - it
+      - ja
+      - ko
+      - pt-br
+      - ru
+      - es
+      - th
+      - da
+      - de
+      - 'no'
+      - sv
+      - tr
+      - vi
+  responses:
+    '401':
+      description: Unauthorized
+    '404':
+      description: Not found
+    '403':
+      description: Forbidden
+    '400':
+      description: Bad request
+    '422':
+      description: Validation error
   securitySchemes:
     oauth2_password:
       type: oauth2

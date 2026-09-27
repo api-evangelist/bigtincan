@@ -292,21 +292,45 @@ paths:
         description: Channel object
         required: true
 components:
-  responses:
-    '404':
-      description: Not found
-    '422':
-      description: Validation error
-    '403':
-      description: Forbidden
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
   schemas:
+    Add_Personal_Channel_Request:
+      required:
+      - name
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+      type: object
     As-User:
       description: Perform action on behalf of this user ID.
       type: string
+    Get_Channels_Request:
+      required:
+      - channel_ids
+      properties:
+        channel_ids:
+          description: Array of channel ids.
+          type: array
+          items:
+            type: integer
+            example: 1
+      type: object
+    Update_channel_Request:
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+        cover_art_url:
+          description: Cover Art URL
+          type: string
+          default: ''
+      type: object
     Add_Public_Channel_Request:
       required:
       - name
@@ -380,41 +404,17 @@ components:
           type: string
           default: date
       type: object
-    Update_channel_Request:
-      properties:
-        name:
-          description: Channel name
-          type: string
-        description:
-          description: Channel description
-          type: string
-        cover_art_url:
-          description: Cover Art URL
-          type: string
-          default: ''
-      type: object
-    Add_Personal_Channel_Request:
-      required:
-      - name
-      properties:
-        name:
-          description: Channel name
-          type: string
-        description:
-          description: Channel description
-          type: string
-      type: object
-    Get_Channels_Request:
-      required:
-      - channel_ids
-      properties:
-        channel_ids:
-          description: Array of channel ids.
-          type: array
-          items:
-            type: integer
-            example: 1
-      type: object
+  responses:
+    '401':
+      description: Unauthorized
+    '404':
+      description: Not found
+    '403':
+      description: Forbidden
+    '400':
+      description: Bad request
+    '422':
+      description: Validation error
   securitySchemes:
     oauth2_password:
       type: oauth2
