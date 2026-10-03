@@ -93,10 +93,10 @@ components:
   responses:
     '404':
       description: Not found
-    '422':
-      description: Validation error
     '401':
       description: Unauthorized
+    '422':
+      description: Validation error
   schemas:
     Update_User_Metadata_Request:
       type: array
