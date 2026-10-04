@@ -292,21 +292,7 @@ paths:
         description: Channel object
         required: true
 components:
-  responses:
-    '403':
-      description: Forbidden
-    '404':
-      description: Not found
-    '422':
-      description: Validation error
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
   schemas:
-    As-User:
-      description: Perform action on behalf of this user ID.
-      type: string
     Modify_channel_request:
       required:
       - name
@@ -336,6 +322,19 @@ components:
           description: Tab assigned to the new channel
           type: string
           default: date
+      type: object
+    Update_channel_Request:
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+        cover_art_url:
+          description: Cover Art URL
+          type: string
+          default: ''
       type: object
     Add_Public_Channel_Request:
       required:
@@ -391,19 +390,6 @@ components:
           description: Channel description
           type: string
       type: object
-    Update_channel_Request:
-      properties:
-        name:
-          description: Channel name
-          type: string
-        description:
-          description: Channel description
-          type: string
-        cover_art_url:
-          description: Cover Art URL
-          type: string
-          default: ''
-      type: object
     Get_Channels_Request:
       required:
       - channel_ids
@@ -415,6 +401,20 @@ components:
             type: integer
             example: 1
       type: object
+    As-User:
+      description: Perform action on behalf of this user ID.
+      type: string
+  responses:
+    '400':
+      description: Bad request
+    '404':
+      description: Not found
+    '422':
+      description: Validation error
+    '403':
+      description: Forbidden
+    '401':
+      description: Unauthorized
   securitySchemes:
     oauth2_password:
       type: oauth2

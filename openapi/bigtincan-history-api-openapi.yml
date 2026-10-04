@@ -45,10 +45,10 @@ paths:
         required: true
 components:
   responses:
-    '403':
-      description: Forbidden
     '400':
       description: Bad request
+    '403':
+      description: Forbidden
     '401':
       description: Unauthorized
   schemas:

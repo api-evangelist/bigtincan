@@ -566,101 +566,7 @@ paths:
         description: Story object
         required: true
 components:
-  responses:
-    '403':
-      description: Forbidden
-    '422':
-      description: Validation error
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
   schemas:
-    Add_Story_Request:
-      required:
-      - name
-      - channels
-      properties:
-        title:
-          description: Story title
-          type: string
-        channels:
-          description: Channels
-          type: array
-          items:
-            properties:
-              id:
-                description: Channel ID
-                type: string
-              is_alias:
-                description: Channel Alias
-                type: boolean
-                default: false
-            type: object
-        description:
-          type: string
-        excerpt:
-          type: string
-        new_files:
-          description: Files
-          type: array
-          items:
-            $ref: '#/components/schemas/Story_File_Request_Object'
-            type: object
-        events:
-          description: Events
-          type: array
-          items:
-            $ref: '#/components/schemas/Story_Event_Request_Object'
-            type: object
-        tags:
-          description: Tag objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Story_Tag_Request_Object'
-            type: object
-        sharing_bitmask:
-          type: integer
-        is_password_protected:
-          type: boolean
-          default: false
-        can_annotate:
-          type: boolean
-          default: true
-        is_notifications_enabled:
-          type: boolean
-          default: true
-        is_publicly_accessible:
-          type: boolean
-          default: false
-        quicklink_url:
-          type: string
-        quicklink_fallback:
-          type: string
-        quickfile:
-          type: boolean
-          default: false
-        cover_art_url:
-          type: string
-          default: ''
-        expires_at:
-          type: integer
-          default: 0
-        expires_at_tz:
-          type: string
-          default: ''
-      type: object
-    Add_Comment_Request:
-      required:
-      - comment
-      properties:
-        comment:
-          description: Comment
-          type: string
-        reply_to_id:
-          description: Reply to comment ID
-          type: string
-      type: object
     Story_Event_Request_Object:
       required:
       - title
@@ -685,9 +591,59 @@ components:
           description: All day event
           type: boolean
       type: object
-    As-User:
-      description: Perform action on behalf of this user ID.
+    Language_Code:
       type: string
+      default: en-us
+      enum:
+      - en-us
+      - en-gb
+      - zh-cn
+      - zh-hk
+      - fr
+      - it
+      - ja
+      - ko
+      - pt-br
+      - ru
+      - es
+      - th
+      - da
+      - de
+      - 'no'
+      - sv
+      - tr
+      - vi
+    Story_File_Request_Object:
+      required:
+      - filename
+      - description
+      - share_status
+      properties:
+        filename:
+          type: string
+        description:
+          type: string
+        share_status:
+          type: string
+          enum:
+          - mandatory
+          - optional
+          - blocked
+        allow_pitch_builder:
+          description: Allow file to be added to pitch builder.
+          type: boolean
+          default: true
+        prevent_editing:
+          description: Prevent editing within pitch builder. allow_pitch_builder needs to be set to true to set this value to true.
+          type: boolean
+          default: false
+        tags:
+          description: Tag objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Tag_Request_Object'
+            type: object
+      type: object
     Story_File_Edit_Request_Object:
       required:
       - filename
@@ -721,6 +677,17 @@ components:
             $ref: '#/components/schemas/Story_Tag_Request_Object'
             type: object
       type: object
+    Add_Comment_Request:
+      required:
+      - comment
+      properties:
+        comment:
+          description: Comment
+          type: string
+        reply_to_id:
+          description: Reply to comment ID
+          type: string
+      type: object
     Share_Story_Request:
       required:
       - subject
@@ -749,13 +716,6 @@ components:
           type: array
           items:
             type: string
-      type: object
-    Story_Tag_Request_Object:
-      required:
-      - name
-      properties:
-        name:
-          type: string
       type: object
     Update_Story_Request:
       required:
@@ -850,59 +810,99 @@ components:
           type: string
           default: ''
       type: object
-    Story_File_Request_Object:
+    Add_Story_Request:
       required:
-      - filename
-      - description
-      - share_status
+      - name
+      - channels
       properties:
-        filename:
+        title:
+          description: Story title
           type: string
+        channels:
+          description: Channels
+          type: array
+          items:
+            properties:
+              id:
+                description: Channel ID
+                type: string
+              is_alias:
+                description: Channel Alias
+                type: boolean
+                default: false
+            type: object
         description:
           type: string
-        share_status:
+        excerpt:
           type: string
-          enum:
-          - mandatory
-          - optional
-          - blocked
-        allow_pitch_builder:
-          description: Allow file to be added to pitch builder.
-          type: boolean
-          default: true
-        prevent_editing:
-          description: Prevent editing within pitch builder. allow_pitch_builder needs to be set to true to set this value to true.
-          type: boolean
-          default: false
+        new_files:
+          description: Files
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_File_Request_Object'
+            type: object
+        events:
+          description: Events
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Event_Request_Object'
+            type: object
         tags:
           description: Tag objects
           type: array
           items:
             $ref: '#/components/schemas/Story_Tag_Request_Object'
             type: object
+        sharing_bitmask:
+          type: integer
+        is_password_protected:
+          type: boolean
+          default: false
+        can_annotate:
+          type: boolean
+          default: true
+        is_notifications_enabled:
+          type: boolean
+          default: true
+        is_publicly_accessible:
+          type: boolean
+          default: false
+        quicklink_url:
+          type: string
+        quicklink_fallback:
+          type: string
+        quickfile:
+          type: boolean
+          default: false
+        cover_art_url:
+          type: string
+          default: ''
+        expires_at:
+          type: integer
+          default: 0
+        expires_at_tz:
+          type: string
+          default: ''
       type: object
-    Language_Code:
+    As-User:
+      description: Perform action on behalf of this user ID.
       type: string
-      default: en-us
-      enum:
-      - en-us
-      - en-gb
-      - zh-cn
-      - zh-hk
-      - fr
-      - it
-      - ja
-      - ko
-      - pt-br
-      - ru
-      - es
-      - th
-      - da
-      - de
-      - 'no'
-      - sv
-      - tr
-      - vi
+    Story_Tag_Request_Object:
+      required:
+      - name
+      properties:
+        name:
+          type: string
+      type: object
+  responses:
+    '400':
+      description: Bad request
+    '422':
+      description: Validation error
+    '403':
+      description: Forbidden
+    '401':
+      description: Unauthorized
   securitySchemes:
     oauth2_password:
       type: oauth2

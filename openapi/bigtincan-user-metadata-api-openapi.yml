@@ -90,13 +90,6 @@ paths:
               $ref: '#/components/schemas/Update_User_Metadata_Request'
         required: true
 components:
-  responses:
-    '404':
-      description: Not found
-    '401':
-      description: Unauthorized
-    '422':
-      description: Validation error
   schemas:
     Update_User_Metadata_Request:
       type: array
@@ -108,6 +101,13 @@ components:
             description: User Metadata Value ID
             type: string
         type: object
+  responses:
+    '422':
+      description: Validation error
+    '401':
+      description: Unauthorized
+    '404':
+      description: Not found
   securitySchemes:
     oauth2_password:
       type: oauth2

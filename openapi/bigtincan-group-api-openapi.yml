@@ -219,22 +219,8 @@ paths:
         '422':
           $ref: '#/components/responses/422'
 components:
-  responses:
-    '403':
-      description: Forbidden
-    '404':
-      description: Not found
-    '422':
-      description: Validation error
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
   schemas:
-    As-User:
-      description: Perform action on behalf of this user ID.
-      type: string
-    Add_Group_Request:
+    Modify_Group_Request:
       required:
       - name
       properties:
@@ -260,7 +246,10 @@ components:
             type: boolean
             default: false
         type: object
-    Modify_Group_Request:
+    As-User:
+      description: Perform action on behalf of this user ID.
+      type: string
+    Add_Group_Request:
       required:
       - name
       properties:
@@ -274,6 +263,17 @@ components:
           description: Group notes
           type: string
       type: object
+  responses:
+    '400':
+      description: Bad request
+    '404':
+      description: Not found
+    '422':
+      description: Validation error
+    '403':
+      description: Forbidden
+    '401':
+      description: Unauthorized
   securitySchemes:
     oauth2_password:
       type: oauth2

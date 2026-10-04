@@ -205,21 +205,41 @@ paths:
         description: User object
         required: true
 components:
-  responses:
-    '403':
-      description: Forbidden
-    '404':
-      description: Not found
-    '422':
-      description: Validation error
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
   schemas:
-    As-User:
-      description: Perform action on behalf of this user ID.
+    Change_Password_Request:
+      required:
+      - currentPassword
+      - newPassword
+      properties:
+        currentPassword:
+          description: Current password
+          type: string
+        newPassword:
+          description: New password
+          type: string
+      type: object
+    Language_Code:
       type: string
+      default: en-us
+      enum:
+      - en-us
+      - en-gb
+      - zh-cn
+      - zh-hk
+      - fr
+      - it
+      - ja
+      - ko
+      - pt-br
+      - ru
+      - es
+      - th
+      - da
+      - de
+      - 'no'
+      - sv
+      - tr
+      - vi
     Update_User_Request:
       required:
       - id
@@ -298,18 +318,6 @@ components:
             - android
             - windows
       type: object
-    Change_Password_Request:
-      required:
-      - currentPassword
-      - newPassword
-      properties:
-        currentPassword:
-          description: Current password
-          type: string
-        newPassword:
-          description: New password
-          type: string
-      type: object
     Add_User_Request:
       required:
       - first_name
@@ -387,36 +395,9 @@ components:
             - android
             - windows
       type: object
-    Reset_Password_Request:
-      required:
-      - email
-      properties:
-        email:
-          description: Email address
-          type: string
-      type: object
-    Language_Code:
+    As-User:
+      description: Perform action on behalf of this user ID.
       type: string
-      default: en-us
-      enum:
-      - en-us
-      - en-gb
-      - zh-cn
-      - zh-hk
-      - fr
-      - it
-      - ja
-      - ko
-      - pt-br
-      - ru
-      - es
-      - th
-      - da
-      - de
-      - 'no'
-      - sv
-      - tr
-      - vi
     Update_User_Metadata_Request:
       type: array
       items:
@@ -427,6 +408,25 @@ components:
             description: User Metadata Value ID
             type: string
         type: object
+    Reset_Password_Request:
+      required:
+      - email
+      properties:
+        email:
+          description: Email address
+          type: string
+      type: object
+  responses:
+    '404':
+      description: Not found
+    '400':
+      description: Bad request
+    '422':
+      description: Validation error
+    '403':
+      description: Forbidden
+    '401':
+      description: Unauthorized
   securitySchemes:
     oauth2_password:
       type: oauth2
