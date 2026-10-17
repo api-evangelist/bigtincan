@@ -220,6 +220,20 @@ paths:
           $ref: '#/components/responses/422'
 components:
   schemas:
+    Add_Group_Request:
+      required:
+      - name
+      properties:
+        name:
+          description: Group name
+          type: string
+        external_id:
+          description: Group external id
+          type: string
+        notes:
+          description: Group notes
+          type: string
+      type: object
     Modify_Group_Request:
       required:
       - name
@@ -249,29 +263,15 @@ components:
     As-User:
       description: Perform action on behalf of this user ID.
       type: string
-    Add_Group_Request:
-      required:
-      - name
-      properties:
-        name:
-          description: Group name
-          type: string
-        external_id:
-          description: Group external id
-          type: string
-        notes:
-          description: Group notes
-          type: string
-      type: object
   responses:
-    '400':
-      description: Bad request
-    '404':
-      description: Not found
     '422':
       description: Validation error
+    '404':
+      description: Not found
     '403':
       description: Forbidden
+    '400':
+      description: Bad request
     '401':
       description: Unauthorized
   securitySchemes:

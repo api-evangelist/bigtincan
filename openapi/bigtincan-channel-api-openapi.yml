@@ -293,49 +293,6 @@ paths:
         required: true
 components:
   schemas:
-    Modify_channel_request:
-      required:
-      - name
-      properties:
-        name:
-          description: Channel name
-          type: string
-        description:
-          description: Channel description
-          type: string
-        tabs:
-          description: tab to be assigned to the new channel
-          type: array
-          items:
-            required:
-            - id
-            properties:
-              id:
-                description: Tab ID
-                type: string
-            type: object
-        cover_art_url:
-          description: Cover Art URL
-          type: string
-          default: ''
-        default_order:
-          description: Tab assigned to the new channel
-          type: string
-          default: date
-      type: object
-    Update_channel_Request:
-      properties:
-        name:
-          description: Channel name
-          type: string
-        description:
-          description: Channel description
-          type: string
-        cover_art_url:
-          description: Cover Art URL
-          type: string
-          default: ''
-      type: object
     Add_Public_Channel_Request:
       required:
       - name
@@ -379,17 +336,6 @@ components:
                 - 3
             type: object
       type: object
-    Add_Personal_Channel_Request:
-      required:
-      - name
-      properties:
-        name:
-          description: Channel name
-          type: string
-        description:
-          description: Channel description
-          type: string
-      type: object
     Get_Channels_Request:
       required:
       - channel_ids
@@ -401,18 +347,72 @@ components:
             type: integer
             example: 1
       type: object
+    Add_Personal_Channel_Request:
+      required:
+      - name
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+      type: object
     As-User:
       description: Perform action on behalf of this user ID.
       type: string
+    Modify_channel_request:
+      required:
+      - name
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+        tabs:
+          description: tab to be assigned to the new channel
+          type: array
+          items:
+            required:
+            - id
+            properties:
+              id:
+                description: Tab ID
+                type: string
+            type: object
+        cover_art_url:
+          description: Cover Art URL
+          type: string
+          default: ''
+        default_order:
+          description: Tab assigned to the new channel
+          type: string
+          default: date
+      type: object
+    Update_channel_Request:
+      properties:
+        name:
+          description: Channel name
+          type: string
+        description:
+          description: Channel description
+          type: string
+        cover_art_url:
+          description: Cover Art URL
+          type: string
+          default: ''
+      type: object
   responses:
-    '400':
-      description: Bad request
-    '404':
-      description: Not found
     '422':
       description: Validation error
+    '404':
+      description: Not found
     '403':
       description: Forbidden
+    '400':
+      description: Bad request
     '401':
       description: Unauthorized
   securitySchemes:

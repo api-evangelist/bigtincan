@@ -119,12 +119,12 @@ paths:
           $ref: '#/components/responses/403'
 components:
   responses:
-    '400':
-      description: Bad request
     '404':
       description: Not found
     '403':
       description: Forbidden
+    '400':
+      description: Bad request
     '401':
       description: Unauthorized
   schemas:

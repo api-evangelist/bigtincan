@@ -567,116 +567,6 @@ paths:
         required: true
 components:
   schemas:
-    Story_Event_Request_Object:
-      required:
-      - title
-      - tz
-      - start
-      - end
-      - all_day
-      properties:
-        id:
-          type: string
-        title:
-          type: string
-        tz:
-          type: string
-        start:
-          description: Unix timestamp
-          type: integer
-        end:
-          description: Unix timestamp
-          type: integer
-        all_day:
-          description: All day event
-          type: boolean
-      type: object
-    Language_Code:
-      type: string
-      default: en-us
-      enum:
-      - en-us
-      - en-gb
-      - zh-cn
-      - zh-hk
-      - fr
-      - it
-      - ja
-      - ko
-      - pt-br
-      - ru
-      - es
-      - th
-      - da
-      - de
-      - 'no'
-      - sv
-      - tr
-      - vi
-    Story_File_Request_Object:
-      required:
-      - filename
-      - description
-      - share_status
-      properties:
-        filename:
-          type: string
-        description:
-          type: string
-        share_status:
-          type: string
-          enum:
-          - mandatory
-          - optional
-          - blocked
-        allow_pitch_builder:
-          description: Allow file to be added to pitch builder.
-          type: boolean
-          default: true
-        prevent_editing:
-          description: Prevent editing within pitch builder. allow_pitch_builder needs to be set to true to set this value to true.
-          type: boolean
-          default: false
-        tags:
-          description: Tag objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Story_Tag_Request_Object'
-            type: object
-      type: object
-    Story_File_Edit_Request_Object:
-      required:
-      - filename
-      - description
-      - share_status
-      properties:
-        filename:
-          type: string
-        description:
-          type: string
-        share_status:
-          type: string
-          enum:
-          - mandatory
-          - optional
-          - blocked
-        file_group:
-          type: string
-        allow_pitch_builder:
-          description: Allow file to be added to pitch builder.
-          type: boolean
-          default: true
-        prevent_editing:
-          description: Prevent editing within pitch builder. allow_pitch_builder needs to be set to true to set this value to true.
-          type: boolean
-          default: false
-        tags:
-          description: Tag objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Story_Tag_Request_Object'
-            type: object
-      type: object
     Add_Comment_Request:
       required:
       - comment
@@ -687,35 +577,6 @@ components:
         reply_to_id:
           description: Reply to comment ID
           type: string
-      type: object
-    Share_Story_Request:
-      required:
-      - subject
-      - emails
-      properties:
-        subject:
-          description: Share subject
-          type: string
-        note:
-          description: Share description
-          type: string
-        lang_code:
-          $ref: '#/components/schemas/Language_Code'
-        emails:
-          description: Email addresses
-          type: array
-          items:
-            type: string
-        cc_emails:
-          description: CC email addresses
-          type: array
-          items:
-            type: string
-        file_id:
-          description: File IDs
-          type: array
-          items:
-            type: string
       type: object
     Update_Story_Request:
       required:
@@ -810,6 +671,52 @@ components:
           type: string
           default: ''
       type: object
+    Story_Event_Request_Object:
+      required:
+      - title
+      - tz
+      - start
+      - end
+      - all_day
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        tz:
+          type: string
+        start:
+          description: Unix timestamp
+          type: integer
+        end:
+          description: Unix timestamp
+          type: integer
+        all_day:
+          description: All day event
+          type: boolean
+      type: object
+    Language_Code:
+      type: string
+      default: en-us
+      enum:
+      - en-us
+      - en-gb
+      - zh-cn
+      - zh-hk
+      - fr
+      - it
+      - ja
+      - ko
+      - pt-br
+      - ru
+      - es
+      - th
+      - da
+      - de
+      - 'no'
+      - sv
+      - tr
+      - vi
     Add_Story_Request:
       required:
       - name
@@ -884,9 +791,73 @@ components:
           type: string
           default: ''
       type: object
+    Story_File_Request_Object:
+      required:
+      - filename
+      - description
+      - share_status
+      properties:
+        filename:
+          type: string
+        description:
+          type: string
+        share_status:
+          type: string
+          enum:
+          - mandatory
+          - optional
+          - blocked
+        allow_pitch_builder:
+          description: Allow file to be added to pitch builder.
+          type: boolean
+          default: true
+        prevent_editing:
+          description: Prevent editing within pitch builder. allow_pitch_builder needs to be set to true to set this value to true.
+          type: boolean
+          default: false
+        tags:
+          description: Tag objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Tag_Request_Object'
+            type: object
+      type: object
     As-User:
       description: Perform action on behalf of this user ID.
       type: string
+    Story_File_Edit_Request_Object:
+      required:
+      - filename
+      - description
+      - share_status
+      properties:
+        filename:
+          type: string
+        description:
+          type: string
+        share_status:
+          type: string
+          enum:
+          - mandatory
+          - optional
+          - blocked
+        file_group:
+          type: string
+        allow_pitch_builder:
+          description: Allow file to be added to pitch builder.
+          type: boolean
+          default: true
+        prevent_editing:
+          description: Prevent editing within pitch builder. allow_pitch_builder needs to be set to true to set this value to true.
+          type: boolean
+          default: false
+        tags:
+          description: Tag objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Story_Tag_Request_Object'
+            type: object
+      type: object
     Story_Tag_Request_Object:
       required:
       - name
@@ -894,13 +865,42 @@ components:
         name:
           type: string
       type: object
+    Share_Story_Request:
+      required:
+      - subject
+      - emails
+      properties:
+        subject:
+          description: Share subject
+          type: string
+        note:
+          description: Share description
+          type: string
+        lang_code:
+          $ref: '#/components/schemas/Language_Code'
+        emails:
+          description: Email addresses
+          type: array
+          items:
+            type: string
+        cc_emails:
+          description: CC email addresses
+          type: array
+          items:
+            type: string
+        file_id:
+          description: File IDs
+          type: array
+          items:
+            type: string
+      type: object
   responses:
-    '400':
-      description: Bad request
     '422':
       description: Validation error
     '403':
       description: Forbidden
+    '400':
+      description: Bad request
     '401':
       description: Unauthorized
   securitySchemes:

@@ -283,15 +283,6 @@ paths:
         description: Tab object
         required: true
 components:
-  responses:
-    '400':
-      description: Bad request
-    '404':
-      description: Not found
-    '403':
-      description: Forbidden
-    '401':
-      description: Unauthorized
   schemas:
     Add_Group_To_Tab_Request:
       type: array
@@ -308,17 +299,6 @@ components:
             type: integer
             default: 1
         type: object
-    Add_Tab_Request:
-      required:
-      - name
-      properties:
-        name:
-          description: Tab name
-          type: string
-        description:
-          description: Tab description
-          type: string
-      type: object
     Modify_tab_request:
       properties:
         name:
@@ -332,9 +312,29 @@ components:
           type: string
           default: ''
       type: object
+    Add_Tab_Request:
+      required:
+      - name
+      properties:
+        name:
+          description: Tab name
+          type: string
+        description:
+          description: Tab description
+          type: string
+      type: object
     As-User:
       description: Perform action on behalf of this user ID.
       type: string
+  responses:
+    '404':
+      description: Not found
+    '403':
+      description: Forbidden
+    '400':
+      description: Bad request
+    '401':
+      description: Unauthorized
   securitySchemes:
     oauth2_password:
       type: oauth2

@@ -170,6 +170,15 @@ paths:
         '422':
           description: File does not exist in the share.
 components:
+  responses:
+    '422':
+      description: Validation error
+    '404':
+      description: Not found
+    '403':
+      description: Forbidden
+    '401':
+      description: Unauthorized
   schemas:
     Create_Share_Request:
       required:
@@ -183,15 +192,6 @@ components:
           type: string
           example: '2019-07-17T06:02:43+00:00'
       type: object
-  responses:
-    '404':
-      description: Not found
-    '422':
-      description: Validation error
-    '403':
-      description: Forbidden
-    '401':
-      description: Unauthorized
   securitySchemes:
     oauth2_password:
       type: oauth2
