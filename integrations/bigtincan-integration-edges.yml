@@ -1,5 +1,13 @@
-generated: '2026-10-13'
+generated: '2026-10-21'
 method: searched
+source:
+- microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+- slack/integrations/slack-integration-edges.yml
+- zoom/integrations/zoom-integration-edges.yml
+- https://zapier.com/apps/bigtincan/integrations
+- https://n8n.io/integrations/bigtincan/
+- https://composio.dev/toolkits/bigtincan
+- https://monid.ai/tools/bigtincan
 checked:
 - https://api.nuget.org/v3
 - https://azuremarketplace.microsoft.com/
@@ -12,6 +20,18 @@ checked:
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
 - slack/integrations/slack-integration-edges.yml
 - zoom/integrations/zoom-integration-edges.yml
+- https://composio.dev/toolkits/bigtincan
+- https://monid.ai/tools/bigtincan
+- https://n8n.io/integrations/bigtincan/
+- https://zapier.com/apps/bigtincan/integrations
+- https://api.appexchange.salesforce.com/recommendations/v3/listings?type=apps
+- https://api.appexchange.salesforce.com/recommendations/v3/listings?type=consultants
+- https://appexchange.salesforce.com/
+- https://appexchange.salesforce.com/consulting
+- https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_overview.htm
+- https://slack.com/marketplace
+- salesforce/integrations/salesforce-integration-edges.yml
+summary: null
 marketplace_apps: []
 edges:
 - partner_name: Microsoft Azure Marketplace
@@ -29,6 +49,91 @@ edges:
   seller_name: BIGTINCAN MOBILE PTY LTD
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@gs-libs/bridge
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@gs-libs/bridge'
+      version: 1.17.0
+      released: '2025-08-14'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@gs-libs/bridge
+      repo_leg: domain:bigtincan.com
+      publisher_leg: email:bigtincan.com
+      matched_by: domain
+    - name: '@gs-libs/hooks'
+      version: 1.4.0
+      released: '2025-07-01'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@gs-libs/hooks
+      repo_leg: domain:bigtincan.com
+      publisher_leg: email:bigtincan.com
+      matched_by: domain
+    - name: btca-client
+      version: 2.0.4
+      released: '2022-04-12'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/btca-client
+      repo_leg: domain:bigtincan.com
+      publisher_leg: email:bigtincan.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
+- partner_name: Salesforce AppExchange Security Review
+  partner: salesforce
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_overview.htm
+  category: AppExchange security-reviewed publisher
+  contract_reference:
+    register: Salesforce AppExchange public listings (listing JSON) under the AgentExchange Security Review requirement
+    standard: Salesforce AppExchange Security Review
+    spec_file: null
+    role: security-reviewed-publisher
+    registered_name: Bigtincan
+    register_country: null
+    matched_domain: bigtincan.com
+    matched_by: domain
+    identity_source: the listing's own publisher.website (no lookup)
+    certified_products:
+    - product: Salesforce package (security-reviewed)
+      product_type: force/package
+      certifier: Salesforce (AgentExchange / AppExchange Security Review)
+      listings: 1
+      example_listing: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N4V00000Glvb8UAB
+      latest_approval: '2021-11-10'
+      lapsed: false
+      lapsed_note: the listing JSON prints solution.securityReview.approvalDate on a LIVE public listing; Salesforce
+        publishes no expiry, so no entry is marked lapsed (latest_approval is context)
+    signal_note: certified_products = ONE entry per product type (listing technology) with a printed securityReview.approvalDate,
+      never per listing or version; a listing with no approval date reads nothing; listing counts / versions are
+      context
+    requirement: https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_overview.htm
+    detected_by: sweep-salesforce-appexchange.py
+    detected: '2026-10-21'
+  detected_by: sweep-salesforce-appexchange.py
+  first_seen: '2026-10-21'
 - partner_name: Microsoft Teams (own)
   partner: microsoft-teams
   partner_match: mirror
@@ -82,55 +187,22 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Zoom app
-- partner_name: npm registry
-  partner: npm
-  partner_match: register
-  type: register
-  direction: provider-built
-  category: official SDK (JavaScript/TypeScript)
-  evidence: https://www.npmjs.com/package/@gs-libs/bridge
-  channel: package-registry
-  relationship: distribution-channel
-  contract_reference:
-    register: npm registry (public registry JSON)
-    spec_file: null
-    language: JavaScript/TypeScript
-    packages:
-    - name: '@gs-libs/bridge'
-      version: 1.17.0
-      released: '2025-08-14'
-      released_field: modified
-      lapsed: false
-      page: https://www.npmjs.com/package/@gs-libs/bridge
-      repo_leg: domain:bigtincan.com
-      publisher_leg: email:bigtincan.com
-      matched_by: domain
-    - name: '@gs-libs/hooks'
-      version: 1.4.0
-      released: '2025-07-01'
-      released_field: modified
-      lapsed: false
-      page: https://www.npmjs.com/package/@gs-libs/hooks
-      repo_leg: domain:bigtincan.com
-      publisher_leg: email:bigtincan.com
-      matched_by: domain
-    - name: btca-client
-      version: 2.0.4
-      released: '2022-04-12'
-      released_field: modified
-      lapsed: true
-      page: https://www.npmjs.com/package/btca-client
-      repo_leg: domain:bigtincan.com
-      publisher_leg: email:bigtincan.com
-      matched_by: domain
-    current: true
-    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
-      24 months'
-    detected_by: sweep-official-sdks.py
-    detected: '2026-10-18'
-  detected_by: sweep-official-sdks.py
-  first_seen: '2026-10-18'
-source:
-- microsoft-teams/integrations/microsoft-teams-integration-edges.yml
-- slack/integrations/slack-integration-edges.yml
-- zoom/integrations/zoom-integration-edges.yml
+- partner_name: Salesforce (own)
+  partner: salesforce
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N300000016balEAA
+  mirror_of: salesforce/integrations/salesforce-integration-edges.yml
+  apps:
+  - Brainshark for Salesforce
+  - Bigtincan for Salesforce
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: productivity
+templates: []
