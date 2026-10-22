@@ -475,19 +475,6 @@ paths:
           $ref: '#/components/responses/422'
 components:
   schemas:
-    Modify_tab_request:
-      properties:
-        name:
-          description: Tab name
-          type: string
-        description:
-          description: Tab description
-          type: string
-        cover_art_url:
-          description: Cover Art URL
-          type: string
-          default: ''
-      type: object
     Modify_Group_Request:
       required:
       - name
@@ -502,9 +489,6 @@ components:
           description: Group notes
           type: string
       type: object
-    As-User:
-      description: Perform action on behalf of this user ID.
-      type: string
     Modify_channel_request:
       required:
       - name
@@ -535,17 +519,33 @@ components:
           type: string
           default: date
       type: object
+    Modify_tab_request:
+      properties:
+        name:
+          description: Tab name
+          type: string
+        description:
+          description: Tab description
+          type: string
+        cover_art_url:
+          description: Cover Art URL
+          type: string
+          default: ''
+      type: object
+    As-User:
+      description: Perform action on behalf of this user ID.
+      type: string
   responses:
-    '422':
-      description: Validation error
+    '401':
+      description: Unauthorized
     '404':
       description: Not found
+    '422':
+      description: Validation error
     '403':
       description: Forbidden
     '400':
       description: Bad request
-    '401':
-      description: Unauthorized
   securitySchemes:
     oauth2_password:
       type: oauth2

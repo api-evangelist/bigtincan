@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bigtincan/main/json-schema/bigtincan-share-story-request-schema.json",
+  "title": "Share_Story_Request",
+  "x-generated": "2026-10-21",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/bigtincan-story-api-openapi.yml#/components/schemas/Share_Story_Request",
+  "required": [
+    "subject",
+    "emails"
+  ],
+  "properties": {
+    "subject": {
+      "description": "Share subject",
+      "type": "string"
+    },
+    "note": {
+      "description": "Share description",
+      "type": "string"
+    },
+    "lang_code": {
+      "$ref": "#/$defs/Language_Code"
+    },
+    "emails": {
+      "description": "Email addresses",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cc_emails": {
+      "description": "CC email addresses",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "file_id": {
+      "description": "File IDs",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "type": "object",
+  "$defs": {
+    "Language_Code": {
+      "type": "string",
+      "default": "en-us",
+      "enum": [
+        "en-us",
+        "en-gb",
+        "zh-cn",
+        "zh-hk",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt-br",
+        "ru",
+        "es",
+        "th",
+        "da",
+        "de",
+        "no",
+        "sv",
+        "tr",
+        "vi"
+      ]
+    }
+  }
+}

@@ -73,6 +73,7 @@ sorting_and_filtering:
       description: Enumerated per-operation, e.g. story | files | all on /v1/bookmarks
   note: Enumerations are declared in-spec per operation; there is no shared filter grammar.
 idempotency:
+  coverage: none
   supported: false
   header: null
   description: >-
@@ -173,3 +174,32 @@ metadata:
     User metadata is a first-class surface — GET /v1/user-metadata,
     GET/PATCH /v1/user/{user_id}/metadata — rather than a generic metadata bag
     on every object.
+reversibility:
+  state: documented
+  method: derived
+  source: openapi/_original/bigtincan-hub-api-swagger.json
+  generated: '2026-10-21'
+  note: >-
+    No reversal operation (restore, undo, unarchive, undelete) and no reversal
+    window is declared anywhere in the Swagger 2.0 contract or found in the docs.
+    The only take-back paths are inverse membership operations, which add back
+    what a remove took away; none states a window. Deletes of channels, tabs,
+    groups, shares and users, and story archive, have no documented restore
+    operation, so an agent must treat them as irreversible through the API.
+  surfaces:
+    - write: put-v1-shares-by-share-id-files-by-file-id
+      reversal: delete-v1-shares-by-share-id-files-by-file-id
+      window: null
+    - write: put-v1-group-by-group-id-users
+      reversal: delete-v1-admin-groups-by-group-id-users-by-user-id
+      window: null
+    - write: put-v1-tabs-by-tab-id-channels-by-channel-id-groups
+      reversal: delete-v1-tabs-by-tab-id-channels-by-channel-id-groups-by-group-id
+      window: null
+  irreversible:
+    - delete-v1-channel-by-channel-id
+    - delete-v1-tab-by-tab-id
+    - delete-v1-admin-groups-by-group-id
+    - delete-v1-shares-by-share-id
+    - delete-v1-user-by-user-id
+    - delete-v1-story-archive-by-revision-id

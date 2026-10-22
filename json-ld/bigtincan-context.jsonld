@@ -1,0 +1,313 @@
+{
+  "@context": {
+    "@vocab": "https://bigtincan.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "bigtincan": "https://bigtincan.com/schema#",
+    "Modify_tab_request": "bigtincan:Modify_tab_request",
+    "name": {
+      "@id": "bigtincan:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "bigtincan:description",
+      "@type": "xsd:string"
+    },
+    "cover_art_url": {
+      "@id": "bigtincan:cover_art_url",
+      "@type": "xsd:string"
+    },
+    "Modify_Group_Request": "bigtincan:Modify_Group_Request",
+    "external_id": {
+      "@id": "bigtincan:external_id",
+      "@type": "xsd:string"
+    },
+    "notes": {
+      "@id": "bigtincan:notes",
+      "@type": "xsd:string"
+    },
+    "Modify_channel_request": "bigtincan:Modify_channel_request",
+    "tabs": {
+      "@id": "bigtincan:tabs",
+      "@container": "@list"
+    },
+    "default_order": {
+      "@id": "bigtincan:default_order",
+      "@type": "xsd:string"
+    },
+    "Add_Public_Channel_Request": "bigtincan:Add_Public_Channel_Request",
+    "is_hidden": {
+      "@id": "bigtincan:is_hidden",
+      "@type": "xsd:boolean"
+    },
+    "tab_id": {
+      "@id": "bigtincan:tab_id",
+      "@type": "xsd:string"
+    },
+    "groups": {
+      "@id": "bigtincan:groups",
+      "@container": "@list"
+    },
+    "Get_Channels_Request": "bigtincan:Get_Channels_Request",
+    "channel_ids": {
+      "@id": "bigtincan:channel_ids",
+      "@container": "@list"
+    },
+    "Add_Personal_Channel_Request": "bigtincan:Add_Personal_Channel_Request",
+    "Update_channel_Request": "bigtincan:Update_channel_Request",
+    "Add_Group_Request": "bigtincan:Add_Group_Request",
+    "Record_Interaction_Request": "bigtincan:Record_Interaction_Request",
+    "eventid": {
+      "@id": "bigtincan:eventid",
+      "@type": "xsd:string"
+    },
+    "actions": {
+      "@id": "bigtincan:actions",
+      "@container": "@list"
+    },
+    "Get_links_from_URN": "bigtincan:Get_links_from_URN",
+    "urn": {
+      "@id": "bigtincan:urn",
+      "@type": "xsd:string"
+    },
+    "Create_Share_Request": "bigtincan:Create_Share_Request",
+    "allow_downloads": {
+      "@id": "bigtincan:allow_downloads",
+      "@type": "xsd:boolean"
+    },
+    "expires_at": {
+      "@id": "bigtincan:expires_at",
+      "@type": "xsd:string"
+    },
+    "Add_Comment_Request": "bigtincan:Add_Comment_Request",
+    "comment": {
+      "@id": "bigtincan:comment",
+      "@type": "xsd:string"
+    },
+    "reply_to_id": {
+      "@id": "bigtincan:reply_to_id",
+      "@type": "xsd:string"
+    },
+    "Update_Story_Request": "bigtincan:Update_Story_Request",
+    "title": {
+      "@id": "bigtincan:title",
+      "@type": "xsd:string"
+    },
+    "channels": {
+      "@id": "bigtincan:channels",
+      "@container": "@list"
+    },
+    "excerpt": {
+      "@id": "bigtincan:excerpt",
+      "@type": "xsd:string"
+    },
+    "new_files": {
+      "@id": "bigtincan:new_files",
+      "@container": "@list"
+    },
+    "files": {
+      "@id": "bigtincan:files",
+      "@container": "@list"
+    },
+    "append_files": {
+      "@id": "bigtincan:append_files",
+      "@container": "@list"
+    },
+    "remove_files": {
+      "@id": "bigtincan:remove_files",
+      "@container": "@list"
+    },
+    "events": {
+      "@id": "bigtincan:events",
+      "@container": "@list"
+    },
+    "tags": {
+      "@id": "bigtincan:tags",
+      "@container": "@list"
+    },
+    "sharing_bitmask": {
+      "@id": "bigtincan:sharing_bitmask",
+      "@type": "xsd:integer"
+    },
+    "is_password_protected": {
+      "@id": "bigtincan:is_password_protected",
+      "@type": "xsd:boolean"
+    },
+    "can_annotate": {
+      "@id": "bigtincan:can_annotate",
+      "@type": "xsd:boolean"
+    },
+    "is_notifications_enabled": {
+      "@id": "bigtincan:is_notifications_enabled",
+      "@type": "xsd:boolean"
+    },
+    "is_publicly_accessible": {
+      "@id": "bigtincan:is_publicly_accessible",
+      "@type": "xsd:boolean"
+    },
+    "quicklink_url": {
+      "@id": "bigtincan:quicklink_url",
+      "@type": "xsd:string"
+    },
+    "quicklink_fallback": {
+      "@id": "bigtincan:quicklink_fallback",
+      "@type": "xsd:string"
+    },
+    "quickfile": {
+      "@id": "bigtincan:quickfile",
+      "@type": "xsd:boolean"
+    },
+    "expires_at_tz": {
+      "@id": "bigtincan:expires_at_tz",
+      "@type": "xsd:string"
+    },
+    "Story_Event_Request_Object": "bigtincan:Story_Event_Request_Object",
+    "id": {
+      "@id": "bigtincan:id",
+      "@type": "xsd:string"
+    },
+    "tz": {
+      "@id": "bigtincan:tz",
+      "@type": "xsd:string"
+    },
+    "start": {
+      "@id": "bigtincan:start",
+      "@type": "xsd:integer"
+    },
+    "end": {
+      "@id": "bigtincan:end",
+      "@type": "xsd:integer"
+    },
+    "all_day": {
+      "@id": "bigtincan:all_day",
+      "@type": "xsd:boolean"
+    },
+    "Language_Code": "bigtincan:Language_Code",
+    "Add_Story_Request": "bigtincan:Add_Story_Request",
+    "Story_File_Request_Object": "bigtincan:Story_File_Request_Object",
+    "filename": {
+      "@id": "bigtincan:filename",
+      "@type": "xsd:string"
+    },
+    "share_status": {
+      "@id": "bigtincan:share_status",
+      "@type": "xsd:string"
+    },
+    "allow_pitch_builder": {
+      "@id": "bigtincan:allow_pitch_builder",
+      "@type": "xsd:boolean"
+    },
+    "prevent_editing": {
+      "@id": "bigtincan:prevent_editing",
+      "@type": "xsd:boolean"
+    },
+    "Story_File_Edit_Request_Object": "bigtincan:Story_File_Edit_Request_Object",
+    "file_group": {
+      "@id": "bigtincan:file_group",
+      "@type": "xsd:string"
+    },
+    "Story_Tag_Request_Object": "bigtincan:Story_Tag_Request_Object",
+    "Share_Story_Request": "bigtincan:Share_Story_Request",
+    "subject": {
+      "@id": "bigtincan:subject",
+      "@type": "xsd:string"
+    },
+    "note": {
+      "@id": "bigtincan:note",
+      "@type": "xsd:string"
+    },
+    "lang_code": {
+      "@id": "bigtincan:lang_code",
+      "@type": "@id"
+    },
+    "emails": {
+      "@id": "bigtincan:emails",
+      "@container": "@list"
+    },
+    "cc_emails": {
+      "@id": "bigtincan:cc_emails",
+      "@container": "@list"
+    },
+    "file_id": {
+      "@id": "bigtincan:file_id",
+      "@container": "@list"
+    },
+    "Add_Tab_Request": "bigtincan:Add_Tab_Request",
+    "Change_Password_Request": "bigtincan:Change_Password_Request",
+    "currentPassword": {
+      "@id": "bigtincan:currentPassword",
+      "@type": "xsd:string"
+    },
+    "newPassword": {
+      "@id": "bigtincan:newPassword",
+      "@type": "xsd:string"
+    },
+    "Add_User_Request": "bigtincan:Add_User_Request",
+    "first_name": {
+      "@id": "bigtincan:first_name",
+      "@type": "xsd:string"
+    },
+    "last_name": {
+      "@id": "bigtincan:last_name",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "bigtincan:email",
+      "@type": "xsd:string"
+    },
+    "new_password": {
+      "@id": "bigtincan:new_password",
+      "@type": "xsd:string"
+    },
+    "configuration_bundle": {
+      "@id": "bigtincan:configuration_bundle",
+      "@type": "xsd:integer"
+    },
+    "digest_email": {
+      "@id": "bigtincan:digest_email",
+      "@type": "xsd:integer"
+    },
+    "send_invite": {
+      "@id": "bigtincan:send_invite",
+      "@type": "xsd:boolean"
+    },
+    "access": {
+      "@id": "bigtincan:access",
+      "@type": "xsd:integer"
+    },
+    "job_title": {
+      "@id": "bigtincan:job_title",
+      "@type": "xsd:string"
+    },
+    "can_promote": {
+      "@id": "bigtincan:can_promote",
+      "@type": "xsd:boolean"
+    },
+    "user_timezone": {
+      "@id": "bigtincan:user_timezone",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "bigtincan:status",
+      "@type": "xsd:string"
+    },
+    "platforms": {
+      "@id": "bigtincan:platforms",
+      "@container": "@list"
+    },
+    "Update_User_Request": "bigtincan:Update_User_Request",
+    "Reset_Password_Request": "bigtincan:Reset_Password_Request"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Bigtincan API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Bigtincan's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-21) from openapi/bigtincan-admin-api-openapi.yml, openapi/bigtincan-bookmark-api-openapi.yml, openapi/bigtincan-channel-api-openapi.yml.",
+  "dcterms:created": "2026-10-21",
+  "dcterms:source": [
+    "openapi/bigtincan-admin-api-openapi.yml",
+    "openapi/bigtincan-bookmark-api-openapi.yml",
+    "openapi/bigtincan-channel-api-openapi.yml",
+    "openapi/bigtincan-crm-api-openapi.yml",
+    "openapi/bigtincan-event-api-openapi.yml"
+  ]
+}

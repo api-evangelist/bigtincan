@@ -1,0 +1,54 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist agent enhancements for Bigtincan Hub Public Tab API
+  version: 1.0.0
+extends: openapi/bigtincan-tab-api-openapi.yml
+x-provenance:
+  generated: '2026-10-21'
+  method: generated
+  source: openapi/bigtincan-tab-api-openapi.yml
+  description: 'Adds agent-facing hints only: an x-agent-consequence per operation (read/write/destructive/external-effect,
+    derived from HTTP method and path) and the candidate MCP tool names from mcp/bigtincan-mcp.yml. Bigtincan
+    ships no MCP server; the tool names are candidates. The OpenAPI file is not mutated.'
+actions:
+- target: $.info
+  description: Record API Evangelist provenance; the source contract is the Swagger 2.0 document Bigtincan
+    serves at https://pubapi.bigtincan.com/api/sandbox/swagger/public-api.
+  update:
+    x-apievangelist:
+      provider: bigtincan
+      upstream: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+      docs: https://pubapi.bigtincan.com/doc/interactive/
+      mcp_manifest: mcp/bigtincan-mcp.yml
+- target: $.paths['/v1/tab/all'].get
+  description: Agent hints for get-v1-tab-all (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: read
+    x-mcp-candidate-tools:
+    - list_tabs
+- target: $.paths['/v1/admin/tabs'].get
+  description: Agent hints for get-v1-admin-tabs (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: read
+- target: $.paths['/v1/tab'].post
+  description: Agent hints for post-v1-tab (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: write
+- target: $.paths['/v1/tabs/{tab_id}/channels/{channel_id}/groups'].put
+  description: Agent hints for put-v1-tabs-by-tab-id-channels-by-channel-id-groups (consequence derived
+    from HTTP method/path).
+  update:
+    x-agent-consequence: write
+- target: $.paths['/v1/tabs/{tab_id}/channels/{channel_id}/groups/{group_id}'].delete
+  description: Agent hints for delete-v1-tabs-by-tab-id-channels-by-channel-id-groups-by-group-id (consequence
+    derived from HTTP method/path).
+  update:
+    x-agent-consequence: destructive
+- target: $.paths['/v1/tab/{tab_id}'].delete
+  description: Agent hints for delete-v1-tab-by-tab-id (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: destructive
+- target: $.paths['/v1/admin/tabs/{tab_id}'].patch
+  description: Agent hints for patch-v1-admin-tabs-by-tab-id (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: write

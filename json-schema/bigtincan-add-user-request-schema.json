@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bigtincan/main/json-schema/bigtincan-add-user-request-schema.json",
+  "title": "Add_User_Request",
+  "x-generated": "2026-10-21",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/bigtincan-user-api-openapi.yml#/components/schemas/Add_User_Request",
+  "required": [
+    "first_name",
+    "last_name",
+    "email"
+  ],
+  "properties": {
+    "first_name": {
+      "description": "First name",
+      "type": "string"
+    },
+    "last_name": {
+      "description": "Last name",
+      "type": "string"
+    },
+    "email": {
+      "description": "Email address",
+      "type": "string"
+    },
+    "new_password": {
+      "description": "Updated password",
+      "type": "string"
+    },
+    "configuration_bundle": {
+      "description": "Configuration bundle ID",
+      "type": "integer"
+    },
+    "digest_email": {
+      "description": "0: Never, 1: Daily, 2: Weekly, 3: Monthly",
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "send_invite": {
+      "description": "Send invitation email",
+      "type": "boolean"
+    },
+    "access": {
+      "description": "User access level. 0: User, 2: Structure Admin, 4: Administrator",
+      "type": "integer",
+      "enum": [
+        0,
+        2,
+        4
+      ]
+    },
+    "job_title": {
+      "description": "Job title",
+      "type": "string"
+    },
+    "can_promote": {
+      "description": "Can promote stories",
+      "type": "boolean",
+      "default": false
+    },
+    "lang_code": {
+      "$ref": "#/$defs/Language_Code"
+    },
+    "user_timezone": {
+      "description": "Timezone",
+      "type": "string"
+    },
+    "status": {
+      "description": "User status",
+      "type": "string",
+      "default": "invited"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "id": {
+            "description": "Group ID",
+            "type": "string"
+          },
+          "is_group_admin": {
+            "description": "Is group administrator",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "type": "object"
+      }
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "web",
+          "ios",
+          "android",
+          "windows"
+        ]
+      }
+    }
+  },
+  "type": "object",
+  "$defs": {
+    "Language_Code": {
+      "type": "string",
+      "default": "en-us",
+      "enum": [
+        "en-us",
+        "en-gb",
+        "zh-cn",
+        "zh-hk",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "pt-br",
+        "ru",
+        "es",
+        "th",
+        "da",
+        "de",
+        "no",
+        "sv",
+        "tr",
+        "vi"
+      ]
+    }
+  }
+}

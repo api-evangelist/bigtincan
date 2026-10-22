@@ -3,10 +3,14 @@ name: bigtincan-provision-users-and-access
 description: Onboard a user into Bigtincan Hub and grant them content access through groups, channels and tabs, using the correct version prefix for each admin operation.
 api: Bigtincan Hub API
 base_url: https://pubapi.bigtincan.com
-spec: openapi/bigtincan-hub-api-openapi.json
-generated: '2026-08-14'
+spec:
+  - openapi/bigtincan-admin-api-openapi.yml
+  - openapi/bigtincan-group-api-openapi.yml
+  - openapi/bigtincan-tab-api-openapi.yml
+  - openapi/bigtincan-user-api-openapi.yml
+generated: '2026-10-21'
 method: generated
-source: openapi/bigtincan-hub-api-openapi.json + https://pubapi.bigtincan.com/doc/interactive/
+source: openapi/bigtincan-admin-api-openapi.yml, openapi/bigtincan-group-api-openapi.yml, openapi/bigtincan-tab-api-openapi.yml, openapi/bigtincan-user-api-openapi.yml + https://pubapi.bigtincan.com/doc/interactive/
 operations:
   - get-v1-3-admin-user-all
   - post-v1-1-user

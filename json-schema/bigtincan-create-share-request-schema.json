@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bigtincan/main/json-schema/bigtincan-create-share-request-schema.json",
+  "title": "Create_Share_Request",
+  "x-generated": "2026-10-21",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/bigtincan-public-file-share-api-openapi.yml#/components/schemas/Create_Share_Request",
+  "required": [
+    "allow_downloads"
+  ],
+  "properties": {
+    "allow_downloads": {
+      "description": "Allow file downloads in share",
+      "type": "boolean"
+    },
+    "expires_at": {
+      "description": "Share expiry datetime in RFC3339 format",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

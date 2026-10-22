@@ -3,10 +3,13 @@ name: bigtincan-share-content-externally
 description: Share Bigtincan content outside the tenant — email a story to buyers, or create an expiring public file share — with the confirmation gates these irreversible actions require.
 api: Bigtincan Hub API
 base_url: https://pubapi.bigtincan.com
-spec: openapi/bigtincan-hub-api-openapi.json
-generated: '2026-08-14'
+spec:
+  - openapi/bigtincan-public-file-share-api-openapi.yml
+  - openapi/bigtincan-story-api-openapi.yml
+  - openapi/bigtincan-user-api-openapi.yml
+generated: '2026-10-21'
 method: generated
-source: openapi/bigtincan-hub-api-openapi.json + https://pubapi.bigtincan.com/doc/interactive/
+source: openapi/bigtincan-public-file-share-api-openapi.yml, openapi/bigtincan-story-api-openapi.yml, openapi/bigtincan-user-api-openapi.yml + https://pubapi.bigtincan.com/doc/interactive/
 operations:
   - get-v1-user-me
   - get-v1-2-story-all

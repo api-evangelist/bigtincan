@@ -7,7 +7,7 @@ x-provenance:
   method: generated
   source: openapi/_original/bigtincan-hub-api-swagger.json
   extends: openapi/_original/bigtincan-hub-api-swagger.json
-  applied_result: openapi/bigtincan-hub-api-openapi.json
+  applied_result: openapi/_original/bigtincan-hub-api-openapi.json
   description: >-
     Records exactly what API Evangelist added to the Swagger 2.0 document
     Bigtincan serves at https://pubapi.bigtincan.com/api/sandbox/swagger/public-api.
@@ -120,12 +120,12 @@ actions:
       dash-separated — for example GET /v1/user/me becomes `get-v1-user-me` and
       GET /v1.1/admin/user/get/{user_id} becomes
       `get-v1-1-admin-user-get-by-user-id`. Applied values are in
-      openapi/bigtincan-hub-api-openapi.json.
+      openapi/_original/bigtincan-hub-api-openapi.json.
     update:
       x-operation-id-policy: derived-from-method-and-path
 x-notes:
   - >-
     The `x-` and prose-only actions above document intent; the concrete applied
-    document is openapi/bigtincan-hub-api-openapi.json. The scorer parses the
+    document is openapi/_original/bigtincan-hub-api-openapi.json. The scorer parses the
     provider's original, so this overlay improves our derived artifacts rather
     than Bigtincan's own contract-content score.

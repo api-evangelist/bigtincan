@@ -1,0 +1,168 @@
+generated: '2026-10-21'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 11
+  own: 8
+  other_domain: 0
+  platform: 3
+  roles:
+  - api
+  - docs
+  - identity
+  - other
+  - status
+  - support
+  - website
+hosts:
+- host: api.bigtincan.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: bigtincan.com
+  role: api
+  relation: own
+- host: app.bigtincan.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: bigtincan.com
+  role: other
+  relation: own
+- host: help.bigtincan.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - docs-index
+  - well-known
+  - vendor-detect
+  types:
+  - HelpCenter
+  - ChangeLog
+  serves:
+  - docs
+  - support
+  vendor: zendesk
+  registrable_domain: bigtincan.com
+  role: support
+  relation: own
+- host: identity.bigtincan.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - SignUp
+  - Login
+  serves: []
+  registrable_domain: bigtincan.com
+  role: identity
+  relation: own
+- host: pubapi.bigtincan.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - spec-found
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Documentation
+  - APIReference
+  serves:
+  - api
+  - docs
+  - spec
+  - documentation
+  vendor: swagger-ui
+  registrable_domain: bigtincan.com
+  role: docs
+  relation: own
+- host: status.bigtincan.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: bigtincan.com
+  role: status
+  relation: own
+- host: trust.bigtincan.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: bigtincan.com
+  role: other
+  relation: own
+- host: www.bigtincan.com
+  found_by:
+  - pointer
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Website
+  - Blog
+  - Pricing
+  - TermsOfService
+  - PrivacyPolicy
+  - Support
+  - GettingStarted
+  - Newsroom
+  - Security
+  - AboutUs
+  - Careers
+  - Partners
+  - Integrations
+  serves:
+  - docs
+  - hosting
+  vendor: vercel
+  registrable_domain: bigtincan.com
+  role: website
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.youtube.com
+  found_by:
+  - pointer
+  types:
+  - YouTube
+  serves: []
+  registrable_domain: youtube.com
+  role: other
+  relation: platform
+- host: x.com
+  found_by:
+  - pointer
+  types:
+  - X
+  serves: []
+  registrable_domain: x.com
+  role: other
+  relation: platform

@@ -72,12 +72,12 @@ paths:
           $ref: '#/components/responses/403'
 components:
   responses:
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
     '403':
       description: Forbidden
+    '401':
+      description: Unauthorized
+    '400':
+      description: Bad request
   schemas:
     As-User:
       description: Perform action on behalf of this user ID.

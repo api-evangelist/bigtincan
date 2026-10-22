@@ -1,0 +1,49 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist agent enhancements for Bigtincan Hub Public Group API
+  version: 1.0.0
+extends: openapi/bigtincan-group-api-openapi.yml
+x-provenance:
+  generated: '2026-10-21'
+  method: generated
+  source: openapi/bigtincan-group-api-openapi.yml
+  description: 'Adds agent-facing hints only: an x-agent-consequence per operation (read/write/destructive/external-effect,
+    derived from HTTP method and path) and the candidate MCP tool names from mcp/bigtincan-mcp.yml. Bigtincan
+    ships no MCP server; the tool names are candidates. The OpenAPI file is not mutated.'
+actions:
+- target: $.info
+  description: Record API Evangelist provenance; the source contract is the Swagger 2.0 document Bigtincan
+    serves at https://pubapi.bigtincan.com/api/sandbox/swagger/public-api.
+  update:
+    x-apievangelist:
+      provider: bigtincan
+      upstream: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+      docs: https://pubapi.bigtincan.com/doc/interactive/
+      mcp_manifest: mcp/bigtincan-mcp.yml
+- target: $.paths['/v1/group/all'].get
+  description: Agent hints for get-v1-group-all (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: read
+    x-mcp-candidate-tools:
+    - list_groups
+- target: $.paths['/v1/group'].post
+  description: Agent hints for post-v1-group (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: write
+- target: $.paths['/v1/admin/groups/{group_id}'].delete
+  description: Agent hints for delete-v1-admin-groups-by-group-id (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: destructive
+- target: $.paths['/v1/admin/groups/{group_id}'].patch
+  description: Agent hints for patch-v1-admin-groups-by-group-id (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: write
+- target: $.paths['/v1/group/{group_id}/users'].put
+  description: Agent hints for put-v1-group-by-group-id-users (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: write
+- target: $.paths['/v1/admin/groups/{group_id}/users/{user_id}'].delete
+  description: Agent hints for delete-v1-admin-groups-by-group-id-users-by-user-id (consequence derived
+    from HTTP method/path).
+  update:
+    x-agent-consequence: destructive

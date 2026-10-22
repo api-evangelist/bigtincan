@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bigtincan/main/json-schema/bigtincan-record-interaction-request-schema.json",
+  "title": "Record_Interaction_Request",
+  "x-generated": "2026-10-21",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/bigtincan-history-api-openapi.yml#/components/schemas/Record_Interaction_Request",
+  "required": [
+    "actions"
+  ],
+  "properties": {
+    "eventid": {
+      "description": "Event ID",
+      "type": "string"
+    },
+    "actions": {
+      "description": "Interactions.",
+      "type": "array",
+      "items": {
+        "required": [
+          "id",
+          "action"
+        ],
+        "properties": {
+          "id": {
+            "description": "Object ID",
+            "type": "string"
+          },
+          "action": {
+            "description": "Action name",
+            "type": "string"
+          },
+          "duration": {
+            "description": "Action duration",
+            "type": "integer"
+          },
+          "on_screen_duration": {
+            "description": "Action on-screen duration",
+            "type": "integer"
+          },
+          "timestamp": {
+            "description": "When the interaction occurred. Unix timestamp",
+            "type": "integer"
+          },
+          "device_id": {
+            "description": "Device ID",
+            "type": "string"
+          },
+          "platform": {
+            "description": "Platform",
+            "type": "string"
+          },
+          "latitude": {
+            "description": "Latitude",
+            "type": "string"
+          },
+          "longitude": {
+            "description": "Longitude",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "type": "object"
+}

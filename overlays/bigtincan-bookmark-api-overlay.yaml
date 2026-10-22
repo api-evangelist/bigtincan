@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist agent enhancements for Bigtincan Hub Public Bookmark API
+  version: 1.0.0
+extends: openapi/bigtincan-bookmark-api-openapi.yml
+x-provenance:
+  generated: '2026-10-21'
+  method: generated
+  source: openapi/bigtincan-bookmark-api-openapi.yml
+  description: 'Adds agent-facing hints only: an x-agent-consequence per operation (read/write/destructive/external-effect,
+    derived from HTTP method and path) and the candidate MCP tool names from mcp/bigtincan-mcp.yml. Bigtincan
+    ships no MCP server; the tool names are candidates. The OpenAPI file is not mutated.'
+actions:
+- target: $.info
+  description: Record API Evangelist provenance; the source contract is the Swagger 2.0 document Bigtincan
+    serves at https://pubapi.bigtincan.com/api/sandbox/swagger/public-api.
+  update:
+    x-apievangelist:
+      provider: bigtincan
+      upstream: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+      docs: https://pubapi.bigtincan.com/doc/interactive/
+      mcp_manifest: mcp/bigtincan-mcp.yml
+- target: $.paths['/v1/bookmarks'].get
+  description: Agent hints for get-v1-bookmarks (consequence derived from HTTP method/path).
+  update:
+    x-agent-consequence: read
+    x-mcp-candidate-tools:
+    - list_bookmarks

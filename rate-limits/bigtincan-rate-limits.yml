@@ -1,61 +1,54 @@
-generated: '2026-08-14'
-method: probed
-source: https://pubapi.bigtincan.com/doc/interactive/ + live unauthenticated responses from https://pubapi.bigtincan.com
-name: Bigtincan API Rate Limits
-description: >-
-  Bigtincan publishes NO rate limits for the Bigtincan Hub Public API, and the
-  API returns no rate-limit headers. Neither the Swagger 2.0 document at
-  https://pubapi.bigtincan.com/api/sandbox/swagger/public-api nor the interactive
-  console at https://pubapi.bigtincan.com/doc/interactive/ states a limit, a
-  window or an exhaustion status code, and no RateLimit-*, X-RateLimit-* or
-  Retry-After header appeared on any live response observed on 2026-08-14. An
-  agent integrating this API therefore has no runtime backpressure signal at all
-  and must implement its own client-side pacing.
+generated: '2026-10-21'
+method: none
+source: https://pubapi.bigtincan.com/doc/interactive/
+name: Bigtincan rate limits
+description: Bigtincan publishes NO rate limits for the Bigtincan Hub Public API, and the API returns
+  no rate-limit headers. Neither the Swagger 2.0 document at https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  nor the interactive console at https://pubapi.bigtincan.com/doc/interactive/ states a limit, a window
+  or an exhaustion status code, and no RateLimit-*, X-RateLimit-* or Retry-After header appeared on any
+  live response observed on 2026-08-14. An agent integrating this API therefore has no runtime backpressure
+  signal at all and must implement its own client-side pacing.
 url: https://pubapi.bigtincan.com/doc/interactive/
 limit_count: 0
 limits: []
 response_headers:
   documented: []
   observed: []
-  note: >-
-    Observed set on live 401 responses from https://pubapi.bigtincan.com/v1/user/me
-    and /v1/settings: date, content-type, server, strict-transport-security,
-    access-control-allow-origin, access-control-allow-credentials,
-    access-control-allow-headers, access-control-expose-headers,
-    x-frame-options, cache-control. No rate-limit header of any family is present.
+  note: 'Observed set on live 401 responses from https://pubapi.bigtincan.com/v1/user/me and /v1/settings:
+    date, content-type, server, strict-transport-security, access-control-allow-origin, access-control-allow-credentials,
+    access-control-allow-headers, access-control-expose-headers, x-frame-options, cache-control. No rate-limit
+    header of any family is present.'
 exhaustion:
   status_code: undocumented
-  note: >-
-    No 429 is declared on any of the 69 operations, and the reusable `responses`
-    block declares 400, 401, 403, 404, 422 and 503 only. If throttling exists it
-    is presumably surfaced as a 503 (Service unavailable), but that response is
-    referenced by zero operations, so this cannot be confirmed without
+  note: No 429 is declared on any of the 69 operations, and the reusable `responses` block declares 400,
+    401, 403, 404, 422 and 503 only. If throttling exists it is presumably surfaced as a 503 (Service
+    unavailable), but that response is referenced by zero operations, so this cannot be confirmed without
     credentials.
 probes:
-  - url: https://pubapi.bigtincan.com/v1/user/me
-    method: GET
-    status: 401
-    date: '2026-08-14'
-    rate_limit_headers: none
-  - url: https://pubapi.bigtincan.com/v1/settings
-    method: GET
-    status: 401
-    date: '2026-08-14'
-    rate_limit_headers: none
-  - url: https://pubapi.bigtincan.com/services/oauth2/token
-    method: GET
-    status: 405
-    date: '2026-08-14'
-    rate_limit_headers: none
+- url: https://pubapi.bigtincan.com/v1/user/me
+  method: GET
+  status: 401
+  date: '2026-08-14'
+  rate_limit_headers: none
+- url: https://pubapi.bigtincan.com/v1/settings
+  method: GET
+  status: 401
+  date: '2026-08-14'
+  rate_limit_headers: none
+- url: https://pubapi.bigtincan.com/services/oauth2/token
+  method: GET
+  status: 405
+  date: '2026-08-14'
+  rate_limit_headers: none
 pagination_caps:
-  note: >-
-    The one published throughput constraint in the contract is a pagination cap,
-    not a rate limit — `limit` on the collection operations is documented as
-    "Pagination: results per page. Max 100" with a default of 10.
+  note: 'The one published throughput constraint in the contract is a pagination cap, not a rate limit
+    — `limit` on the collection operations is documented as "Pagination: results per page. Max 100" with
+    a default of 10.'
   max_page_size: 100
   default_page_size: 10
 contact:
-  description: >-
-    Rate limits, if enforced, are governed by the enterprise subscription
-    agreement. Contact Bigtincan for the configuration applicable to a tenant.
+  description: Rate limits, if enforced, are governed by the enterprise subscription agreement. Contact
+    Bigtincan for the configuration applicable to a tenant.
   url: https://www.bigtincan.com/contact/
+note: 'Re-checked 2026-10-21 against the docs only: no published limit. Earlier (2026-08-14) live probes
+  are retained as history.'

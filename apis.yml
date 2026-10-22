@@ -1,9 +1,13 @@
 aid: bigtincan
+
 name: Bigtincan
-description: Bigtincan is an industry-leading sales enablement automation platform providing a REST API
-  for managing sales content, training and coaching programs, buyer engagement analytics, digital sales
-  rooms, and CRM content sync. The platform combines AI-powered content management, sales readiness tools,
-  and buyer engagement capabilities to help revenue teams close deals faster.
+
+description: Bigtincan is an AI-powered sales enablement platform that helps customer-facing teams deliver personalized, measurable buying experiences,
+  combining sales content management, training and coaching (sales readiness), buyer engagement analytics, digital sales rooms and CRM content
+  sync. Its Hub Public API (pubapi.bigtincan.com) exposes REST operations for stories, channels, tabs, files, forms, groups, users, search and
+  events. Bigtincan's own site states that Bigtincan and Showpad are now together building a combined revenue effectiveness solution, and its
+  trust center is branded Showpad + Bigtincan.
+
 deliveryModel:
   model: saas
   open_source: false
@@ -16,6 +20,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: paid
   onboarding: unknown
@@ -28,15 +33,25 @@ accessModel:
   - plans
   generated: '2026-07-22'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bigtincan.png
+
 url: https://raw.githubusercontent.com/api-evangelist/bigtincan/refs/heads/main/apis.yml
+
 created: '2026-06-13'
-modified: '2026-09-16'
+
+modified: '2026-10-21'
+
 specificationVersion: '0.23'
+
 type: Index
+
 x-docs-platform: swagger-ui
+
 x-docs-platform-confidence: medium
+
 x-docs-platform-checked: 2026-09-20
+
 tags:
 - Sales Enablement
 - Content Management
@@ -46,593 +61,31 @@ tags:
 - Analytics
 - CRM Integration
 - Digital Sales Rooms
-apis:
-- aid: bigtincan:bigtincan-admin-api
-  name: Bigtincan Admin API
-  description: The Admin API from Bigtincan — 10 operation(s) for admin.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Admin
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-admin-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-bookmark-api
-  name: Bigtincan Bookmark API
-  description: The Bookmark API from Bigtincan — 1 operation(s) for bookmark.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Bookmark
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-bookmark-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-channel-api
-  name: Bigtincan Channel API
-  description: The Channel API from Bigtincan — 7 operation(s) for channel.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Channels
-  tags_raw:
-  - Channel
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-channel-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-crm-api
-  name: Bigtincan CRM API
-  description: The CRM API from Bigtincan — 1 operation(s) for crm.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - CRM
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-crm-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-event-api
-  name: Bigtincan Event API
-  description: The Event API from Bigtincan — 1 operation(s) for event.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Event
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-event-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-file-api
-  name: Bigtincan File API
-  description: The File API from Bigtincan — 4 operation(s) for file.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - File
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-file-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-form-api
-  name: Bigtincan Form API
-  description: The Form API from Bigtincan — 5 operation(s) for form.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Form
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-form-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-group-api
-  name: Bigtincan Group API
-  description: The Group API from Bigtincan — 5 operation(s) for group.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Group
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-group-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-history-api
-  name: Bigtincan History API
-  description: The History API from Bigtincan — 1 operation(s) for history.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - History
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-history-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-links-api
-  name: Bigtincan Links API
-  description: The Links API from Bigtincan — 1 operation(s) for links.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Links
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-links-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-public-file-share-api
-  name: Bigtincan Public File Share API
-  description: The Public File Share API from Bigtincan — 3 operation(s) for public file share.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Public File Share
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-public-file-share-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-search-api
-  name: Bigtincan Search API
-  description: The Search API from Bigtincan — 2 operation(s) for search.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Search
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-search-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-settings-api
-  name: Bigtincan Settings API
-  description: The Settings API from Bigtincan — 1 operation(s) for settings.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Settings
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-settings-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-story-api
-  name: Bigtincan Story API
-  description: The Story API from Bigtincan — 11 operation(s) for story.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Story
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-story-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-tab-api
-  name: Bigtincan Tab API
-  description: The Tab API from Bigtincan — 7 operation(s) for tab.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Tab
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-tab-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-tag-api
-  name: Bigtincan Tag API
-  description: The Tag API from Bigtincan — 1 operation(s) for tag.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - Tag
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-tag-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-user-api
-  name: Bigtincan User API
-  description: The User API from Bigtincan — 6 operation(s) for user.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - User
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-user-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
-- aid: bigtincan:bigtincan-user-metadata-api
-  name: Bigtincan User Metadata API
-  description: The User Metadata API from Bigtincan — 2 operation(s) for user metadata.
-  humanURL: https://pubapi.bigtincan.com/doc/interactive/
-  baseURL: https://pubapi.bigtincan.com
-  tags:
-  - User Metadata
-  properties:
-  - type: OpenAPI
-    url: openapi/bigtincan-user-metadata-api-openapi.yml
-  - type: Documentation
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: APIReference
-    url: https://pubapi.bigtincan.com/doc/interactive/
-  - type: Authentication
-    url: authentication/bigtincan-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bigtincan-scopes.yml
-  - type: Conventions
-    url: conventions/bigtincan-conventions.yml
-  - type: ErrorCatalog
-    url: errors/bigtincan-problem-types.yml
-  - type: DataModel
-    url: data-model/bigtincan-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/bigtincan-lifecycle.yml
-  - type: Plans
-    url: plans/bigtincan-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bigtincan-rate-limits.yml
-  - type: FinOps
-    url: finops/bigtincan-finops.yml
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
 common:
+- type: Spectral
+  url: rules/bigtincan-rules.yml
+- type: JSONLD
+  url: json-ld/bigtincan-context.jsonld
+- type: Vocabulary
+  url: vocabulary/bigtincan-vocabulary.yml
+- type: Deprecation
+  url: lifecycle/bigtincan-lifecycle.yml
+- type: Hosts
+  url: hosts/bigtincan-hosts.yml
+- type: IntegrationEdges
+  url: integrations/bigtincan-integration-edges.yml
+- type: Vendors
+  url: vendors/bigtincan-vendors.yml
 - type: CapabilityMap
   url: capabilities/bigtincan-capability-edges.yml
   name: Bigtincan Business Capability Map
 - type: AgenticAccess
   url: agentic-access/bigtincan-agentic-access.yml
-- type: OAuthScopes
-  url: scopes/bigtincan-scopes.yml
 - type: Authentication
   url: authentication/bigtincan-authentication.yml
 - type: TrustCenter
@@ -669,14 +122,11 @@ common:
   url: packages/bigtincan-packages.yml
 - type: X-MCPServerCandidate
   url: mcp/bigtincan-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
-    — a tool list derived from the published API contracts, not an existing server. The scorer already
-    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
-    surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published
+    API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting
+    the artifact-type surfaces with a server that does not exist.'
 - type: AgentSkill
   url: skills/_index.yml
-- type: LLMsTxt
-  url: llms/bigtincan-llms.txt
 - type: Blog
   url: https://www.bigtincan.com/blog/
 - type: Pricing
@@ -699,17 +149,674 @@ common:
   url: https://www.linkedin.com/company/bigtincan
 - type: X
   url: https://x.com/bigtincan
+- type: GettingStarted
+  url: https://www.bigtincan.com/get-started/
+- type: Newsroom
+  url: https://www.bigtincan.com/company/newsroom/
+- type: Security
+  url: https://www.bigtincan.com/platform/security/
+- type: ChangeLog
+  url: https://help.bigtincan.com/hc/en-us/articles/38235442565010
+  name: What's New (Bigtincan Help Center)
+- type: AboutUs
+  url: https://www.bigtincan.com/company/
+- type: Careers
+  url: https://www.bigtincan.com/company/careers/
+- type: Partners
+  url: https://www.bigtincan.com/company/partners/
+- type: Integrations
+  url: https://www.bigtincan.com/integrations/
+- type: YouTube
+  url: https://www.youtube.com/@bigtincanofficial
 - type: Plans
   url: plans/bigtincan-plans-pricing.yml
-- type: RateLimits
-  url: rate-limits/bigtincan-rate-limits.yml
 - type: FinOps
   url: finops/bigtincan-finops.yml
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+
+apis:
+- aid: bigtincan:bigtincan-admin-api
+  name: Bigtincan Admin API
+  description: The Admin API from Bigtincan — 10 operation(s) for admin.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-admin-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-modify-channel-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-modify-group-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-modify-tab-request-schema.json
+- aid: bigtincan:bigtincan-bookmark-api
+  name: Bigtincan Bookmark API
+  description: The Bookmark API from Bigtincan — 1 operation(s) for bookmark.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Bookmark
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-bookmark-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+- aid: bigtincan:bigtincan-channel-api
+  name: Bigtincan Channel API
+  description: The Channel API from Bigtincan — 7 operation(s) for channel.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Channels
+  tags_raw:
+  - Channel
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-channel-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-public-channel-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-modify-channel-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-update-channel-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-personal-channel-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-get-channels-request-schema.json
+- aid: bigtincan:bigtincan-crm-api
+  name: Bigtincan CRM API
+  description: The CRM API from Bigtincan — 1 operation(s) for crm.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - CRM
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-crm-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+- aid: bigtincan:bigtincan-event-api
+  name: Bigtincan Event API
+  description: The Event API from Bigtincan — 1 operation(s) for event.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Event
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-event-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+- aid: bigtincan:bigtincan-file-api
+  name: Bigtincan File API
+  description: The File API from Bigtincan — 4 operation(s) for file.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - File
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-file-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-tags-to-file-schema.json
+- aid: bigtincan:bigtincan-form-api
+  name: Bigtincan Form API
+  description: The Form API from Bigtincan — 5 operation(s) for form.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Form
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-form-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+- aid: bigtincan:bigtincan-group-api
+  name: Bigtincan Group API
+  description: The Group API from Bigtincan — 5 operation(s) for group.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Group
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-group-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-group-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-modify-group-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-user-to-group-request-schema.json
+- aid: bigtincan:bigtincan-history-api
+  name: Bigtincan History API
+  description: The History API from Bigtincan — 1 operation(s) for history.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - History
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-history-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-record-interaction-request-schema.json
+- aid: bigtincan:bigtincan-links-api
+  name: Bigtincan Links API
+  description: The Links API from Bigtincan — 1 operation(s) for links.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Links
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-links-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-get-links-from-urn-schema.json
+- aid: bigtincan:bigtincan-public-file-share-api
+  name: Bigtincan Public File Share API
+  description: The Public File Share API from Bigtincan — 3 operation(s) for public file share.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Public File Share
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-public-file-share-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-create-share-request-schema.json
+- aid: bigtincan:bigtincan-search-api
+  name: Bigtincan Search API
+  description: The Search API from Bigtincan — 2 operation(s) for search.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-search-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+- aid: bigtincan:bigtincan-settings-api
+  name: Bigtincan Settings API
+  description: The Settings API from Bigtincan — 1 operation(s) for settings.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-settings-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+- aid: bigtincan:bigtincan-story-api
+  name: Bigtincan Story API
+  description: The Story API from Bigtincan — 11 operation(s) for story.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Story
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-story-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-update-story-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-story-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-share-story-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-comment-request-schema.json
+- aid: bigtincan:bigtincan-tab-api
+  name: Bigtincan Tab API
+  description: The Tab API from Bigtincan — 7 operation(s) for tab.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Tab
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-tab-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-modify-tab-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-group-to-tab-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-tab-request-schema.json
+- aid: bigtincan:bigtincan-tag-api
+  name: Bigtincan Tag API
+  description: The Tag API from Bigtincan — 1 operation(s) for tag.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - Tag
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-tag-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+- aid: bigtincan:bigtincan-user-api
+  name: Bigtincan User API
+  description: The User API from Bigtincan — 6 operation(s) for user.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-user-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-update-user-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-add-user-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-change-password-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-update-user-metadata-request-schema.json
+  - type: JSONSchema
+    url: json-schema/bigtincan-reset-password-request-schema.json
+- aid: bigtincan:bigtincan-user-metadata-api
+  name: Bigtincan User Metadata API
+  description: The User Metadata API from Bigtincan — 2 operation(s) for user metadata.
+  humanURL: https://pubapi.bigtincan.com/doc/interactive/
+  baseURL: https://pubapi.bigtincan.com
+  tags:
+  - User Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/bigtincan-user-metadata-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://pubapi.bigtincan.com/api/sandbox/swagger/public-api
+  - type: Documentation
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: APIReference
+    url: https://pubapi.bigtincan.com/doc/interactive/
+  - type: Authentication
+    url: authentication/bigtincan-authentication.yml
+  - type: Conventions
+    url: conventions/bigtincan-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bigtincan-problem-types.yml
+  - type: DataModel
+    url: data-model/bigtincan-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/bigtincan-lifecycle.yml
+  - type: Plans
+    url: plans/bigtincan-plans-pricing.yml
+  - type: FinOps
+    url: finops/bigtincan-finops.yml
+  - type: JSONSchema
+    url: json-schema/bigtincan-update-user-metadata-request-schema.json
+
+x-coverage:
+  state: covered
+  reason: null
+  detail: Website www.bigtincan.com returns 200 with title "Industry Leading Sales Enablement Solutions | Bigtincan" and links all added pointers;
+    help.bigtincan.com serves a Cloudflare challenge (403) to curl but was confirmed 200 by the pre-flight browser probe. trust.bigtincan.com
+    is titled "Showpad | Trust Center". github.com/bigtincan was not added because the org page does not link back to bigtincan.com.
+  evidence:
+  - url: https://www.bigtincan.com/
+    status: 200
+  - url: https://pubapi.bigtincan.com/doc/interactive/
+    status: 200
+  - url: https://www.bigtincan.com/get-started/
+    status: 200
+  - url: https://www.bigtincan.com/company/newsroom/
+    status: 200
+  - url: https://www.bigtincan.com/platform/security/
+    status: 200
+  - url: https://help.bigtincan.com/hc/en-us
+    status: 403
+  - url: https://trust.bigtincan.com/
+    status: 200
+  - url: https://www.bigtincan.com/company/about/
+    status: 404
 x-enrichment:
-  date: '2026-08-14'
+  date: '2026-10-21'
   status: enriched
-  artifacts_added: 20
-  pass: local-v1
+  artifacts_added: 48
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

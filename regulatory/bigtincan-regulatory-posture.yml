@@ -1,0 +1,110 @@
+generated: '2026-10-21'
+method: searched
+source:
+- https://www.bigtincan.com/privacy-policy/
+- https://www.bigtincan.com/eula/
+note: >-
+  The Bigtincan privacy policy is a combined document covering Bigtincan and its subsidiaries
+  (Brainshark, VoiceVibes, CompareNetworks); several clauses below are written in a subsidiary's
+  voice and are attributed accordingly. No separate DPA, subprocessor list or AI policy page was
+  among the legal pages found on the site.
+signals:
+  data_subject_request:
+    url: https://www.bigtincan.com/privacy-policy/
+    channel: support@Bigtincan.com
+    rights_named: [access, correction, deletion, withdrawal of consent, data portability (CCPA, VoiceVibes EU section)]
+    evidence:
+    - source: https://www.bigtincan.com/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "You may access, correct, or request deletion of your personal information and withdrawal of consent by logging in to your account, contacting us at support@Bigtincan.com or by completing this form ."
+    - source: https://www.bigtincan.com/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "You may only make a verifiable consumer request for access or data portability twice within a 12-month period."
+    note: >-
+      Self-service and email channels for access, correction and deletion; the CCPA section caps
+      access/portability requests at two per 12 months. The policy also states Bigtincan processes
+      under the direction of its Customers, so end users of customer deployments are redirected to the customer.
+  ai_transparency:
+    url: https://www.bigtincan.com/eula/
+    section: Generative AI features provided by Bigtincan
+    evidence:
+    - source: https://www.bigtincan.com/eula/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "Customer shall not provide end users with access to SAAS Services and Software containing the generative AI feature without the prior acquaintance of end users with the information about the Software pursuant to this Agreement."
+    - source: https://www.bigtincan.com/eula/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "Bigtincan agrees and acknowledges that all rights, title and interest in and to customer content are owned by Customer and their respective rights holders."
+    note: >-
+      The EULA has a dedicated generative-AI clause that places an end-user disclosure duty on the
+      Customer and confirms customer ownership of content. It does not state whether customer content
+      is used to train models; no training_data_summary signal is recorded.
+  data_residency:
+    url: https://www.bigtincan.com/privacy-policy/
+    section: 'Appendix A: Brainshark Data Privacy Framework Compliance'
+    evidence:
+    - source: https://www.bigtincan.com/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "If you are located outside of the United States and choose to provide personal information to us, Brainshark will transfer that information to the United States and process it there."
+    - source: https://www.bigtincan.com/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "Any personal information that you provide to VoiceVibes is being transferred to VoiceVibes solely in the United States and will be hosted on United States servers."
+    note: >-
+      Cross-border transfer statements, not a residency choice: Brainshark processes in the US under the
+      EU-U.S. DPF, UK Extension and Swiss-U.S. DPF; VoiceVibes hosts only in the US. No region selection is offered.
+  incident_notification:
+    url: https://www.bigtincan.com/privacy-policy/
+    evidence:
+    - source: https://www.bigtincan.com/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "CompareNetworks will notify users within 72 hours of our awareness of any data breach affecting users’ personal data or as otherwise required by law."
+    note: >-
+      A 72-hour breach-notification commitment, but only in the CompareNetworks subsidiary section of
+      the combined policy; no equivalent commitment was found for the core Bigtincan platform or in the EULA.
+  exit_assistance:
+    url: https://www.bigtincan.com/eula/
+    evidence:
+    - source: https://www.bigtincan.com/eula/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "Following the Subscription Term, Bigtincan will continue to store Customer Content for thirty (30) days or until such earlier time as Customer requests."
+    - source: https://www.bigtincan.com/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "Upon request, VoiceVibe shall provide individuals with their personal data that has been provided to VoiceVibes in a structured, commonly used and machine-readable format."
+    note: >-
+      A 30-day post-term window during which Customer Content is retained (the EULA does not describe an
+      export mechanism for it); machine-readable portability is stated only for VoiceVibes.
+  data_retention:
+    url: https://www.bigtincan.com/privacy-policy/
+    section: Data Retention
+    evidence:
+    - source: https://www.bigtincan.com/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "We will retain your personal information for as long as needed to provide you services, comply with our legal obligations, resolve disputes, and enforce agreements."
+    note: Purpose-based retention with no fixed period for personal information; customer content has the EULA's 30-day post-term window (see exit_assistance).
+  subprocessors:
+    url: https://www.bigtincan.com/privacy-policy/
+    section: Sharing with Service Providers
+    evidence:
+    - source: https://www.bigtincan.com/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "We may share your information with third parties who provide services on our behalf to help with our business activities. These companies are authorized to use your personal information only as necessary to provide these services to us."
+    note: Service-provider sharing is described by category (e.g. payment processing); no named subprocessor list was found.
+  age_assurance:
+    url: https://www.bigtincan.com/privacy-policy/
+    section: Children under the Age of Thirteen
+    evidence:
+    - source: https://www.bigtincan.com/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "This Site is not directed to children under 13. We do not knowingly collect information from children. If you believe we have collected information from a child under the age of 13, please contact us."
+    note: A not-directed-to-children statement with a contact route; no age-verification mechanism is described.

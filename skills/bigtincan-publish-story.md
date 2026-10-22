@@ -3,10 +3,13 @@ name: bigtincan-publish-story
 description: Publish a new sales enablement story into a Bigtincan Hub channel, attach files and tags, and verify it landed.
 api: Bigtincan Hub API
 base_url: https://pubapi.bigtincan.com
-spec: openapi/bigtincan-hub-api-openapi.json
-generated: '2026-08-14'
+spec:
+  - openapi/bigtincan-channel-api-openapi.yml
+  - openapi/bigtincan-story-api-openapi.yml
+  - openapi/bigtincan-user-api-openapi.yml
+generated: '2026-10-21'
 method: generated
-source: openapi/bigtincan-hub-api-openapi.json + https://pubapi.bigtincan.com/doc/interactive/
+source: openapi/bigtincan-channel-api-openapi.yml, openapi/bigtincan-story-api-openapi.yml, openapi/bigtincan-user-api-openapi.yml + https://pubapi.bigtincan.com/doc/interactive/
 operations:
   - get-v1-user-me
   - get-v1-channel-all

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bigtincan/main/json-schema/bigtincan-get-links-from-urn-schema.json",
+  "title": "Get_links_from_URN",
+  "x-generated": "2026-10-21",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/bigtincan-links-api-openapi.yml#/components/schemas/Get_links_from_URN",
+  "required": [
+    "urn"
+  ],
+  "properties": {
+    "urn": {
+      "description": "urnScheme:namespace:systemInstance:entityType:identifier",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

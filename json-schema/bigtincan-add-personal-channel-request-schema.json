@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bigtincan/main/json-schema/bigtincan-add-personal-channel-request-schema.json",
+  "title": "Add_Personal_Channel_Request",
+  "x-generated": "2026-10-21",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/bigtincan-channel-api-openapi.yml#/components/schemas/Add_Personal_Channel_Request",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "Channel name",
+      "type": "string"
+    },
+    "description": {
+      "description": "Channel description",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

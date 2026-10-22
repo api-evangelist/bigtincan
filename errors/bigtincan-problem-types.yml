@@ -33,7 +33,7 @@ envelope:
       description: >-
         Correlation identifier for support. Present at the top level of the
         response body (not as a header). Observed empty on unauthenticated 401s.
-problem_types:
+problems:
   - status: 400
     title: Bad request
     reusable_ref: '#/responses/400'

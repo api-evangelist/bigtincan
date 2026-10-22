@@ -1,51 +1,78 @@
-generated: '2026-08-14'
+generated: '2026-10-21'
 method: searched
-source: https://www.bigtincan.com/seasonal-releases/
-url: https://www.bigtincan.com/seasonal-releases/
-name: Bigtincan Seasonal Releases
-description: >-
-  Bigtincan publishes a seasonal product release page rather than an API
-  changelog. It carries the current season only — no dates, no version numbers,
-  no per-release archive, and no statement of API contract changes. This artifact
-  records what is actually published so the gap is legible; it is not an API
-  changelog and should not be read as one.
-scheme: seasonal
-dated: false
+source: https://help.bigtincan.com/hc/en-us/articles/38235459106962-Bigtincan-Hub-Release-Notes
+url: https://help.bigtincan.com/hc/en-us/articles/38235459106962-Bigtincan-Hub-Release-Notes
+name: Bigtincan Hub Release Notes
+description: 'Bigtincan (now combined with Showpad; help.bigtincan.com is branded "Bigtincan Legacy")
+  publishes dated per-product release notes for Bigtincan Hub Web, iOS, Android, Windows and Outlook,
+  plus a "What''s New" article (https://help.bigtincan.com/hc/en-us/articles/38235442565010-2026) covering
+  Brainshark, Bigtincan Hub, Zunos and Drive. Entries are product release notes, not a REST API changelog:
+  no version numbers and no Public API (pubapi.bigtincan.com) contract changes are recorded. The one API-relevant
+  line is the JSBridge API update on Sep 29, 2026. The earlier seasonal release page is kept under seasonal.'
+scheme: dated
+dated: true
 versioned: false
-archive_published: false
 api_scoped: false
-current: Fall 2025 Release
+current: Sep 29, 2026
 probed:
-  url: https://www.bigtincan.com/seasonal-releases/
+  url: https://help.bigtincan.com/hc/en-us/articles/38235459106962
   status: 200
-  date: '2026-08-14'
+  date: '2026-10-21'
+  note: plain curl got 403; fetch-url.py plain strategy got 200
+related:
+- https://help.bigtincan.com/hc/en-us/articles/38235442565010-2026
+- https://help.bigtincan.com/hc/en-us/articles/38235445613074-Brainshark-Release-Notes
 entries:
+- version: Sep 29, 2026
+  date: '2026-09-29'
+  product: Bigtincan Hub Web
+  breaking: []
+  highlights:
+  - 'Forms: Form administrators can swap a Form''s Data Source without rebuilding form fields.'
+  - 'JSBridge API : Updated getEntity , searchFile , and getList functions to support Drive Live Files
+    so custom experiences return Drive-synced content correctly.'
+  - 'Security enhancement : Access and refresh tokens no longer appear in the browser address bar during
+    sign-in.'
+- version: Sep 1, 2026
+  date: '2026-09-01'
+  product: Bigtincan Hub Web
+  breaking: []
+  highlights:
+  - 'Forms in v5 : Forms administration is now fully integrated into the v5 web app'
+  - Share Room via email
+  - Internal role classification
+  - Add People CRM contacts
+- version: Jul 1, 2026
+  date: '2026-07-01'
+  product: Bigtincan Hub Web
+  breaking: []
+  highlights:
+  - 'Copy to Google: Users can now copy files from the Content Hub directly to Google Drive'
+- version: July 15, 2026
+  date: '2026-07-15'
+  product: Brainshark
+  breaking: []
+  highlights:
+  - Timed exams for courses
+  url: https://help.bigtincan.com/hc/en-us/articles/38235442565010-2026
+seasonal:
+  url: https://www.bigtincan.com/seasonal-releases/
+  current: Fall 2025 Release
+  entries:
   - version: Fall 2025 Release
     date: null
     url: https://www.bigtincan.com/resources/put-your-future-in-focus-bigtincans-fall-release/
     breaking: []
     additions:
-      - RolePlayAI real-time conversational realism, removing the push-to-talk wait
-      - Deep Research with Genie Assistant Pro for report generation over large content volumes
-      - Query analytics with Genie Assistant
-      - Tailored suggested prompts for Genie Assistant
-      - External AI knowledge sources for answers from approved content outside Bigtincan
-      - Modern question slides for assessments
-      - Streamlined authoring for bulk PowerPoint slide updates
-      - Contextual commenting and threaded discussions in Digital Sales Rooms
-      - Outreach add-in for in-platform content sharing
+    - RolePlayAI real-time conversational realism, removing the push-to-talk wait
+    - Deep Research with Genie Assistant Pro for report generation over large content volumes
+    - Query analytics with Genie Assistant
+    - Tailored suggested prompts for Genie Assistant
+    - External AI knowledge sources for answers from approved content outside Bigtincan
+    - Modern question slides for assessments
+    - Streamlined authoring for bulk PowerPoint slide updates
+    - Contextual commenting and threaded discussions in Digital Sales Rooms
+    - Outreach add-in for in-platform content sharing
     api_changes: none stated
-    note: >-
-      The only release shown on the page as of 2026-08-14. Every item is a
-      product feature; none names an endpoint, a version prefix or a contract
-      change to the Hub Public API.
-gaps:
-  - >-
-    STALENESS SIGNAL — the page still carried "Fall 2025 Release" when probed on
-    2026-08-14, roughly three seasons later. Either the seasonal cadence lapsed
-    or the page is not being maintained.
-  - >-
-    There is NO changelog for the Bigtincan Hub Public API. Nothing records when
-    /v1.1, /v1.2 or /v1.3 operations were added, what changed in them, or whether
-    a /v1 equivalent was superseded.
-  - No RSS/Atom feed and no dated archive of prior seasonal releases.
+    note: The only release shown on the page as of 2026-08-14. Every item is a product feature; none names
+      an endpoint, a version prefix or a contract change to the Hub Public API.

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bigtincan/main/json-schema/bigtincan-add-public-channel-request-schema.json",
+  "title": "Add_Public_Channel_Request",
+  "x-generated": "2026-10-21",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/bigtincan-channel-api-openapi.yml#/components/schemas/Add_Public_Channel_Request",
+  "required": [
+    "name",
+    "tab_id",
+    "groups"
+  ],
+  "properties": {
+    "name": {
+      "description": "Channel name",
+      "type": "string"
+    },
+    "description": {
+      "description": "Channel description",
+      "type": "string"
+    },
+    "is_hidden": {
+      "description": "Use to create a hidden channel",
+      "type": "boolean",
+      "default": false
+    },
+    "tab_id": {
+      "description": "Tab assigned to the new channel",
+      "type": "string"
+    },
+    "cover_art_url": {
+      "description": "Cover Art URL",
+      "type": "string",
+      "default": ""
+    },
+    "groups": {
+      "description": "Groups to be assigned to the new channel",
+      "type": "array",
+      "items": {
+        "required": [
+          "id",
+          "permissions"
+        ],
+        "properties": {
+          "id": {
+            "description": "Group ID",
+            "type": "string"
+          },
+          "permissions": {
+            "description": "Read Write Permission. 1 - Read, 2 - Write, 3 - Read and Write",
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "type": "object"
+}

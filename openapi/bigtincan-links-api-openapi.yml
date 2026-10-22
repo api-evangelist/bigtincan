@@ -47,6 +47,13 @@ paths:
         description: Links object
         required: true
 components:
+  responses:
+    '403':
+      description: Forbidden
+    '401':
+      description: Unauthorized
+    '400':
+      description: Bad request
   schemas:
     Get_links_from_URN:
       required:
@@ -57,13 +64,6 @@ components:
           type: string
           example: urn:btc0:push.bigtincan.com:Story:1111
       type: object
-  responses:
-    '400':
-      description: Bad request
-    '401':
-      description: Unauthorized
-    '403':
-      description: Forbidden
   securitySchemes:
     oauth2_password:
       type: oauth2
