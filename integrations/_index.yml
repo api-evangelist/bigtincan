@@ -154,3 +154,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: bigtincan-adobe-creative-cloud-own
+  label: Adobe Creative Cloud (own)
+  partner: adobe-creative-cloud
+  partner_name: Adobe Creative Cloud (own)
+  category: Adobe Exchange Creative Cloud listing (InDesign)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/101341/bigtincan-for-adobe-indesign
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
