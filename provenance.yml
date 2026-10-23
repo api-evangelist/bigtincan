@@ -28,9 +28,21 @@ artifacts:
     method: derived
     evidence: declared in the artifact
   finops/bigtincan-finops.yml:
+    method: generated
+    evidence: declared in the artifact
+  front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
-  front-door-ai/2026-09-17.yml:
+  hosts/bigtincan-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
+  integrations/_index.yml:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  integrations/bigtincan-integration-edges.yml:
+    method: searched
+    evidence: declared in the artifact
+  json-ld/bigtincan-context.jsonld:
     method: unknown
     evidence: no authorship recorded
   json-ld/bigtincan-hub-api.json:
@@ -39,127 +51,79 @@ artifacts:
   json-ld/bigtincan.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  json-schema/bigtincan-add-comment-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-add-group-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-add-group-to-tab-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-add-personal-channel-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-add-public-channel-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-add-story-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-add-tab-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-add-tags-to-file-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-add-user-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-add-user-to-group-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-change-password-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-create-share-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-get-channels-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-get-links-from-urn-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-modify-channel-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-modify-group-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-modify-tab-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-record-interaction-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-reset-password-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-share-story-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-update-channel-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-update-story-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-update-user-metadata-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/bigtincan-update-user-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -243,12 +207,24 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/bigtincan-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
-  llms/bigtincan-llms.txt:
-    method: generated
-    evidence: carries an API Evangelist house phrase
   mcp/bigtincan-mcp.yml:
     method: derived
     evidence: declared in the artifact
@@ -314,7 +290,61 @@ artifacts:
   openapi/bigtincan-user-metadata-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  overlays/bigtincan-admin-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-bookmark-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-channel-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-crm-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-event-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-file-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-form-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-group-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-history-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   overlays/bigtincan-hub-api-overlay.yaml:
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
+  overlays/bigtincan-links-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-public-file-share-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-search-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-settings-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-story-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-tab-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-tag-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-user-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/bigtincan-user-metadata-api-overlay.yaml:
     method: generated
     evidence: declared in the artifact
   packages/bigtincan-packages.yml:
@@ -326,9 +356,15 @@ artifacts:
   rate-limits/bigtincan-rate-limits.yml:
     method: unknown
     evidence: no authorship recorded
-  scopes/bigtincan-scopes.yml:
-    method: derived
+  regulatory/bigtincan-regulatory-posture.yml:
+    method: searched
     evidence: declared in the artifact
+  rules/bigtincan-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  scopes/bigtincan-scopes.yml:
+    method: unknown
+    evidence: no authorship recorded
   security/bigtincan-domain-security.yml:
     method: unknown
     evidence: no authorship recorded
@@ -346,6 +382,12 @@ artifacts:
     evidence: declared in the artifact
   skills/bigtincan-share-content-externally.md:
     method: generated
+    evidence: declared in the artifact
+  vendors/bigtincan-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/bigtincan-vocabulary.yml:
+    method: derived
     evidence: declared in the artifact
   well-known/bigtincan-well-known.yml:
     method: unknown
